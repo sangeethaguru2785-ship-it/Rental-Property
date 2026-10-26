@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="en" class="auth-checking">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="description" content="Stackly resident overview for rent payments, maintenance requests, documents, and messages.">
+  <meta name="theme-color" content="#173F35">
+  <link rel="icon" href="assets/images/logo.webp" type="image/webp">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="css/dashboard-extras.css">
+  <title>Tenant Overview - Stackly</title>
+  <script src="js/auth.js" data-auth-guard="tenant"></script>
+</head>
+<body class="dash-body" data-dashboard="tenant">
+  <a class="skip-link" href="#dash-main">Skip to dashboard</a>
+
+  <svg class="svg-sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <symbol id="icon-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/></symbol>
+    <symbol id="icon-chart" viewBox="0 0 24 24"><path d="M4 20V4M4 20h16M7 16l4-4 3 3 5-7"/></symbol>
+    <symbol id="icon-home" viewBox="0 0 24 24"><path d="m3 11 9-8 9 8M5 10v10h14V10M9 20v-6h6v6"/></symbol>
+    <symbol id="icon-wallet" viewBox="0 0 24 24"><path d="M4 6.5A2.5 2.5 0 0 1 6.5 4H18a2 2 0 0 1 2 2v2H6.5A2.5 2.5 0 0 0 4 10.5v7A2.5 2.5 0 0 0 6.5 20H20V8M16 14h.01"/></symbol>
+    <symbol id="icon-wrench" viewBox="0 0 24 24"><path d="M14.7 6.3a4.5 4.5 0 0 0-6 6L3 18l3 3 5.7-5.7a4.5 4.5 0 0 0 6-6l-3 3-3-3 3-3Z"/></symbol>
+    <symbol id="icon-message" viewBox="0 0 24 24"><path d="M21 11.5a8 8 0 0 1-8.5 8A9 9 0 0 1 8 18l-4 2 1.4-4A8 8 0 1 1 21 11.5Z"/><path d="M8 10h8M8 14h5"/></symbol>
+    <symbol id="icon-file" viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6V3Z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></symbol>
+    <symbol id="icon-settings" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/><circle cx="9" cy="6" r="2"/><circle cx="15" cy="12" r="2"/><circle cx="7" cy="18" r="2"/></symbol>
+    <symbol id="icon-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 1 1 4 2c-1.5.9-1.5 1.7-1.5 3M12 17h.01"/></symbol>
+    <symbol id="icon-bell" viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"/></symbol>
+    <symbol id="icon-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4.35-4.35"/></symbol>
+    <symbol id="icon-arrow-up-right" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></symbol>
+    <symbol id="icon-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="icon-arrow-down" viewBox="0 0 24 24"><path d="M12 5v14M6 13l6 6 6-6"/></symbol>
+    <symbol id="icon-chevron-down" viewBox="0 0 24 24"><path d="m7 10 5 5 5-5"/></symbol>
+    <symbol id="icon-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="icon-check" viewBox="0 0 24 24"><path d="m5 12 4.5 4.5L19 7"/></symbol>
+    <symbol id="icon-calendar" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18"/></symbol>
+    <symbol id="icon-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+    <symbol id="icon-credit-card" viewBox="0 0 24 24"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="M2.5 10h19M6 15h4"/></symbol>
+    <symbol id="icon-download" viewBox="0 0 24 24"><path d="M12 3v12M7 10l5 5 5-5M4 20h16"/></symbol>
+    <symbol id="icon-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="3"/></symbol>
+    <symbol id="icon-bed" viewBox="0 0 24 24"><path d="M3 19v-7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v7M3 19h18M3 19v2M21 19v2M7 10V8a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v2"/></symbol>
+    <symbol id="icon-bath" viewBox="0 0 24 24"><path d="M4 12h16v3a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4v-3ZM6 12V6a2 2 0 0 1 4 0M7 19l-1 2M17 19l1 2"/></symbol>
+    <symbol id="icon-area" viewBox="0 0 24 24"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></symbol>
+    <symbol id="icon-send" viewBox="0 0 24 24"><path d="m21 3-7 18-4-7-7-4 18-7ZM10 14 21 3"/></symbol>
+    <symbol id="icon-x" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
+    <symbol id="icon-more" viewBox="0 0 24 24"><circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/></symbol>
+    <symbol id="icon-logout" viewBox="0 0 24 24"><path d="M10 4H5v16h5M14 8l4 4-4 4M18 12H9"/></symbol>
+    <symbol id="icon-shield" viewBox="0 0 24 24"><path d="M12 3 4.5 6v5.5c0 4.7 3.2 8.1 7.5 9.5 4.3-1.4 7.5-4.8 7.5-9.5V6L12 3Z"/><path d="m8.8 12 2.1 2.1 4.5-4.5"/></symbol>
+    <symbol id="icon-spark" viewBox="0 0 24 24"><path d="M12 2c.5 5.6 2.4 7.5 8 8-5.6.5-7.5 2.4-8 8-.5-5.6-2.4-7.5-8-8 5.6-.5 7.5-2.4 8-8Z"/></symbol>
+    <symbol id="icon-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+    <symbol id="icon-key" viewBox="0 0 24 24"><circle cx="8" cy="15" r="4"/><path d="m11 12 8-8M16 4l4 4M14 9l3 3"/></symbol>
+    <symbol id="icon-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></symbol>
+    <symbol id="icon-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0M16 5.2a3.5 3.5 0 0 1 0 6.6M17.5 14.2A5.5 5.5 0 0 1 22 19.5"/></symbol>
+    <symbol id="icon-heart" viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1.1L12 21l7.8-7.5 1.1-1.1a5.5 5.5 0 0 0-.1-7.8Z"/></symbol>
+    <symbol id="icon-star" viewBox="0 0 24 24"><path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2L12 17.3l-5.6 2.9 1.1-6.2L3 9.6l6.2-.9L12 3Z"/></symbol>
+    <symbol id="icon-eye" viewBox="0 0 24 24"><path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12Z"/><circle cx="12" cy="12" r="2.5"/></symbol>
+  </svg>
+
+  <div class="dash-app">
+    <div class="dash-overlay" data-sidebar-close></div>
+
+    <aside class="dash-sidebar dash-sidebar--pinned" id="dashSidebar" aria-label="Tenant navigation">
+      <div class="dash-brand">
+        <a class="dash-brand__logo" href="index.html" aria-label="Stackly home">
+          <img src="assets/images/logo.webp" alt="Stackly" width="1200" height="493">
+        </a>
+        <span class="dash-brand__tag">Resident</span>
+      </div>
+
+      <div class="dash-workspace">
+        <span class="dash-workspace__mark">TA</span>
+        <div class="dash-workspace__copy">
+          <strong>The Atelier</strong>
+          <span>Unit 4B &middot; SoHo, New York</span>
+        </div>
+        <svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg>
+      </div>
+
+      <nav class="dash-nav" aria-label="Tenant dashboard sections">
+        <span class="dash-nav__label">Your home</span>
+        <a class="dash-nav__item is-active" href="#overview" aria-current="page">
+          <svg class="icon" aria-hidden="true"><use href="#icon-grid"/></svg>
+          <span>Overview</span>
+        </a>
+        <a class="dash-nav__item" href="#browse">
+          <svg class="icon" aria-hidden="true"><use href="#icon-search"/></svg>
+          <span>Browse Properties</span>
+        </a>
+        <a class="dash-nav__item" href="#saved">
+          <svg class="icon" aria-hidden="true"><use href="#icon-heart"/></svg>
+          <span>Saved Properties</span>
+          <span class="dash-nav__count" data-saved-count>4</span>
+        </a>
+        <span class="dash-nav__label">Renting</span>
+        <a class="dash-nav__item" href="#applications">
+          <svg class="icon" aria-hidden="true"><use href="#icon-file"/></svg>
+          <span>My Applications</span>
+          <span class="dash-nav__count dash-nav__count--gold">3</span>
+        </a>
+        <a class="dash-nav__item" href="#bookings">
+          <svg class="icon" aria-hidden="true"><use href="#icon-calendar"/></svg>
+          <span>My Bookings</span>
+          <span class="dash-nav__count">2</span>
+        </a>
+        <a class="dash-nav__item" href="#payments">
+          <svg class="icon" aria-hidden="true"><use href="#icon-credit-card"/></svg>
+          <span>Rent Payments</span>
+        </a>
+        <a class="dash-nav__item" href="#lease">
+          <svg class="icon" aria-hidden="true"><use href="#icon-key"/></svg>
+          <span>Lease Details</span>
+        </a>
+        <span class="dash-nav__label">Keep in touch</span>
+        <a class="dash-nav__item" href="#messages">
+          <svg class="icon" aria-hidden="true"><use href="#icon-message"/></svg>
+          <span>Messages</span>
+          <span class="dash-nav__count dash-nav__count--gold">2</span>
+        </a>
+        <a class="dash-nav__item" href="#notifications">
+          <svg class="icon" aria-hidden="true"><use href="#icon-bell"/></svg>
+          <span>Notifications</span>
+          <span class="dash-nav__count" data-unread-count>4</span>
+        </a>
+        <span class="dash-nav__label">Account</span>
+        <a class="dash-nav__item" href="#profile">
+          <svg class="icon" aria-hidden="true"><use href="#icon-users"/></svg>
+          <span>Profile</span>
+        </a>
+      </nav>
+
+      <div class="dash-sidebar__foot">
+        <div class="dash-sidebar-user">
+          <span class="avatar avatar--rose" data-auth-user-initials>MC</span>
+          <div>
+            <strong data-auth-user-name>Maya Chen</strong>
+            <span data-auth-user-email>maya@email.com</span>
+          </div>
+          <a href="login.html?role=admin&amp;switch=1" aria-label="Switch to an admin account">
+            <svg class="icon" aria-hidden="true"><use href="#icon-arrow-up-right"/></svg>
+          </a>
+        </div>
+        <a class="dash-sidebar-home" href="index.html">
+          <svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg>
+          <span>Go to Home</span>
+        </a>
+      </div>
+    </aside>
+
+    <div class="dash-shell">
+      <header class="dash-topbar">
+        <div class="dash-topbar__lead">
+          <button class="dash-menu-btn" type="button" aria-label="Open navigation" aria-controls="dashSidebar" aria-expanded="false" data-sidebar-toggle>
+            <svg class="icon" aria-hidden="true"><use href="#icon-menu"/></svg>
+          </button>
+          <div class="dash-crumb">
+            <span>Resident</span>
+            <span class="dash-crumb__sep">/</span>
+            <strong>Overview</strong>
+          </div>
+        </div>
+      </header>
+
+      <main class="dash-main" id="dash-main">
+        <section class="dash-view" id="overview" data-page-label="Tenant Overview">
+          <div class="dash-page-head">
+            <div>
+              <div class="dash-eyebrow"><span></span>Resident portal</div>
+              <h1>Welcome home, <em data-auth-user-first-name>Maya</em>.</h1>
+              <p>Everything for The Atelier, Unit 4B &mdash; in one calm place.</p>
+            </div>
+            <div class="dash-page-actions">
+              <span class="dash-date">
+                <svg class="icon" aria-hidden="true"><use href="#icon-calendar"/></svg>
+                <span data-today>Monday, October 26</span>
+              </span>
+              <button class="dash-btn dash-btn--primary" type="button" data-open-modal="payRentModal">
+                <svg class="icon" aria-hidden="true"><use href="#icon-credit-card"/></svg>
+                Pay rent
+              </button>
+            </div>
+          </div>
+
+          <section class="dash-kpis" aria-label="Home overview">
+            <article class="dash-kpi dash-kpi--dark">
+              <div class="dash-kpi__top"><span>Next rent payment</span><span class="dash-icon-tile"><svg class="icon" aria-hidden="true"><use href="#icon-wallet"/></svg></span></div>
+              <strong>$8,900</strong>
+              <div class="dash-kpi__foot"><span class="dash-trend dash-trend--good"><svg class="icon" aria-hidden="true"><use href="#icon-check"/></svg>Autopay on</span><span>due Nov 1</span></div>
+            </article>
+            <article class="dash-kpi">
+              <div class="dash-kpi__top"><span>Lease remaining</span><span class="dash-icon-tile"><svg class="icon" aria-hidden="true"><use href="#icon-file"/></svg></span></div>
+              <strong>10 mo</strong>
+              <div class="dash-kpi__foot"><span class="dash-trend dash-trend--up"><svg class="icon" aria-hidden="true"><use href="#icon-calendar"/></svg>Aug 31, 2027</span><span>lease end</span></div>
+            </article>
+            <article class="dash-kpi">
+              <div class="dash-kpi__top"><span>Saved homes</span><span class="dash-icon-tile"><svg class="icon" aria-hidden="true"><use href="#icon-heart"/></svg></span></div>
+              <strong data-saved-count>4</strong>
+              <div class="dash-kpi__foot"><span class="dash-trend dash-trend--up"><svg class="icon" aria-hidden="true"><use href="#icon-arrow-up-right"/></svg>2</span><span>new this week</span></div>
+            </article>
+            <article class="dash-kpi">
+              <div class="dash-kpi__top"><span>Open requests</span><span class="dash-icon-tile"><svg class="icon" aria-hidden="true"><use href="#icon-wrench"/></svg></span></div>
+              <strong>1</strong>
+              <div class="dash-kpi__foot"><span class="dash-trend dash-trend--good"><svg class="icon" aria-hidden="true"><use href="#icon-clock"/></svg>Thursday</span><span>technician visit</span></div>
+            </article>
+          </section>
+
+          <section class="dash-grid dash-grid--tenant-hero" aria-label="Your home and next payment">
+            <article class="dash-card tenant-home">
+              <div class="tenant-home__media">
+                <img src="assets/images/property-03.webp" srcset="assets/images/property-03-sm.webp 720w, assets/images/property-03.webp 1200w" sizes="(max-width: 767px) calc(100vw - 32px), 50vw" alt="Warm gallery-like apartment interior with natural light" width="1200" height="900">
+                <span class="tenant-home__status"><span></span>Active lease</span>
+                <div class="tenant-home__overlay">
+                  <span class="tenant-home__eyebrow">Your home</span>
+                  <h2>The Atelier <span>Unit 4B</span></h2>
+                  <p><svg class="icon" aria-hidden="true"><use href="#icon-pin"/></svg>21 Greene Street, SoHo, New York</p>
+                </div>
+              </div>
+              <div class="tenant-home__body">
+                <div class="tenant-meta">
+                  <div><svg class="icon" aria-hidden="true"><use href="#icon-bed"/></svg><span>Bedrooms</span><strong>2</strong></div>
+                  <div><svg class="icon" aria-hidden="true"><use href="#icon-bath"/></svg><span>Bathrooms</span><strong>2</strong></div>
+                  <div><svg class="icon" aria-hidden="true"><use href="#icon-area"/></svg><span>Interior</span><strong>1,240 ft&sup2;</strong></div>
+                  <div><svg class="icon" aria-hidden="true"><use href="#icon-key"/></svg><span>Access</span><strong>Smart lock</strong></div>
+                </div>
+                <div class="tenant-lease">
+                  <div class="tenant-lease__copy">
+                    <span>Lease ends <strong>Aug 31, 2027</strong></span>
+                    <span>10 months remaining</span>
+                  </div>
+                  <div class="tenant-lease__bar"><span style="width: 71%"></span></div>
+                  <a class="dash-text-btn" href="#lease">View lease <svg class="icon" aria-hidden="true"><use href="#icon-arrow-right"/></svg></a>
+                </div>
+              </div>
+            </article>
+
+            <article class="dash-card pay-card">
+              <div class="pay-card__head">
+                <span class="dash-card__eyebrow">Next payment</span>
+                <span class="dash-autopay"><span></span>Autopay on</span>
+              </div>
+              <div class="pay-card__amount"><span>$</span>8,900<small>/month</small></div>
+              <p class="pay-card__due">Due Sunday, November 1</p>
+              <div class="pay-card__method">
+                <span class="pay-card__card"><svg class="icon" aria-hidden="true"><use href="#icon-credit-card"/></svg>Visa &bull;&bull;&bull;&bull; 4242</span>
+                <button class="dash-text-btn dash-text-btn--light" type="button" data-open-modal="payRentModal">Manage</button>
+              </div>
+              <button class="dash-btn dash-btn--gold dash-btn--block" type="button" data-open-modal="payRentModal">Pay November rent</button>
+              <p class="pay-card__note"><svg class="icon" aria-hidden="true"><use href="#icon-check"/></svg>Autopay scheduled for October 31</p>
+            </article>
+          </section>
+
+          <section class="dash-quick-grid" aria-label="Resident shortcuts">
+            <a class="dash-quick" href="#browse">
+              <span class="dash-quick__icon"><svg class="icon" aria-hidden="true"><use href="#icon-search"/></svg></span>
+              <span class="dash-quick__copy"><strong>Browse properties</strong><span>Six curated homes ready to explore.</span></span>
+              <svg class="icon dash-quick__arrow" aria-hidden="true"><use href="#icon-arrow-right"/></svg>
+            </a>
+            <a class="dash-quick" href="#saved">
+              <span class="dash-quick__icon"><svg class="icon" aria-hidden="true"><use href="#icon-heart"/></svg></span>
+              <span class="dash-quick__copy"><strong>Saved properties</strong><span>Your shortlist, always in sync.</span></span>
+              <svg class="icon dash-quick__arrow" aria-hidden="true"><use href="#icon-arrow-right"/></svg>
+            </a>
+            <a class="dash-quick" href="#applications">
+              <span class="dash-quick__icon"><svg class="icon" aria-hidden="true"><use href="#icon-file"/></svg></span>
+              <span class="dash-quick__copy"><strong>Applications</strong><span>Track every application in one place.</span></span>
+              <svg class="icon dash-quick__arrow" aria-hidden="true"><use href="#icon-arrow-right"/></svg>
+            </a>
+            <a class="dash-quick" href="#bookings">
+              <span class="dash-quick__icon"><svg class="icon" aria-hidden="true"><use href="#icon-calendar"/></svg></span>
+              <span class="dash-quick__copy"><strong>Bookings</strong><span>Upcoming viewings and past visits.</span></span>
+              <svg class="icon dash-quick__arrow" aria-hidden="true"><use href="#icon-arrow-right"/></svg>
+            </a>
+            <a class="dash-quick" href="#payments">
+              <span class="dash-quick__icon"><svg class="icon" aria-hidden="true"><use href="#icon-wallet"/></svg></span>
+              <span class="dash-quick__copy"><strong>Rent payments</strong><span>Autopay, history and receipts.</span></span>
+              <svg class="icon dash-quick__arrow" aria-hidden="true"><use href="#icon-arrow-right"/></svg>
+            </a>
+            <a class="dash-quick" href="#messages">
+              <span class="dash-quick__icon"><svg class="icon" aria-hidden="true"><use href="#icon-message"/></svg></span>
+              <span class="dash-quick__copy"><strong>Messages</strong><span>Your direct line to Nina.</span></span>
+              <svg class="icon dash-quick__arrow" aria-hidden="true"><use href="#icon-arrow-right"/></svg>
+            </a>
+          </section>
+
+          <div class="dash-grid dash-grid--bottom">
+            <article class="dash-card">
+              <div class="dash-card__head"><div><span class="dash-card__eyebrow">What&rsquo;s next</span><h2>Home timeline</h2></div><a class="dash-text-btn" href="#notifications">All updates <svg class="icon" aria-hidden="true"><use href="#icon-arrow-right"/></svg></a></div>
+              <div class="dash-timeline">
+                <div class="dash-timeline__item is-current"><strong>Kitchen tap repair</strong><span>Nina confirmed a technician for Thursday, 9&ndash;11 AM.</span><time>Today &middot; 9:24 AM</time></div>
+                <div class="dash-timeline__item is-done"><strong>October rent received</strong><span>Autopay cleared and your receipt is ready.</span><time>Oct 1 &middot; 8:02 AM</time></div>
+                <div class="dash-timeline__item"><strong>Lease renewal window</strong><span>Renewal options open on May 1, 2027.</span><time>Upcoming</time></div>
+              </div>
+            </article>
+
+            <article class="dash-card">
+              <div class="dash-card__head"><div><span class="dash-card__eyebrow">Recent</span><h2>Notifications</h2></div><span class="dash-chip dash-chip--gold"><span></span><span data-unread-count>4</span> unread</span></div>
+              <div class="dash-notice-list">
+                <button class="dash-notice is-unread" type="button" data-view-link="notifications" aria-label="Open notification: Nina replied"><span class="dash-notice__icon"><svg class="icon" aria-hidden="true"><use href="#icon-message"/></svg></span><span class="dash-notice__copy"><strong>Nina replied</strong><span>Your kitchen request is scheduled for Thursday.</span><time>1 hour ago</time></span><span class="dash-notice__dot"></span></button>
+                <button class="dash-notice is-unread" type="button" data-view-link="notifications" aria-label="Open notification: Rent reminder"><span class="dash-notice__icon"><svg class="icon" aria-hidden="true"><use href="#icon-wallet"/></svg></span><span class="dash-notice__copy"><strong>Rent reminder</strong><span>November rent is due in 7 days.</span><time>3 hours ago</time></span><span class="dash-notice__dot"></span></button>
+                <button class="dash-notice" type="button" data-view-link="notifications" aria-label="Open notification: Lease renewal window"><span class="dash-notice__icon"><svg class="icon" aria-hidden="true"><use href="#icon-file"/></svg></span><span class="dash-notice__copy"><strong>Lease renewal window</strong><span>Opens May 1, 2027.</span><time>Yesterday</time></span><span class="dash-notice__dot"></span></button>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="dash-view" id="browse" data-page-label="Browse Properties" hidden>
+          <div class="dash-page-head">
+            <div>
+              <div class="dash-eyebrow"><span></span>Find your next place</div>
+              <h1>Browse properties</h1>
+              <p>Thoughtfully managed homes across the cities you love.</p>
+            </div>
+            <div class="dash-page-actions">
+              <a class="dash-btn dash-btn--soft" href="#saved"><svg class="icon" aria-hidden="true"><use href="#icon-heart"/></svg>View saved</a>
+            </div>
+          </div>
+
+          <form class="dash-toolbar" data-listing-filters aria-label="Filter available properties">
+            <div class="dash-toolbar__group">
+              <label class="dash-sr" for="browseSearch">Search properties</label>
+              <input class="dash-input dash-input--search" id="browseSearch" name="q" type="search" placeholder="Search by city or name&hellip;" autocomplete="off">
+              <label class="dash-sr" for="browseType">Property type</label>
+              <select class="dash-input" id="browseType" name="type">
+                <option value="all">All types</option>
+                <option value="villa">Villa</option>
+                <option value="apartment">Apartment</option>
+                <option value="townhome">Townhome</option>
+                <option value="cabin">Cabin</option>
+                <option value="penthouse">Penthouse</option>
+              </select>
+              <label class="dash-sr" for="browseMax">Maximum rent</label>
+              <select class="dash-input" id="browseMax" name="max">
+                <option value="">Any budget</option>
+                <option value="6000">Up to $6,000</option>
+                <option value="8000">Up to $8,000</option>
+                <option value="10000">Up to $10,000</option>
+                <option value="15000">Up to $15,000</option>
+              </select>
+            </div>
+            <div class="dash-toolbar__group">
+              <span class="dash-count-inline" data-listing-count>6 properties</span>
+              <button class="dash-btn dash-btn--sm dash-btn--soft" type="reset">Clear</button>
+              <button class="dash-btn dash-btn--sm dash-btn--primary" type="submit"><svg class="icon" aria-hidden="true"><use href="#icon-search"/></svg>Search</button>
+            </div>
+          </form>
+
+          <div class="dash-listing-grid">
+            <article class="dash-listing" data-browse-card data-type="villa" data-price="9800">
+              <div class="dash-listing__media">
+                <img src="assets/images/property-01-sm.webp" alt="Ocean House exterior with pool" width="720" height="450" loading="lazy">
+                <span class="dash-listing__badge"><span></span>Available now</span>
+                <button class="dash-save" type="button" data-save-property data-property-id="ocean-house" data-property-name="Ocean House" aria-label="Save Ocean House" aria-pressed="false"><svg class="icon" aria-hidden="true"><use href="#icon-heart"/></svg><span class="dash-sr" data-save-label>Save</span></button>
+              </div>
+              <div class="dash-listing__body">
+                <span class="dash-listing__kicker">Malibu, California</span>
+                <div class="dash-listing__title"><h3>Ocean House</h3><span>Villa</span></div>
+                <div class="dash-listing__meta"><span><svg class="icon" aria-hidden="true"><use href="#icon-bed"/></svg>3 beds</span><span><svg class="icon" aria-hidden="true"><use href="#icon-bath"/></svg>2 baths</span><span><svg class="icon" aria-hidden="true"><use href="#icon-area"/></svg>2,180 ft&sup2;</span></div>
+                <div class="dash-listing__foot"><div class="dash-listing__price"><strong>$9,800</strong><span>per month</span></div><div class="dash-listing__actions"><button class="dash-btn dash-btn--sm dash-btn--primary" type="button" data-action-toast data-toast-title="Home details" data-toast-message="Ocean House details are ready to explore.">View home</button></div></div>
+              </div>
+            </article>
+
+            <article class="dash-listing" data-browse-card data-type="apartment" data-price="8900">
+              <div class="dash-listing__media">
+                <img src="assets/images/property-02-sm.webp" alt="The Atelier living room" width="720" height="450" loading="lazy">
+                <span class="dash-listing__badge dash-listing__badge--gold"><span></span>New listing</span>
+                <button class="dash-save" type="button" data-save-property data-property-id="the-atelier" data-property-name="The Atelier" aria-label="Save The Atelier" aria-pressed="false"><svg class="icon" aria-hidden="true"><use href="#icon-heart"/></svg><span class="dash-sr" data-save-label>Save</span></button>
+              </div>
+              <div class="dash-listing__body">
+                <span class="dash-listing__kicker">SoHo, New York</span>
+                <div class="dash-listing__title"><h3>The Atelier</h3><span>Apartment</span></div>
+                <div class="dash-listing__meta"><span><svg class="icon" aria-hidden="true"><use href="#icon-bed"/></svg>2 beds</span><span><svg class="icon" aria-hidden="true"><use href="#icon-bath"/></svg>2 baths</span><span><svg class="icon" aria-hidden="true"><use href="#icon-area"/></svg>1,240 ft&sup2;</span></div>
+                <div class="dash-listing__foot"><div class="dash-listing__price"><strong>$8,900</strong><span>per month</span></div><div class="dash-listing__actions"><button class="dash-btn dash-btn--sm dash-btn--primary" type="button" data-action-toast data-toast-title="Home details" data-toast-message="The Atelier details are ready to explore.">View home</button></div></div>
+              </div>
+            </article>
+
+            <article class="dash-listing" data-browse-card data-type="townhome" data-price="6200">
+              <div class="dash-listing__media">
+                <img src="assets/images/property-03-sm.webp" alt="The Grove interior" width="720" height="450" loading="lazy">
+                <span class="dash-listing__badge"><span></span>Available now</span>
+                <button class="dash-save" type="button" data-save-property data-property-id="the-grove" data-property-name="The Grove" aria-label="Save The Grove" aria-pressed="false"><svg class="icon" aria-hidden="true"><use href="#icon-heart"/></svg><span class="dash-sr" data-save-label>Save</span></button>
+              </div>
+              <div class="dash-listing__body">
+                <span class="dash-listing__kicker">Austin, Texas</span>
+                <div class="dash-listing__title"><h3>The Grove</h3><span>Townhome</span></div>
+                <div class="dash-listing__meta"><span><svg class="icon" aria-hidden="true"><use href="#icon-bed"/></svg>3 beds</span><span><svg class="icon" aria-hidden="true"><use href="#icon-bath"/></svg>3 baths</span><span><svg class="icon" aria-hidden="true"><use href="#icon-area"/></svg>1,860 ft&sup2;</span></div>
+                <div class="dash-listing__foot"><div class="dash-listing__price"><strong>$6,200</strong><span>per month</span></div><div class="dash-listing__actions"><button class="dash-btn dash-btn--sm dash-btn--primary" type="button" data-action-toast data-toast-title="Home details" data-toast-message="The Grove details are ready to explore.">View home</button></div></div>
+              </div>
+            </article>
+
+            <article class="dash-listing" data-browse-card data-type="cabin" data-price="5400">
+              <div class="dash-listing__media">
+                <img src="assets/images/property-04-sm.webp" alt="Cedar Haus surrounded by trees" width="720" height="450" loading="lazy">
+                <span class="dash-listing__badge dash-listing__badge--gold"><span></span>Popular</span>
+                <button class="dash-save" type="button" data-save-property data-property-id="cedar-haus" data-property-name="Cedar Haus" aria-label="Save Cedar Haus" aria-pressed="false"><svg class="icon" aria-hidden="true"><use href="#icon-heart"/></svg><span class="dash-sr" data-save-label>Save</span></button>
+              </div>
+              <div class="dash-listing__body">
+                <span class="dash-listing__kicker">Big Sur, California</span>
+                <div class="dash-listing__title"><h3>Cedar Haus</h3><span>Cabin</span></div>
+                <div class="dash-listing__meta"><span><svg class="icon" aria-hidden="true"><use href="#icon-bed"/></svg>2 beds</span><span><svg class="icon" aria-hidden="true"><use href="#icon-bath"/></svg>1 bath</span><span><svg class="icon" aria-hidden="true"><use href="#icon-area"/></svg>1,080 ft&sup2;</span></div>
+                <div class="dash-listing__foot"><div class="dash-listing__price"><strong>$5,400</strong><span>per month</span></div><div class="dash-listing__actions"><button class="dash-btn dash-btn--sm dash-btn--primary" type="button" data-action-toast data-toast-title="Home details" data-toast-message="Cedar Haus details are ready to explore.">View home</button></div></div>
+              </div>
+            </article>
+
+            <article class="dash-listing" data-browse-card data-type="penthouse" data-price="12400">
+              <div class="dash-listing__media">
+                <img src="assets/images/property-05-sm.webp" alt="Skyline Penthouse terrace" width="720" height="450" loading="lazy">
+                <span class="dash-listing__badge"><span></span>Available now</span>
+                <button class="dash-save" type="button" data-save-property data-property-id="skyline-penthouse" data-property-name="Skyline Penthouse" aria-label="Save Skyline Penthouse" aria-pressed="false"><svg class="icon" aria-hidden="true"><use href="#icon-heart"/></svg><span class="dash-sr" data-save-label>Save</span></button>
+              </div>
+              <div class="dash-listing__body">
+                <span class="dash-listing__kicker">Miami, Florida</span>
+                <div class="dash-listing__title"><h3>Skyline Penthouse</h3><span>Penthouse</span></div>
+                <div class="dash-listing__meta"><span><svg class="icon" aria-hidden="true"><use href="#icon-bed"/></svg>3 beds</span><span><svg class="icon" aria-hidden="true"><use href="#icon-bath"/></svg>3 baths</span><span><svg class="icon" aria-hidden="true"><use href="#icon-area"/></svg>2,420 ft&sup2;</span></div>
+                <div class="dash-listing__foot"><div class="dash-listing__price"><strong>$12,400</strong><span>per month</span></div><div class="dash-listing__actions"><button class="dash-btn dash-btn--sm dash-btn--primary" type="button" data-action-toast data-toast-title="Home details" data-toast-message="Skyline Penthouse details are ready to explore.">View home</button></div></div>
+              </div>
+            </article>
+
+            <article class="dash-listing" data-browse-card data-type="villa" data-price="7600">
+              <div class="dash-listing__media">
+                <img src="assets/images/property-06-sm.webp" alt="Harbor House courtyard" width="720" height="450" loading="lazy">
+                <span class="dash-listing__badge dash-listing__badge--rust"><span></span>1 tour today</span>
+                <button class="dash-save" type="button" data-save-property data-property-id="harbor-house" data-property-name="Harbor House" aria-label="Save Harbor House" aria-pressed="false"><svg class="icon" aria-hidden="true"><use href="#icon-heart"/></svg><span class="dash-sr" data-save-label>Save</span></button>
+              </div>
+              <div class="dash-listing__body">
+                <span class="dash-listing__kicker">Palm Springs, California</span>
+                <div class="dash-listing__title"><h3>Harbor House</h3><span>Villa</span></div>
+                <div class="dash-listing__meta"><span><svg class="icon" aria-hidden="true"><use href="#icon-bed"/></svg>4 beds</span><span><svg class="icon" aria-hidden="true"><use href="#icon-bath"/></svg>3 baths</span><span><svg class="icon" aria-hidden="true"><use href="#icon-area"/></svg>2,760 ft&sup2;</span></div>
+                <div class="dash-listing__foot"><div class="dash-listing__price"><strong>$7,600</strong><span>per month</span></div><div class="dash-listing__actions"><button class="dash-btn dash-btn--sm dash-btn--primary" type="button" data-action-toast data-toast-title="Home details" data-toast-message="Harbor House details are ready to explore.">View home</button></div></div>
+              </div>
+            </article>
+          </div>
+          <div class="dash-empty" data-listing-empty>No homes match those filters yet. Try widening your search.</div>
+        </section>
+
+        <section class="dash-view" id="saved" data-page-label="Saved Properties" hidden>
+          <div class="dash-page-head">
+            <div>
+              <div class="dash-eyebrow"><span></span>Your shortlist</div>
+              <h1>Saved properties</h1>
+              <p><span data-saved-count>4</span> homes you&rsquo;re keeping an eye on.</p>
+            </div>
+            <div class="dash-page-actions">
+              <a class="dash-btn dash-btn--soft" href="#browse"><svg class="icon" aria-hidden="true"><use href="#icon-search"/></svg>Browse more</a>
+            </div>
+          </div>
+
+          <section class="dash-kpis dash-kpis--three" aria-label="Saved property summary">
+            <article class="dash-kpi dash-kpi--gold"><div class="dash-kpi__top"><span>Saved homes</span><span class="dash-icon-tile"><svg class="icon" aria-hidden="true"><use href="#icon-heart"/></svg></span></div><strong data-saved-count>4</strong><div class="dash-kpi__foot"><span class="dash-trend dash-trend--up"><svg class="icon" aria-hidden="true"><use href="#icon-arrow-up-right"/></svg>2</span><span>added this week</span></div></article>
+            <article class="dash-kpi"><div class="dash-kpi__top"><span>Average rent</span><span class="dash-icon-tile"><svg class="icon" aria-hidden="true"><use href="#icon-wallet"/></svg></span></div><strong>$7,150</strong><div class="dash-kpi__foot"><span class="dash-trend dash-trend--good"><svg class="icon" aria-hidden="true"><use href="#icon-check"/></svg>Within budget</span></div></article>
+            <article class="dash-kpi"><div class="dash-kpi__top"><span>Tours requested</span><span class="dash-icon-tile"><svg class="icon" aria-hidden="true"><use href="#icon-calendar"/></svg></span></div><strong>2</strong><div class="dash-kpi__foot"><span class="dash-trend dash-trend--up"><svg class="icon" aria-hidden="true"><use href="#icon-clock"/></svg>Next: Thursday</span></div></article>
+          </section>
+
+          <div class="dash-grid dash-grid--chart-side">
+            <article class="dash-card">
+              <div class="dash-card__head"><div><span class="dash-card__eyebrow">Shortlist mix</span><h2>Saved by type</h2></div><span class="dash-chip"><span></span>4 homes</span></div>
+              <div class="dash-chartbox dash-chartbox--sm"><canvas id="tenantSavedMixChart" data-chart role="img" aria-label="Saved properties by type"></canvas></div>
+            </article>
+            <article class="dash-card">
+              <div class="dash-card__head"><div><span class="dash-card__eyebrow">Next step</span><h2>Ready to tour?</h2></div></div>
+              <p class="dash-subtle">Pick a home and request a viewing. Nina will confirm the time and meet you there.</p>
+              <div class="dash-summary-list">
+                <div><span>Fastest response</span><strong>Under 1 hour</strong></div>
+                <div><span>Available this week</span><strong>4 homes</strong></div>
+                <div><span>Tour length</span><strong>30 minutes</strong></div>
+              </div>
+              <button class="dash-btn dash-btn--primary dash-btn--block" type="button" data-action-toast data-toast-title="Tour request started" data-toast-message="Choose a saved home to request your preferred viewing time.">
+                <svg class="icon" aria-hidden="true"><use href="#icon-calendar"/></svg>
+                Request a tour
+              </button>
+            </article>
+          </div>
+
+          <div class="dash-listing-grid">
+            <article class="dash-listing" data-saved-card data-property-id="ocean-house">
+              <div class="dash-listing__media"><img src="assets/images/property-01-sm.webp" alt="Ocean House exterior with pool" width="720" height="450" loading="lazy"><span class="dash-listing__badge"><span></span>Available now</span><button class="dash-save" type="button" data-save-property data-property-id="ocean-house" data-property-name="Ocean House" aria-label="Save Ocean House" aria-pressed="false"><svg class="icon" aria-hidden="true"><use href="#icon-heart"/></svg><span class="dash-sr" data-save-label>Save</span></button></div>
+              <div class="dash-listing__body"><span class="dash-listing__kicker">Malibu, California</span><div class="dash-listing__title"><h3>Ocean House</h3><span>Villa</span></div><div class="dash-listing__meta"><span><svg class="icon" aria-hidden="true"><use href="#icon-bed"/></svg>3 beds</span><span><svg class="icon" aria-hidden="true"><use href="#icon-bath"/></svg>2 baths</span></div><div class="dash-listing__foot"><div class="dash-listing__price"><strong>$9,800</strong><span>per month</span></div><div class="dash-listing__actions"><button class="dash-btn dash-btn--sm dash-btn--primary" type="button" data-action-toast data-toast-title="Home details" data-toast-message="Ocean House details are ready to explore.">View</button></div></div></div>
+            </article>
+            <article class="dash-listing" data-saved-card data-property-id="the-atelier">
+              <div class="dash-listing__media"><img src="assets/images/property-02-sm.webp" alt="The Atelier living room" width="720" height="450" loading="lazy"><span class="dash-listing__badge dash-listing__badge--gold"><span></span>New listing</span><button class="dash-save" type="button" data-save-property data-property-id="the-atelier" data-property-name="The Atelier" aria-label="Save The Atelier" aria-pressed="false"><svg class="icon" aria-hidden="true"><use href="#icon-heart"/></svg><span class="dash-sr" data-save-label>Save</span></button></div>
+              <div class="dash-listing__body"><span class="dash-listing__kicker">SoHo, New York</span><div class="dash-listing__title"><h3>The Atelier</h3><span>Apartment</span></div><div class="dash-listing__meta"><span><svg class="icon" aria-hidden="true"><use href="#icon-bed"/></svg>2 beds</span><span><svg class="icon" aria-hidden="true"><use href="#icon-bath"/></svg>2 baths</span></div><div class="dash-listing__foot"><div class="dash-listing__price"><strong>$8,900</strong><span>per month</span></div><div class="dash-listing__actions"><button class="dash-btn dash-btn--sm dash-btn--primary" type="button" data-action-toast data-toast-title="Home details" data-toast-message="The Atelier details are ready to explore.">View</button></div></div></div>
+            </article>
+            <article class="dash-listing" data-saved-card data-property-id="the-grove">
+              <div class="dash-listing__media"><img src="assets/images/property-03-sm.webp" alt="The Grove interior" width="720" height="450" loading="lazy"><span class="dash-listing__badge"><span></span>Available now</span><button class="dash-save" type="button" data-save-property data-property-id="the-grove" data-property-name="The Grove" aria-label="Save The Grove" aria-pressed="false"><svg class="icon" aria-hidden="true"><use href="#icon-heart"/></svg><span class="dash-sr" data-save-label>Save</span></button></div>
+              <div class="dash-listing__body"><span class="dash-listing__kicker">Austin, Texas</span><div class="dash-listing__title"><h3>The Grove</h3><span>Townhome</span></div><div class="dash-listing__meta"><span><svg class="icon" aria-hidden="true"><use href="#icon-bed"/></svg>3 beds</span><span><svg class="icon" aria-hidden="true"><use href="#icon-bath"/></svg>3 baths</span></div><div class="dash-listing__foot"><div class="dash-listing__price"><strong>$6,200</strong><span>per month</span></div><div class="dash-listing__actions"><button class="dash-btn dash-btn--sm dash-btn--primary" type="button" data-action-toast data-toast-title="Home details" data-toast-message="The Grove details are ready to explore.">View</button></div></div></div>
+            </article>
+            <article class="dash-listing" data-saved-card data-property-id="cedar-haus">
+              <div class="dash-listing__media"><img src="assets/images/property-04-sm.webp" alt="Cedar Haus surrounded by trees" width="720" height="450" loading="lazy"><span class="dash-listing__badge dash-listing__badge--gold"><span></span>Popular</span><button class="dash-save" type="button" data-save-property data-property-id="cedar-haus" data-property-name="Cedar Haus" aria-label="Save Cedar Haus" aria-pressed="false"><svg class="icon" aria-hidden="true"><use href="#icon-heart"/></svg><span class="dash-sr" data-save-label>Save</span></button></div>
+              <div class="dash-listing__body"><span class="dash-listing__kicker">Big Sur, California</span><div class="dash-listing__title"><h3>Cedar Haus</h3><span>Cabin</span></div><div class="dash-listing__meta"><span><svg class="icon" aria-hidden="true"><use href="#icon-bed"/></svg>2 beds</span><span><svg class="icon" aria-hidden="true"><use href="#icon-bath"/></svg>1 bath</span></div><div class="dash-listing__foot"><div class="dash-listing__price"><strong>$5,400</strong><span>per month</span></div><div class="dash-listing__actions"><button class="dash-btn dash-btn--sm dash-btn--primary" type="button" data-action-toast data-toast-title="Home details" data-toast-message="Cedar Haus details are ready to explore.">View</button></div></div></div>
+            </article>
+            <article class="dash-listing" data-saved-card data-property-id="skyline-penthouse">
+              <div class="dash-listing__media"><img src="assets/images/property-05-sm.webp" alt="Skyline Penthouse terrace" width="720" height="450" loading="lazy"><span class="dash-listing__badge"><span></span>Available now</span><button class="dash-save" type="button" data-save-property data-property-id="skyline-penthouse" data-property-name="Skyline Penthouse" aria-label="Save Skyline Penthouse" aria-pressed="false"><svg class="icon" aria-hidden="true"><use href="#icon-heart"/></svg><span class="dash-sr" data-save-label>Save</span></button></div>
+              <div class="dash-listing__body"><span class="dash-listing__kicker">Miami, Florida</span><div class="dash-listing__title"><h3>Skyline Penthouse</h3><span>Penthouse</span></div><div class="dash-listing__meta"><span><svg class="icon" aria-hidden="true"><use href="#icon-bed"/></svg>3 beds</span><span><svg class="icon" aria-hidden="true"><use href="#icon-bath"/></svg>3 baths</span></div><div class="dash-listing__foot"><div class="dash-listing__price"><strong>$12,400</strong><span>per month</span></div><div class="dash-listing__actions"><button class="dash-btn dash-btn--sm dash-btn--primary" type="button" data-action-toast data-toast-title="Home details" data-toast-message="Skyline Penthouse details are ready to explore.">View</button></div></div></div>
+            </article>
+            <article class="dash-listing" data-saved-card data-property-id="harbor-house">
+              <div class="dash-listing__media"><img src="assets/images/property-06-sm.webp" alt="Harbor House courtyard" width="720" height="450" loading="lazy"><span class="dash-listing__badge dash-listing__badge--rust"><span></span>1 tour today</span><button class="dash-save" type="button" data-save-property data-property-id="harbor-house" data-property-name="Harbor House" aria-label="Save Harbor House" aria-pressed="false"><svg class="icon" aria-hidden="true"><use href="#icon-heart"/></svg><span class="dash-sr" data-save-label>Save</span></button></div>
+              <div class="dash-listing__body"><span class="dash-listing__kicker">Palm Springs, California</span><div class="dash-listing__title"><h3>Harbor House</h3><span>Villa</span></div><div class="dash-listing__meta"><span><svg class="icon" aria-hidden="true"><use href="#icon-bed"/></svg>4 beds</span><span><svg class="icon" aria-hidden="true"><use href="#icon-bath"/></svg>3 baths</span></div><div class="dash-listing__foot"><div class="dash-listing__price"><strong>$7,600</strong><span>per month</span></div><div class="dash-listing__actions"><button class="dash-btn dash-btn--sm dash-btn--primary" type="button" data-action-toast data-toast-title="Home details" data-toast-message="Harbor House details are ready to explore.">View</button></div></div></div>
+            </article>
+          </div>
+          <div class="dash-empty" data-saved-empty>Your shortlist is empty. Browse homes and tap the heart to save them here.</div>
+        </section>
+
+        <section class="dash-view" id="applications" data-page-label="My Applications" hidden>
+          <div class="dash-page-head">
+            <div>
+              <div class="dash-eyebrow"><span></span>Applications</div>
+              <h1>My applications</h1>
+              <p>Every home you&rsquo;ve applied for, with the next step clearly marked.</p>
+            </div>
+            <div class="dash-page-actions">
+              <a class="dash-btn dash-btn--soft" href="#browse"><svg class="icon" aria-hidden="true"><use href="#icon-search"/></svg>Browse homes</a>
+            </div>
+          </div>
+
+          <section class="dash-kpis dash-kpis--three" aria-label="Application summary">
+            <article class="dash-kpi dash-kpi--dark"><div class="dash-kpi__top"><span>Applications</span><span class="dash-icon-tile"><svg class="icon" aria-hidden="true"><use href="#icon-file"/></svg></span></div><strong>3</strong><div class="dash-kpi__foot"><span class="dash-trend dash-trend--up"><svg class="icon" aria-hidden="true"><use href="#icon-arrow-up-right"/></svg>1</span><span>approved</span></div></article>
+            <article class="dash-kpi"><div class="dash-kpi__top"><span>In review</span><span class="dash-icon-tile"><svg class="icon" aria-hidden="true"><use href="#icon-clock"/></svg></span></div><strong>1</strong><div class="dash-kpi__foot"><span class="dash-trend dash-trend--good"><svg class="icon" aria-hidden="true"><use href="#icon-check"/></svg>On track</span></div></article>
+            <article class="dash-kpi"><div class="dash-kpi__top"><span>Avg. decision time</span><span class="dash-icon-tile"><svg class="icon" aria-hidden="true"><use href="#icon-chart"/></svg></span></div><strong>2.4 days</strong><div class="dash-kpi__foot"><span class="dash-trend dash-trend--up"><svg class="icon" aria-hidden="true"><use href="#icon-arrow-down"/></svg>Faster</span></div></article>
+          </section>
+
+          <div class="dash-grid dash-grid--chart-side">
+            <article class="dash-card">
+              <div class="dash-card__head"><div><span class="dash-card__eyebrow">Pipeline</span><h2>Application status</h2></div><span class="dash-chip"><span></span>3 active</span></div>
+              <div class="dash-chartbox dash-chartbox--sm"><canvas id="tenantApplicationChart" data-chart role="img" aria-label="Application status breakdown"></canvas></div>
+            </article>
+            <article class="dash-card">
+              <div class="dash-card__head"><div><span class="dash-card__eyebrow">Next up</span><h2>What happens next</h2></div></div>
+              <div class="dash-timeline">
+                <div class="dash-timeline__item is-done"><strong>Application submitted</strong><span>All documents received.</span><time>Oct 18</time></div>
+                <div class="dash-timeline__item is-current"><strong>Review in progress</strong><span>Stackly is reviewing your references.</span><time>Now</time></div>
+                <div class="dash-timeline__item"><strong>Decision</strong><span>We&rsquo;ll email you as soon as it&rsquo;s ready.</span><time>Expected Oct 29</time></div>
+              </div>
+            </article>
+          </div>
+
+          <article class="dash-card">
+            <div class="dash-card__head"><div><span class="dash-card__eyebrow">Submitted</span><h2>Your applications</h2></div></div>
+            <div class="dash-application">
+              <div class="dash-application__head"><div><h3>The Grove</h3><p>Austin, Texas &middot; $6,200/month &middot; Submitted Oct 18</p></div><span class="dash-status dash-status--paid">Approved</span></div>
+              <div class="dash-steps" aria-label="Application progress">
+                <span class="dash-step is-done">Submitted</span><span class="dash-step is-done">Review</span><span class="dash-step is-done">Approved</span><span class="dash-step is-done">Lease</span>
+              </div>
+            </div>
+            <div class="dash-application">
+              <div class="dash-application__head"><div><h3>Ocean House</h3><p>Malibu, California &middot; $9,800/month &middot; Submitted Oct 21</p></div><span class="dash-status dash-status--due">In review</span></div>
+              <div class="dash-steps" aria-label="Application progress">
+                <span class="dash-step is-done">Submitted</span><span class="dash-step is-current">Review</span><span class="dash-step">Decision</span><span class="dash-step">Lease</span>
+              </div>
+            </div>
+            <div class="dash-application">
+              <div class="dash-application__head"><div><h3>Harbor House</h3><p>Palm Springs, California &middot; $7,600/month &middot; Submitted Oct 24</p></div><span class="dash-status dash-status--scheduled">Submitted</span></div>
+              <div class="dash-steps" aria-label="Application progress">
+                <span class="dash-step is-done">Submitted</span><span class="dash-step is-current">Documents</span><span class="dash-step">Review</span><span class="dash-step">Decision</span>
+              </div>
+            </div>
+          </article>
+        </section>
+
+        <section class="dash-view" id="bookings" data-page-label="My Bookings" hidden>
+          <div class="dash-page-head">
+            <div>
+              <div class="dash-eyebrow"><span></span>Viewings</div>
+              <h1>My bookings</h1>
+              <p>Upcoming tours, past visits and the homes you&rsquo;ve seen.</p>
+            </div>
+            <div class="dash-page-actions">
+              <button class="dash-btn dash-btn--primary" type="button" data-action-toast data-toast-title="Tour request opened" data-toast-message="Pick a saved home to request your preferred viewing time.">
+                <svg class="icon" aria-hidden="true"><use href="#icon-calendar"/></svg>
+                Request a tour
+              </button>
+            </div>
+          </div>
+
+          <section class="dash-kpis dash-kpis--three" aria-label="Booking summary">
+            <article class="dash-kpi dash-kpi--gold"><div class="dash-kpi__top"><span>Upcoming viewings</span><span class="dash-icon-tile"><svg class="icon" aria-hidden="true"><use href="#icon-calendar"/></svg></span></div><strong>2</strong><div class="dash-kpi__foot"><span class="dash-trend dash-trend--up"><svg class="icon" aria-hidden="true"><use href="#icon-clock"/></svg>This week</span></div></article>
+            <article class="dash-kpi"><div class="dash-kpi__top"><span>Completed tours</span><span class="dash-icon-tile"><svg class="icon" aria-hidden="true"><use href="#icon-check"/></svg></span></div><strong>4</strong><div class="dash-kpi__foot"><span class="dash-trend dash-trend--up"><svg class="icon" aria-hidden="true"><use href="#icon-arrow-up-right"/></svg>2</span><span>this month</span></div></article>
+            <article class="dash-kpi"><div class="dash-kpi__top"><span>Saved for later</span><span class="dash-icon-tile"><svg class="icon" aria-hidden="true"><use href="#icon-heart"/></svg></span></div><strong data-saved-count>4</strong><div class="dash-kpi__foot"><span class="dash-trend dash-trend--good"><svg class="icon" aria-hidden="true"><use href="#icon-arrow-right"/></svg>View shortlist</span></div></article>
+          </section>
+
+          <div class="dash-grid dash-grid--bottom">
+            <article class="dash-card">
+              <div class="dash-card__head"><div><span class="dash-card__eyebrow">Activity</span><h2>Viewings by month</h2></div><span class="dash-chip"><span></span>6 months</span></div>
+              <div class="dash-chartbox dash-chartbox--sm"><canvas id="tenantBookingChart" data-chart role="img" aria-label="Viewings by month"></canvas></div>
+            </article>
+            <article class="dash-card">
+              <div class="dash-card__head"><div><span class="dash-card__eyebrow">Outcomes</span><h2>Booking status</h2></div></div>
+              <div class="dash-chartbox dash-chartbox--sm"><canvas id="tenantBookingStatusChart" data-chart role="img" aria-label="Booking status breakdown"></canvas></div>
+            </article>
+          </div>
+
+          <article class="dash-card" data-filterable>
+            <div class="dash-card__head">
+              <div><span class="dash-card__eyebrow">Calendar</span><h2>Your viewings <span class="dash-count" data-filter-count>6 results</span></h2></div>
+              <div class="dash-card__tools">
+                <select class="dash-select" data-row-filter aria-label="Filter bookings by status">
+                  <option value="all">All bookings</option>
+                  <option value="upcoming">Upcoming</option>
+                  <option value="completed">Completed</option>
+                  <option value="cancelled">Cancelled</option>
+                </select>
+              </div>
+            </div>
+            <div class="dash-table-wrap">
+              <table class="dash-table">
+                <thead><tr><th>Property</th><th>Date &amp; time</th><th>Host</th><th>Status</th></tr></thead>
+                <tbody>
+                  <tr data-filter-row data-status="upcoming"><td><div class="dash-property"><img src="assets/images/property-01-sm.webp" alt="" width="76" height="76"><div><strong>Ocean House</strong><span>Malibu, CA</span></div></div></td><td>Thu, Oct 29 &middot; 10:30 AM</td><td>Nina Patel</td><td><span class="dash-status dash-status--paid">Confirmed</span></td></tr>
+                  <tr data-filter-row data-status="upcoming"><td><div class="dash-property"><img src="assets/images/property-04-sm.webp" alt="" width="76" height="76"><div><strong>Cedar Haus</strong><span>Big Sur, CA</span></div></div></td><td>Sat, Oct 31 &middot; 2:00 PM</td><td>Nina Patel</td><td><span class="dash-status dash-status--due">Pending</span></td></tr>
+                  <tr data-filter-row data-status="completed"><td><div class="dash-property"><img src="assets/images/property-02-sm.webp" alt="" width="76" height="76"><div><strong>The Atelier</strong><span>SoHo, NY</span></div></div></td><td>Sat, Oct 17 &middot; 11:00 AM</td><td>Nina Patel</td><td><span class="dash-status dash-status--paid">Completed</span></td></tr>
+                  <tr data-filter-row data-status="completed"><td><div class="dash-property"><img src="assets/images/property-03-sm.webp" alt="" width="76" height="76"><div><strong>The Grove</strong><span>Austin, TX</span></div></div></td><td>Wed, Oct 14 &middot; 4:15 PM</td><td>Theo Grant</td><td><span class="dash-status dash-status--paid">Completed</span></td></tr>
+                  <tr data-filter-row data-status="completed"><td><div class="dash-property"><img src="assets/images/property-05-sm.webp" alt="" width="76" height="76"><div><strong>Skyline Penthouse</strong><span>Miami, FL</span></div></div></td><td>Sat, Oct 10 &middot; 1:00 PM</td><td>Nina Patel</td><td><span class="dash-status dash-status--paid">Completed</span></td></tr>
+                  <tr data-filter-row data-status="cancelled"><td><div class="dash-property"><img src="assets/images/property-06-sm.webp" alt="" width="76" height="76"><div><strong>Harbor House</strong><span>Palm Springs, CA</span></div></div></td><td>Fri, Oct 9 &middot; 9:45 AM</td><td>Theo Grant</td><td><span class="dash-status dash-status--overdue">Cancelled</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </article>
+        </section>
+
+        <section class="dash-view" id="payments" data-page-label="Rent Payments" hidden>
+          <div class="dash-page-head">
+            <div>
+              <div class="dash-eyebrow"><span></span>Payments</div>
+              <h1>Rent payments</h1>
+              <p>Your next payment, autopay and every receipt in one place.</p>
+            </div>
+            <div class="dash-page-actions">
+              <button class="dash-btn dash-btn--primary" type="button" data-open-modal="payRentModal">
+                <svg class="icon" aria-hidden="true"><use href="#icon-credit-card"/></svg>
+                Pay rent
+              </button>
+            </div>
+          </div>
+
+          <section class="dash-kpis dash-kpis--three" aria-label="Payment summary">
+            <article class="dash-kpi dash-kpi--gold"><div class="dash-kpi__top"><span>Next payment</span><span class="dash-icon-tile"><svg class="icon" aria-hidden="true"><use href="#icon-wallet"/></svg></span></div><strong>$8,900</strong><div class="dash-kpi__foot"><span class="dash-trend dash-trend--good"><svg class="icon" aria-hidden="true"><use href="#icon-check"/></svg>Autopay</span><span>due Nov 1</span></div></article>
+            <article class="dash-kpi"><div class="dash-kpi__top"><span>Paid this year</span><span class="dash-icon-tile"><svg class="icon" aria-hidden="true"><use href="#icon-chart"/></svg></span></div><strong>$55.9k</strong><div class="dash-kpi__foot"><span class="dash-trend dash-trend--up"><svg class="icon" aria-hidden="true"><use href="#icon-check"/></svg>100% on time</span></div></article>
+            <article class="dash-kpi"><div class="dash-kpi__top"><span>Payment method</span><span class="dash-icon-tile"><svg class="icon" aria-hidden="true"><use href="#icon-credit-card"/></svg></span></div><strong>4242</strong><div class="dash-kpi__foot"><span class="dash-trend dash-trend--good"><svg class="icon" aria-hidden="true"><use href="#icon-shield"/></svg>Visa &middot; secure</span></div></article>
+          </section>
+
+          <div class="dash-grid dash-grid--bottom">
+            <article class="dash-card">
+              <div class="dash-card__head"><div><span class="dash-card__eyebrow">History</span><h2>Rent + utilities</h2></div><span class="dash-chip dash-chip--green"><span></span>On time</span></div>
+              <div class="dash-chartbox dash-chartbox--sm"><canvas id="tenantPaymentChart" data-chart role="img" aria-label="Monthly rent and utilities"></canvas></div>
+            </article>
+            <article class="dash-card">
+              <div class="dash-card__head"><div><span class="dash-card__eyebrow">Standing</span><h2>Payment status</h2></div></div>
+              <div class="dash-chartbox dash-chartbox--sm"><canvas id="tenantPaymentStatusChart" data-chart role="img" aria-label="Payment status breakdown"></canvas></div>
+            </article>
+          </div>
+
+          <div class="dash-grid dash-grid--payments">
+            <article class="dash-card pay-card">
+              <div class="pay-card__head"><span class="dash-card__eyebrow">Next payment</span><span class="dash-autopay"><span></span>Autopay on</span></div>
+              <div class="pay-card__amount"><span>$</span>8,900<small>/month</small></div>
+              <p class="pay-card__due">Due Sunday, November 1</p>
+              <div class="pay-card__method"><span class="pay-card__card"><svg class="icon" aria-hidden="true"><use href="#icon-credit-card"/></svg>Visa &bull;&bull;&bull;&bull; 4242</span><button class="dash-text-btn dash-text-btn--light" type="button" data-open-modal="payRentModal">Manage</button></div>
+              <button class="dash-btn dash-btn--gold dash-btn--block" type="button" data-open-modal="payRentModal">Pay November rent</button>
+              <p class="pay-card__note"><svg class="icon" aria-hidden="true"><use href="#icon-check"/></svg>Autopay scheduled for October 31</p>
+            </article>
+
+            <article class="dash-card" data-filterable>
+              <div class="dash-card__head">
+                <div><span class="dash-card__eyebrow">Ledger</span><h2>Payment history <span class="dash-count" data-filter-count>6 results</span></h2></div>
+                <div class="dash-card__tools"><select class="dash-select" data-row-filter aria-label="Filter payments by status"><option value="all">All payments</option><option value="paid">Paid</option><option value="due">Due</option><option value="overdue">Overdue</option></select></div>
+              </div>
+              <div class="dash-table-wrap">
+                <table class="dash-table">
+                  <thead><tr><th>Period</th><th>Amount</th><th>Paid on</th><th>Status</th></tr></thead>
+                  <tbody>
+                    <tr data-filter-row data-status="paid"><td><span class="dash-table__strong">October 2026</span></td><td>$8,900</td><td>Oct 1</td><td><span class="dash-status dash-status--paid">Paid</span></td></tr>
+                    <tr data-filter-row data-status="paid"><td><span class="dash-table__strong">September 2026</span></td><td>$8,900</td><td>Sep 1</td><td><span class="dash-status dash-status--paid">Paid</span></td></tr>
+                    <tr data-filter-row data-status="paid"><td><span class="dash-table__strong">August 2026</span></td><td>$8,900</td><td>Aug 1</td><td><span class="dash-status dash-status--paid">Paid</span></td></tr>
+                    <tr data-filter-row data-status="paid"><td><span class="dash-table__strong">July 2026</span></td><td>$8,900</td><td>Jul 1</td><td><span class="dash-status dash-status--paid">Paid</span></td></tr>
+                    <tr data-filter-row data-status="due"><td><span class="dash-table__strong">November 2026</span></td><td>$8,900</td><td>Nov 1</td><td><span class="dash-status dash-status--due">Due</span></td></tr>
+                    <tr data-filter-row data-status="overdue"><td><span class="dash-table__strong">June 2026</span></td><td>$8,900</td><td>Jun 3</td><td><span class="dash-status dash-status--overdue">Late</span></td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="dash-card__foot"><span><svg class="icon" aria-hidden="true"><use href="#icon-shield"/></svg>Payments are encrypted end to end</span><button class="dash-text-btn" type="button" data-action-toast data-toast-title="Receipts ready" data-toast-message="Your annual payment receipts are available to download.">Download receipts <svg class="icon" aria-hidden="true"><use href="#icon-download"/></svg></button></div>
+            </article>
+          </div>
+        </section>
+
+        <section class="dash-view" id="lease" data-page-label="Lease Details" hidden>
+          <div class="dash-page-head">
+            <div>
+              <div class="dash-eyebrow"><span></span>Your agreement</div>
+              <h1>Lease details</h1>
+              <p>The Atelier, Unit 4B &mdash; terms, key dates and documents.</p>
+            </div>
+            <div class="dash-page-actions">
+              <button class="dash-btn dash-btn--soft" type="button" data-action-toast data-toast-title="Lease download started" data-toast-message="Your signed lease agreement is downloading.">
+                <svg class="icon" aria-hidden="true"><use href="#icon-download"/></svg>
+                Download lease
+              </button>
+            </div>
+          </div>
+
+          <div class="dash-grid dash-grid--wide-side">
+            <article class="dash-card dash-lease">
+              <div class="dash-lease__media">
+                <img src="assets/images/property-03.webp" alt="The Atelier interior" width="1200" height="900">
+                <div class="dash-lease__overlay"><h2>The Atelier</h2><span>Unit 4B &middot; 21 Greene Street, SoHo, New York</span></div>
+              </div>
+              <div class="dash-lease__body">
+                <div class="dash-summary-list">
+                  <div><span>Lease term</span><strong>Sep 1, 2025 &ndash; Aug 31, 2027</strong></div>
+                  <div><span>Monthly rent</span><strong>$8,900</strong></div>
+                  <div><span>Security deposit</span><strong>$8,900</strong></div>
+                  <div><span>Payment due</span><strong>1st of each month</strong></div>
+                </div>
+                <div class="dash-progress" aria-label="Lease progress" role="img"><span style="width: 71%"></span></div>
+                <div class="dash-progress-labels"><span>Lease started</span><strong>10 months remaining</strong><span>Renewal</span></div>
+              </div>
+            </article>
+
+            <div>
+              <article class="dash-card">
+                <div class="dash-card__head"><div><span class="dash-card__eyebrow">Move-in costs</span><h2>Deposit &amp; first month</h2></div></div>
+                <div class="dash-chartbox dash-chartbox--sm"><canvas id="tenantDepositChart" data-chart role="img" aria-label="Move-in costs breakdown"></canvas></div>
+              </article>
+              <article class="dash-card">
+                <div class="dash-card__head"><div><span class="dash-card__eyebrow">Key dates</span><h2>Lease timeline</h2></div></div>
+                <div class="dash-timeline">
+                  <div class="dash-timeline__item is-done"><strong>Lease signed</strong><span>Countersigned by Stackly.</span><time>Aug 18, 2025</time></div>
+                  <div class="dash-timeline__item is-done"><strong>Move-in</strong><span>Keys and smart lock activated.</span><time>Sep 1, 2025</time></div>
+                  <div class="dash-timeline__item is-current"><strong>Renewal window</strong><span>Choose your next term.</span><time>May 1, 2027</time></div>
+                  <div class="dash-timeline__item"><strong>Lease ends</strong><span>Move-out or renewal.</span><time>Aug 31, 2027</time></div>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <article class="dash-card">
+            <div class="dash-card__head"><div><span class="dash-card__eyebrow">Documents</span><h2>Lease documents</h2></div><span class="dash-chip"><span></span>4 files</span></div>
+            <div class="dash-files">
+              <div class="dash-file"><span class="dash-file__icon"><svg class="icon" aria-hidden="true"><use href="#icon-file"/></svg></span><span class="dash-file__copy"><strong>Signed lease agreement</strong><span>PDF &middot; 2.4 MB</span></span><button class="dash-download" type="button" data-action-toast data-toast-title="Download started" data-toast-message="Signed lease agreement is downloading."><svg class="icon" aria-hidden="true"><use href="#icon-download"/></svg></button></div>
+              <div class="dash-file"><span class="dash-file__icon"><svg class="icon" aria-hidden="true"><use href="#icon-file"/></svg></span><span class="dash-file__copy"><strong>Move-in checklist</strong><span>PDF &middot; 480 KB</span></span><button class="dash-download" type="button" data-action-toast data-toast-title="Download started" data-toast-message="Move-in checklist is downloading."><svg class="icon" aria-hidden="true"><use href="#icon-download"/></svg></button></div>
+              <div class="dash-file"><span class="dash-file__icon"><svg class="icon" aria-hidden="true"><use href="#icon-file"/></svg></span><span class="dash-file__copy"><strong>Renters insurance</strong><span>PDF &middot; 1.1 MB</span></span><button class="dash-download" type="button" data-action-toast data-toast-title="Download started" data-toast-message="Renters insurance is downloading."><svg class="icon" aria-hidden="true"><use href="#icon-download"/></svg></button></div>
+              <div class="dash-file"><span class="dash-file__icon"><svg class="icon" aria-hidden="true"><use href="#icon-file"/></svg></span><span class="dash-file__copy"><strong>Building handbook</strong><span>PDF &middot; 3.2 MB</span></span><button class="dash-download" type="button" data-action-toast data-toast-title="Download started" data-toast-message="Building handbook is downloading."><svg class="icon" aria-hidden="true"><use href="#icon-download"/></svg></button></div>
+            </div>
+          </article>
+        </section>
+
+        <section class="dash-view" id="messages" data-page-label="Messages" hidden>
+          <div class="dash-page-head">
+            <div>
+              <div class="dash-eyebrow"><span></span>Your team</div>
+              <h1>Messages</h1>
+              <p>Talk to Nina, the maintenance desk or your leasing team.</p>
+            </div>
+            <div class="dash-page-actions">
+              <button class="dash-btn dash-btn--soft" type="button" data-action-toast data-toast-title="New conversation" data-toast-message="Choose a team member to start a new conversation.">
+                <svg class="icon" aria-hidden="true"><use href="#icon-plus"/></svg>
+                New message
+              </button>
+            </div>
+          </div>
+
+          <div class="dash-grid dash-grid--narrow-side">
+            <article class="dash-card">
+              <div class="dash-card__head"><div><span class="dash-card__eyebrow">Conversations</span><h2>Your inbox <span class="dash-count">3</span></h2></div></div>
+              <div class="dash-tabs" aria-label="Message filters"><button type="button" class="is-active">All</button><button type="button">Unread</button><button type="button">Team</button></div>
+              <div class="dash-inbox">
+                <button class="dash-inbox__item is-active" type="button" data-thread="tenant-nina" data-thread-name="Nina Patel" data-thread-role="Resident experience" data-thread-initials="NP">
+                  <span class="avatar avatar--gold">NP</span>
+                  <span class="dash-inbox__copy"><strong>Nina Patel</strong><span>Kitchen tap repair is confirmed</span><time>9:24 AM</time></span>
+                </button>
+                <button class="dash-inbox__item" type="button" data-thread="tenant-desk" data-thread-name="Maintenance desk" data-thread-role="Stackly home care" data-thread-initials="MD">
+                  <span class="avatar">MD</span>
+                  <span class="dash-inbox__copy"><strong>Maintenance desk</strong><span>Request queued with our plumbing partner</span><time>Yesterday</time></span>
+                </button>
+                <button class="dash-inbox__item" type="button" data-thread="tenant-lease" data-thread-name="Leasing team" data-thread-role="Lease renewals" data-thread-initials="LT">
+                  <span class="avatar avatar--rose">LT</span>
+                  <span class="dash-inbox__copy"><strong>Leasing team</strong><span>Your renewal window opens May 1</span><time>Mon</time></span>
+                </button>
+              </div>
+              <div class="dash-card__note"><svg class="icon" aria-hidden="true"><use href="#icon-clock"/></svg>Nina usually replies within an hour.</div>
+            </article>
+
+            <article class="dash-card dash-conversation">
+              <div class="dash-conversation__head">
+                <span class="avatar avatar--gold" data-chat-avatar>NP</span>
+                <div><strong data-chat-name>Nina Patel</strong><span data-chat-role>Resident experience</span></div>
+              </div>
+              <div class="dash-chat" data-chat aria-live="polite"></div>
+              <form class="dash-reply" data-chat-form>
+                <input type="text" name="message" placeholder="Write a reply&hellip;" aria-label="Write a reply" autocomplete="off" required>
+                <button class="dash-send" type="submit" aria-label="Send message"><svg class="icon" aria-hidden="true"><use href="#icon-send"/></svg></button>
+              </form>
+            </article>
+          </div>
+        </section>
+
+        <section class="dash-view" id="notifications" data-page-label="Notifications" hidden>
+          <div class="dash-page-head">
+            <div>
+              <div class="dash-eyebrow"><span></span>Updates</div>
+              <h1>Notifications</h1>
+              <p><span data-unread-count>4</span> unread updates across your home and payments.</p>
+            </div>
+            <div class="dash-page-actions">
+              <button class="dash-btn dash-btn--soft" type="button" data-mark-all-read>
+                <svg class="icon" aria-hidden="true"><use href="#icon-check"/></svg>
+                Mark all read
+              </button>
+            </div>
+          </div>
+
+          <section class="dash-kpis dash-kpis--three" aria-label="Notification summary">
+            <article class="dash-kpi dash-kpi--gold"><div class="dash-kpi__top"><span>Unread</span><span class="dash-icon-tile"><svg class="icon" aria-hidden="true"><use href="#icon-bell"/></svg></span></div><strong data-unread-count>4</strong><div class="dash-kpi__foot"><span class="dash-trend dash-trend--up"><svg class="icon" aria-hidden="true"><use href="#icon-arrow-up-right"/></svg>2</span><span>since yesterday</span></div></article>
+            <article class="dash-kpi"><div class="dash-kpi__top"><span>Home updates</span><span class="dash-icon-tile"><svg class="icon" aria-hidden="true"><use href="#icon-wrench"/></svg></span></div><strong>2</strong><div class="dash-kpi__foot"><span class="dash-trend dash-trend--good"><svg class="icon" aria-hidden="true"><use href="#icon-clock"/></svg>Thursday visit</span></div></article>
+            <article class="dash-kpi"><div class="dash-kpi__top"><span>Payment reminders</span><span class="dash-icon-tile"><svg class="icon" aria-hidden="true"><use href="#icon-wallet"/></svg></span></div><strong>1</strong><div class="dash-kpi__foot"><span class="dash-trend dash-trend--up"><svg class="icon" aria-hidden="true"><use href="#icon-calendar"/></svg>Due Nov 1</span></div></article>
+          </section>
+
+          <div class="dash-grid dash-grid--wide-side">
+            <article class="dash-card">
+              <div class="dash-card__head"><div><span class="dash-card__eyebrow">Inbox</span><h2>All notifications</h2></div></div>
+              <div class="dash-tabs" aria-label="Filter notifications">
+                <button type="button" class="is-active" data-notice-filter="all">All</button>
+                <button type="button" data-notice-filter="maintenance">Home</button>
+                <button type="button" data-notice-filter="payments">Payments</button>
+                <button type="button" data-notice-filter="lease">Lease</button>
+                <button type="button" data-notice-filter="property">Properties</button>
+              </div>
+              <div class="dash-notice-list">
+                <button class="dash-notice is-unread" type="button" data-notice data-notice-type="maintenance"><span class="dash-notice__icon"><svg class="icon" aria-hidden="true"><use href="#icon-message"/></svg></span><span class="dash-notice__copy"><strong>Nina replied about your kitchen request</strong><span>The technician will arrive Thursday between 9 and 11 AM.</span><time>1 hour ago</time></span><span class="dash-notice__dot"></span></button>
+                <button class="dash-notice is-unread" type="button" data-notice data-notice-type="payments"><span class="dash-notice__icon"><svg class="icon" aria-hidden="true"><use href="#icon-wallet"/></svg></span><span class="dash-notice__copy"><strong>November rent is due in 7 days</strong><span>Autopay will run on October 31 for $8,900.</span><time>3 hours ago</time></span><span class="dash-notice__dot"></span></button>
+                <button class="dash-notice is-unread" type="button" data-notice data-notice-type="lease"><span class="dash-notice__icon"><svg class="icon" aria-hidden="true"><use href="#icon-file"/></svg></span><span class="dash-notice__copy"><strong>Your renewal window opens May 1, 2027</strong><span>We&rsquo;ll share renewal options in April.</span><time>Yesterday</time></span><span class="dash-notice__dot"></span></button>
+                <button class="dash-notice is-unread" type="button" data-notice data-notice-type="property"><span class="dash-notice__icon"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg></span><span class="dash-notice__copy"><strong>A saved home just became available</strong><span>Ocean House has a new tour slot this Thursday.</span><time>Yesterday</time></span><span class="dash-notice__dot"></span></button>
+                <button class="dash-notice" type="button" data-notice data-notice-type="payments"><span class="dash-notice__icon"><svg class="icon" aria-hidden="true"><use href="#icon-check"/></svg></span><span class="dash-notice__copy"><strong>October rent received</strong><span>Your receipt is ready in payment history.</span><time>Oct 1</time></span><span class="dash-notice__dot"></span></button>
+                <button class="dash-notice" type="button" data-notice data-notice-type="property"><span class="dash-notice__icon"><svg class="icon" aria-hidden="true"><use href="#icon-heart"/></svg></span><span class="dash-notice__copy"><strong>3 new homes match your shortlist</strong><span>Fresh listings in Austin and Palm Springs.</span><time>Sep 28</time></span><span class="dash-notice__dot"></span></button>
+              </div>
+            </article>
+
+            <article class="dash-card">
+              <div class="dash-card__head"><div><span class="dash-card__eyebrow">Preferences</span><h2>Stay in the loop</h2></div></div>
+              <p class="dash-subtle">Choose what reaches you and how often. You can change this any time.</p>
+              <form class="dash-form" data-demo-form data-toast-title="Notification settings saved" data-toast="Your notification preferences have been updated.">
+                <div class="dash-check-stack">
+                  <label class="dash-check"><input type="checkbox" name="payment-reminders" checked><span>Rent reminders</span></label>
+                  <label class="dash-check"><input type="checkbox" name="home-updates" checked><span>Home and maintenance updates</span></label>
+                  <label class="dash-check"><input type="checkbox" name="new-homes" checked><span>New saved-home matches</span></label>
+                  <label class="dash-check"><input type="checkbox" name="lease-updates"><span>Lease renewal reminders</span></label>
+                </div>
+                <div class="dash-form__actions"><button class="dash-btn dash-btn--primary" type="submit">Save preferences</button></div>
+              </form>
+            </article>
+          </div>
+        </section>
+
+        <section class="dash-view" id="profile" data-page-label="Profile" hidden>
+          <div class="dash-page-head">
+            <div>
+              <div class="dash-eyebrow"><span></span>Your account</div>
+              <h1>Profile</h1>
+              <p>Personal details, contact preferences and account security.</p>
+            </div>
+          </div>
+
+          <div class="dash-grid dash-grid--wide-side">
+            <div>
+              <article class="dash-card">
+                <div class="dash-card__head"><div><span class="dash-card__eyebrow">Personal details</span><h2>About you</h2></div></div>
+                <form class="dash-form" data-demo-form data-toast-title="Profile updated" data-toast="Your personal details have been saved.">
+                  <div class="dash-form__grid">
+                    <label class="dash-field"><span>First name</span><input type="text" name="first-name" value="Maya" required></label>
+                    <label class="dash-field"><span>Last name</span><input type="text" name="last-name" value="Chen" required></label>
+                    <label class="dash-field"><span>Email address</span><input type="email" name="email" value="maya@email.com" required></label>
+                    <label class="dash-field"><span>Phone</span><input type="tel" name="phone" value="+1 (917) 555-0144"></label>
+                    <label class="dash-field dash-field--full"><span>Current address</span><input type="text" name="address" value="21 Greene Street, Unit 4B, New York, NY"></label>
+                  </div>
+                  <div class="dash-form__actions"><button class="dash-btn dash-btn--primary" type="submit">Save details</button></div>
+                </form>
+              </article>
+
+              <article class="dash-card">
+                <div class="dash-card__head"><div><span class="dash-card__eyebrow">Contact</span><h2>How we reach you</h2></div></div>
+                <form class="dash-form" data-demo-form data-toast-title="Contact preferences saved" data-toast="Your contact preferences are up to date.">
+                  <div class="dash-check-stack">
+                    <label class="dash-check"><input type="checkbox" name="email-updates" checked><span>Email for receipts and lease updates</span></label>
+                    <label class="dash-check"><input type="checkbox" name="sms-reminders" checked><span>SMS for rent reminders and visits</span></label>
+                    <label class="dash-check"><input type="checkbox" name="marketing"><span>Occasional recommendations for homes</span></label>
+                  </div>
+                  <div class="dash-form__actions"><button class="dash-btn dash-btn--primary" type="submit">Save preferences</button></div>
+                </form>
+              </article>
+            </div>
+
+            <div>
+              <article class="dash-profile-card">
+                <div class="dash-profile-card__avatar" data-auth-user-initials>MC</div>
+                <h2 data-auth-user-name>Maya Chen</h2>
+                <p data-auth-user-email>maya@email.com</p>
+                <div class="dash-profile-card__meta">
+                  <span><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg>The Atelier &middot; Unit 4B</span>
+                  <span><svg class="icon" aria-hidden="true"><use href="#icon-clock"/></svg>Resident since Sep 2025</span>
+                  <span><svg class="icon" aria-hidden="true"><use href="#icon-shield"/></svg>Identity verified</span>
+                </div>
+              </article>
+
+              <article class="dash-card">
+                <div class="dash-card__head"><div><span class="dash-card__eyebrow">Account</span><h2>At a glance</h2></div></div>
+                <div class="dash-summary-list">
+                  <div><span>Current lease</span><strong>Unit 4B</strong></div>
+                  <div><span>Next payment</span><strong>$8,900</strong></div>
+                  <div><span>Saved homes</span><strong data-saved-count>4</strong></div>
+                  <div><span>Unread updates</span><strong data-unread-count>4</strong></div>
+                </div>
+                <button class="dash-btn dash-btn--soft dash-btn--block" type="button" data-action-toast data-toast-title="Security centre" data-toast-message="Password and device settings are ready to review.">
+                  <svg class="icon" aria-hidden="true"><use href="#icon-shield"/></svg>
+                  Manage security
+                </button>
+              </article>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <div class="dash-toast" id="dashToast" role="status" aria-live="polite">
+    <span class="dash-toast__icon"><svg class="icon" aria-hidden="true"><use href="#icon-check"/></svg></span>
+    <span><strong data-toast-title>Saved</strong><span data-toast-message>Your changes are up to date.</span></span>
+  </div>
+
+  <div class="dash-modal" id="payRentModal" hidden>
+    <div class="dash-modal__backdrop" data-close-modal></div>
+    <div class="dash-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="payRentTitle">
+      <button class="dash-modal__close" type="button" data-close-modal aria-label="Close dialog">
+        <svg class="icon" aria-hidden="true"><use href="#icon-x"/></svg>
+      </button>
+      <span class="dash-card__eyebrow">November 2026</span>
+      <h2 id="payRentTitle">Pay your rent</h2>
+      <p>One payment, no processing fees. Your receipt arrives instantly.</p>
+      <form class="dash-form" data-demo-form data-toast-title="Payment scheduled" data-toast="$8,900 for November is confirmed. Your receipt is in Documents.">
+        <div class="dash-payment-total">
+          <span>Amount due</span>
+          <strong>$8,900</strong>
+        </div>
+        <div class="dash-form__grid">
+          <label class="dash-field dash-field--full">
+            <span>Payment method</span>
+            <select name="method" required>
+              <option>Visa &bull;&bull;&bull;&bull; 4242</option>
+              <option>Bank transfer &middot; Checking 8841</option>
+            </select>
+          </label>
+          <label class="dash-check dash-field--full">
+            <input type="checkbox" name="autopay" checked>
+            <span>Keep autopay on for future payments</span>
+          </label>
+        </div>
+        <div class="dash-modal__actions">
+          <button class="dash-btn dash-btn--soft" type="button" data-close-modal>Cancel</button>
+          <button class="dash-btn dash-btn--primary" type="submit">Pay $8,900</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="dash-modal" id="maintenanceModal" hidden>
+    <div class="dash-modal__backdrop" data-close-modal></div>
+    <div class="dash-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="maintenanceTitle">
+      <button class="dash-modal__close" type="button" data-close-modal aria-label="Close dialog">
+        <svg class="icon" aria-hidden="true"><use href="#icon-x"/></svg>
+      </button>
+      <span class="dash-card__eyebrow">Home care</span>
+      <h2 id="maintenanceTitle">New request</h2>
+      <p>Tell us what needs attention. Nina will reply with the next step.</p>
+      <form class="dash-form" data-demo-form data-toast-title="Request submitted" data-toast="Nina has your request and will reply within the hour.">
+        <div class="dash-form__grid">
+          <label class="dash-field">
+            <span>Category</span>
+            <select name="category" required>
+              <option value="">Select category</option>
+              <option>Plumbing</option>
+              <option>Electrical</option>
+              <option>Heating &amp; cooling</option>
+              <option>Appliance</option>
+              <option>Other</option>
+            </select>
+          </label>
+          <label class="dash-field">
+            <span>Urgency</span>
+            <select name="urgency" required>
+              <option>Low &mdash; can wait</option>
+              <option>Medium &mdash; this week</option>
+              <option>High &mdash; urgent</option>
+            </select>
+          </label>
+          <label class="dash-field dash-field--full">
+            <span>What&rsquo;s happening?</span>
+            <input type="text" name="issue" placeholder="e.g. Kitchen tap is dripping" required>
+          </label>
+          <label class="dash-field dash-field--full">
+            <span>Details</span>
+            <textarea name="details" rows="3" placeholder="When it started, how often it happens, and anything else we should know&hellip;" required></textarea>
+          </label>
+          <label class="dash-field dash-field--full">
+            <span>Access notes <em>(optional)</em></span>
+            <input type="text" name="access" placeholder="Best time, pets, parking, or key details">
+          </label>
+        </div>
+        <div class="dash-modal__actions">
+          <button class="dash-btn dash-btn--soft" type="button" data-close-modal>Cancel</button>
+          <button class="dash-btn dash-btn--primary" type="submit">Send request</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="js/dashboard.js"></script>
+  <script src="js/chart.umd.min.js"></script>
+  <script src="js/dashboard-extras.js"></script>
+  <script src="js/dashboard-404.js"></script>
+</body>
+</html>

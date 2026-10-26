@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en" class="auth-checking">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="description" content="Submit and track maintenance requests for your Stackly home.">
+  <meta name="theme-color" content="#173F35">
+  <link rel="icon" href="assets/images/logo.webp" type="image/webp">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <title>Maintenance - Stackly Resident</title>
+  <script src="js/auth.js" data-auth-guard="tenant"></script>
+</head>
+<body class="dash-body" data-dashboard="tenant">
+  <a class="skip-link" href="#dash-main">Skip to dashboard</a>
+
+  <svg class="svg-sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <symbol id="icon-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/></symbol>
+    <symbol id="icon-home" viewBox="0 0 24 24"><path d="m3 11 9-8 9 8M5 10v10h14V10M9 20v-6h6v6"/></symbol>
+    <symbol id="icon-wallet" viewBox="0 0 24 24"><path d="M4 6.5A2.5 2.5 0 0 1 6.5 4H18a2 2 0 0 1 2 2v2H6.5A2.5 2.5 0 0 0 4 10.5v7A2.5 2.5 0 0 0 6.5 20H20V8M16 14h.01"/></symbol>
+    <symbol id="icon-wrench" viewBox="0 0 24 24"><path d="M14.7 6.3a4.5 4.5 0 0 0-6 6L3 18l3 3 5.7-5.7a4.5 4.5 0 0 0 6-6l-3 3-3-3 3-3Z"/></symbol>
+    <symbol id="icon-message" viewBox="0 0 24 24"><path d="M21 11.5a8 8 0 0 1-8.5 8A9 9 0 0 1 8 18l-4 2 1.4-4A8 8 0 1 1 21 11.5Z"/><path d="M8 10h8M8 14h5"/></symbol>
+    <symbol id="icon-file" viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6V3Z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></symbol>
+    <symbol id="icon-settings" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/><circle cx="9" cy="6" r="2"/><circle cx="15" cy="12" r="2"/><circle cx="7" cy="18" r="2"/></symbol>
+    <symbol id="icon-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 1 1 4 2c-1.5.9-1.5 1.7-1.5 3M12 17h.01"/></symbol>
+    <symbol id="icon-bell" viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"/></symbol>
+    <symbol id="icon-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4.35-4.35"/></symbol>
+    <symbol id="icon-arrow-up-right" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></symbol>
+    <symbol id="icon-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="icon-arrow-down" viewBox="0 0 24 24"><path d="M12 5v14M6 13l6 6 6-6"/></symbol>
+    <symbol id="icon-chevron-down" viewBox="0 0 24 24"><path d="m7 10 5 5 5-5"/></symbol>
+    <symbol id="icon-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="icon-check" viewBox="0 0 24 24"><path d="m5 12 4.5 4.5L19 7"/></symbol>
+    <symbol id="icon-calendar" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18"/></symbol>
+    <symbol id="icon-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+    <symbol id="icon-credit-card" viewBox="0 0 24 24"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="M2.5 10h19M6 15h4"/></symbol>
+    <symbol id="icon-download" viewBox="0 0 24 24"><path d="M12 3v12M7 10l5 5 5-5M4 20h16"/></symbol>
+    <symbol id="icon-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="3"/></symbol>
+    <symbol id="icon-bed" viewBox="0 0 24 24"><path d="M3 19v-7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v7M3 19h18M3 19v2M21 19v2M7 10V8a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v2"/></symbol>
+    <symbol id="icon-bath" viewBox="0 0 24 24"><path d="M4 12h16v3a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4v-3ZM6 12V6a2 2 0 0 1 4 0M7 19l-1 2M17 19l1 2"/></symbol>
+    <symbol id="icon-area" viewBox="0 0 24 24"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></symbol>
+    <symbol id="icon-send" viewBox="0 0 24 24"><path d="m21 3-7 18-4-7-7-4 18-7ZM10 14 21 3"/></symbol>
+    <symbol id="icon-x" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
+    <symbol id="icon-more" viewBox="0 0 24 24"><circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/></symbol>
+    <symbol id="icon-logout" viewBox="0 0 24 24"><path d="M10 4H5v16h5M14 8l4 4-4 4M18 12H9"/></symbol>
+    <symbol id="icon-shield" viewBox="0 0 24 24"><path d="M12 3 4.5 6v5.5c0 4.7 3.2 8.1 7.5 9.5 4.3-1.4 7.5-4.8 7.5-9.5V6L12 3Z"/><path d="m8.8 12 2.1 2.1 4.5-4.5"/></symbol>
+    <symbol id="icon-spark" viewBox="0 0 24 24"><path d="M12 2c.5 5.6 2.4 7.5 8 8-5.6.5-7.5 2.4-8 8-.5-5.6-2.4-7.5-8-8 5.6-.5 7.5-2.4 8-8Z"/></symbol>
+    <symbol id="icon-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+    <symbol id="icon-key" viewBox="0 0 24 24"><circle cx="8" cy="15" r="4"/><path d="m11 12 8-8M16 4l4 4M14 9l3 3"/></symbol>
+    <symbol id="icon-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></symbol>
+    <symbol id="icon-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0M16 5.2a3.5 3.5 0 0 1 0 6.6M17.5 14.2A5.5 5.5 0 0 1 22 19.5"/></symbol>
+  </svg>
+
+  <div class="dash-app">
+    <div class="dash-overlay" data-sidebar-close></div>
+
+    <aside class="dash-sidebar" id="dashSidebar" aria-label="Tenant navigation">
+      <div class="dash-brand">
+        <a class="dash-brand__logo" href="index.html" aria-label="Stackly home">
+          <img src="assets/images/logo-light.webp" alt="Stackly" width="1200" height="493">
+        </a>
+        <span class="dash-brand__tag">Resident</span>
+      </div>
+
+      <div class="dash-workspace">
+        <span class="dash-workspace__mark">TA</span>
+        <div class="dash-workspace__copy">
+          <strong>The Atelier</strong>
+          <span>Unit 4B &middot; SoHo, New York</span>
+        </div>
+        <svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg>
+      </div>
+
+      <nav class="dash-nav" aria-label="Tenant dashboard sections">
+        <span class="dash-nav__label">Your home</span>
+        <a class="dash-nav__item" href="tenant-dashboard.html">
+          <svg class="icon" aria-hidden="true"><use href="#icon-grid"/></svg>
+          <span>Overview</span>
+        </a>
+        <a class="dash-nav__item" href="tenant-home.html">
+          <svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg>
+          <span>My home</span>
+        </a>
+        <a class="dash-nav__item" href="tenant-payments.html">
+          <svg class="icon" aria-hidden="true"><use href="#icon-wallet"/></svg>
+          <span>Payments</span>
+        </a>
+        <a class="dash-nav__item is-active" href="tenant-maintenance.html" aria-current="page">
+          <svg class="icon" aria-hidden="true"><use href="#icon-wrench"/></svg>
+          <span>Maintenance</span>
+          <span class="dash-nav__count">1</span>
+        </a>
+        <a class="dash-nav__item" href="tenant-documents.html">
+          <svg class="icon" aria-hidden="true"><use href="#icon-file"/></svg>
+          <span>Documents</span>
+        </a>
+        <a class="dash-nav__item" href="tenant-messages.html">
+          <svg class="icon" aria-hidden="true"><use href="#icon-message"/></svg>
+          <span>Messages</span>
+          <span class="dash-nav__count dash-nav__count--gold">2</span>
+        </a>
+        <span class="dash-nav__label">Account</span>
+        <a class="dash-nav__item" href="tenant-help.html">
+          <svg class="icon" aria-hidden="true"><use href="#icon-help"/></svg>
+          <span>Help centre</span>
+        </a>
+        <a class="dash-nav__item" href="tenant-settings.html">
+          <svg class="icon" aria-hidden="true"><use href="#icon-settings"/></svg>
+          <span>Settings</span>
+        </a>
+      </nav>
+
+      <div class="dash-sidebar__foot">
+        <a class="dash-support dash-support--resident" href="tenant-messages.html">
+          <span class="avatar avatar--sm"><img src="assets/images/avatar-03.jpg" alt="" width="120" height="120"></span>
+          <span>
+            <strong>Need a hand?</strong>
+            <span>Nina replies in about 1h</span>
+          </span>
+          <svg class="icon" aria-hidden="true"><use href="#icon-arrow-up-right"/></svg>
+        </a>
+
+        <div class="dash-sidebar-user">
+          <span class="avatar avatar--rose" data-auth-user-initials>MC</span>
+          <div>
+            <strong data-auth-user-name>Maya Chen</strong>
+            <span>Resident since 2024</span>
+          </div>
+          <a href="login.html?role=admin&amp;switch=1" aria-label="Switch to an admin account">
+            <svg class="icon" aria-hidden="true"><use href="#icon-arrow-up-right"/></svg>
+          </a>
+        </div>
+      </div>
+    </aside>
+
+    <div class="dash-shell">
+      <header class="dash-topbar">
+        <div class="dash-topbar__lead">
+          <button class="dash-menu-btn" type="button" aria-label="Open navigation" aria-controls="dashSidebar" aria-expanded="false" data-sidebar-toggle>
+            <svg class="icon" aria-hidden="true"><use href="#icon-menu"/></svg>
+          </button>
+          <div class="dash-crumb">
+            <span>Resident</span>
+            <span class="dash-crumb__sep">/</span>
+            <strong>Maintenance</strong>
+          </div>
+        </div>
+
+        <div class="dash-topbar__actions">
+          <form class="dash-search" role="search" data-dashboard-search>
+            <svg class="icon" aria-hidden="true"><use href="#icon-search"/></svg>
+            <input id="dashSearch" name="q" type="search" placeholder="Search your home&hellip;" aria-label="Search your home" autocomplete="off">
+            <kbd>/</kbd>
+          </form>
+
+          <a class="dash-switch" href="login.html?role=admin&amp;switch=1">
+            <svg class="icon" aria-hidden="true"><use href="#icon-users"/></svg>
+            <span>Admin view</span>
+          </a>
+
+          <a class="dash-icon-btn" href="index.html" aria-label="Open public website" title="Open public website">
+            <svg class="icon" aria-hidden="true"><use href="#icon-arrow-up-right"/></svg>
+          </a>
+
+          <div class="dash-dropdown">
+            <button class="dash-icon-btn" type="button" data-popover="notificationsPopover" aria-expanded="false" aria-controls="notificationsPopover" aria-label="Notifications">
+              <svg class="icon" aria-hidden="true"><use href="#icon-bell"/></svg>
+              <span class="dash-dot"></span>
+            </button>
+            <div class="dash-popover dash-notifications" id="notificationsPopover">
+              <div class="dash-popover__head">
+                <strong>Notifications</strong>
+                <span>3 new</span>
+              </div>
+              <a class="dash-notification" href="tenant-messages.html">
+                <span class="dash-notification__icon"><svg class="icon" aria-hidden="true"><use href="#icon-message"/></svg></span>
+                <span><strong>Nina replied</strong><span>About your kitchen request &middot; 1 hour ago</span></span>
+              </a>
+              <a class="dash-notification" href="tenant-payments.html">
+                <span class="dash-notification__icon"><svg class="icon" aria-hidden="true"><use href="#icon-wallet"/></svg></span>
+                <span><strong>Rent reminder</strong><span>November rent is due in 7 days</span></span>
+              </a>
+              <a class="dash-notification" href="tenant-home.html">
+                <span class="dash-notification__icon"><svg class="icon" aria-hidden="true"><use href="#icon-file"/></svg></span>
+                <span><strong>Lease renewal window</strong><span>Opens May 1, 2027 &middot; 1 day ago</span></span>
+              </a>
+              <a class="dash-popover__foot" href="tenant-messages.html">Go to messages <svg class="icon" aria-hidden="true"><use href="#icon-arrow-right"/></svg></a>
+            </div>
+          </div>
+
+          <div class="dash-dropdown">
+            <button class="dash-profile" type="button" data-popover="profilePopover" aria-expanded="false" aria-controls="profilePopover">
+              <span class="avatar avatar--rose" data-auth-user-initials>MC</span>
+              <span class="dash-profile__copy">
+                <strong data-auth-user-name>Maya Chen</strong>
+                <span>Resident</span>
+              </span>
+              <svg class="icon" aria-hidden="true"><use href="#icon-chevron-down"/></svg>
+            </button>
+            <div class="dash-popover dash-profile-menu" id="profilePopover">
+              <div class="dash-profile-menu__head">
+                <span class="avatar avatar--rose" data-auth-user-initials>MC</span>
+                <span><strong data-auth-user-name>Maya Chen</strong><span data-auth-user-email>maya@email.com</span></span>
+              </div>
+              <a href="login.html?role=admin&amp;switch=1"><svg class="icon" aria-hidden="true"><use href="#icon-users"/></svg>Switch to admin account</a>
+              <a href="index.html"><svg class="icon" aria-hidden="true"><use href="#icon-arrow-up-right"/></svg>Public website</a>
+              <button type="button" data-auth-logout><svg class="icon" aria-hidden="true"><use href="#icon-logout"/></svg>Sign out</button>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="dash-main" id="dash-main">
+        <div class="dash-page-head">
+          <div>
+            <div class="dash-eyebrow"><span></span>Home care</div>
+            <h1>Maintenance <em>requests.</em></h1>
+            <p>Requests, scheduled visits and resolutions.</p>
+          </div>
+          <div class="dash-page-actions">
+            <span class="dash-date"><svg class="icon" aria-hidden="true"><use href="#icon-calendar"/></svg><span data-today>Monday, October 26</span></span>
+            <button class="dash-btn dash-btn--soft" type="button" data-open-modal="maintenanceModal"><svg class="icon" aria-hidden="true"><use href="#icon-plus"/></svg>New request</button>
+          </div>
+        </div>
+
+        <section class="dash-grid dash-grid--reading" aria-label="Maintenance requests">
+          <article class="dash-card" id="maintenance">
+                      <div class="dash-card__head">
+                        <div>
+                          <span class="dash-card__eyebrow">Home care</span>
+                          <h2>Maintenance</h2>
+                        </div>
+                        <button class="dash-btn dash-btn--soft dash-btn--sm" type="button" data-open-modal="maintenanceModal">
+                          <svg class="icon" aria-hidden="true"><use href="#icon-plus"/></svg>
+                          New
+                        </button>
+                      </div>
+
+                      <div class="dash-maintenance" data-search-group>
+                        <div class="dash-maintenance__item" data-maintenance-item>
+                          <span class="dash-priority dash-priority--medium"><svg class="icon" aria-hidden="true"><use href="#icon-wrench"/></svg></span>
+                          <div class="dash-maintenance__body">
+                            <strong>Kitchen faucet drip</strong>
+                            <span>Scheduled for Oct 27 &middot; 9&ndash;11am</span>
+                          </div>
+                          <span class="dash-status dash-status--scheduled">Scheduled</span>
+                        </div>
+                        <div class="dash-maintenance__item" data-maintenance-item>
+                          <span class="dash-priority"><svg class="icon" aria-hidden="true"><use href="#icon-key"/></svg></span>
+                          <div class="dash-maintenance__body">
+                            <strong>Bedroom blind cord</strong>
+                            <span>Resolved Oct 12 &middot; by Stackly</span>
+                          </div>
+                          <span class="dash-status dash-status--resolved">Resolved</span>
+                        </div>
+                      </div>
+
+                      <div class="dash-maintenance__note">
+                        <span class="avatar avatar--sm"><img src="assets/images/avatar-03.jpg" alt="" width="120" height="120"></span>
+                        <p><strong>Nina coordinates access.</strong> You&rsquo;ll get a message before anyone visits.</p>
+                      </div>
+
+                      <div class="dash-card__foot">
+                        <span><svg class="icon" aria-hidden="true"><use href="#icon-clock"/></svg>1 open request</span>
+                        <a class="dash-text-btn" href="tenant-messages.html">Message Nina <svg class="icon" aria-hidden="true"><use href="#icon-arrow-right"/></svg></a>
+                      </div>
+                    </article>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <div class="dash-toast" id="dashToast" role="status" aria-live="polite">
+    <span class="dash-toast__icon"><svg class="icon" aria-hidden="true"><use href="#icon-check"/></svg></span>
+    <span><strong data-toast-title>Saved</strong><span data-toast-message>Your changes are up to date.</span></span>
+  </div>
+
+  <div class="dash-modal" id="payRentModal" hidden>
+    <div class="dash-modal__backdrop" data-close-modal></div>
+    <div class="dash-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="payRentTitle">
+      <button class="dash-modal__close" type="button" data-close-modal aria-label="Close dialog">
+        <svg class="icon" aria-hidden="true"><use href="#icon-x"/></svg>
+      </button>
+      <span class="dash-card__eyebrow">November 2026</span>
+      <h2 id="payRentTitle">Pay your rent</h2>
+      <p>One payment, no processing fees. Your receipt arrives instantly.</p>
+      <form class="dash-form" data-demo-form data-toast-title="Payment scheduled" data-toast="$8,900 for November is confirmed. Your receipt is in Documents.">
+        <div class="dash-payment-total">
+          <span>Amount due</span>
+          <strong>$8,900</strong>
+        </div>
+        <div class="dash-form__grid">
+          <label class="dash-field dash-field--full">
+            <span>Payment method</span>
+            <select name="method" required>
+              <option>Visa &bull;&bull;&bull;&bull; 4242</option>
+              <option>Bank transfer &middot; Checking 8841</option>
+            </select>
+          </label>
+          <label class="dash-check dash-field--full">
+            <input type="checkbox" name="autopay" checked>
+            <span>Keep autopay on for future payments</span>
+          </label>
+        </div>
+        <div class="dash-modal__actions">
+          <button class="dash-btn dash-btn--soft" type="button" data-close-modal>Cancel</button>
+          <button class="dash-btn dash-btn--primary" type="submit">Pay $8,900</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="dash-modal" id="maintenanceModal" hidden>
+    <div class="dash-modal__backdrop" data-close-modal></div>
+    <div class="dash-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="maintenanceTitle">
+      <button class="dash-modal__close" type="button" data-close-modal aria-label="Close dialog">
+        <svg class="icon" aria-hidden="true"><use href="#icon-x"/></svg>
+      </button>
+      <span class="dash-card__eyebrow">Home care</span>
+      <h2 id="maintenanceTitle">New request</h2>
+      <p>Tell us what needs attention. Nina will reply with the next step.</p>
+      <form class="dash-form" data-demo-form data-toast-title="Request submitted" data-toast="Nina has your request and will reply within the hour.">
+        <div class="dash-form__grid">
+          <label class="dash-field">
+            <span>Category</span>
+            <select name="category" required>
+              <option value="">Select category</option>
+              <option>Plumbing</option>
+              <option>Electrical</option>
+              <option>Heating &amp; cooling</option>
+              <option>Appliance</option>
+              <option>Other</option>
+            </select>
+          </label>
+          <label class="dash-field">
+            <span>Urgency</span>
+            <select name="urgency" required>
+              <option>Low &mdash; can wait</option>
+              <option>Medium &mdash; this week</option>
+              <option>High &mdash; urgent</option>
+            </select>
+          </label>
+          <label class="dash-field dash-field--full">
+            <span>What&rsquo;s happening?</span>
+            <input type="text" name="issue" placeholder="e.g. Kitchen tap is dripping" required>
+          </label>
+          <label class="dash-field dash-field--full">
+            <span>Details</span>
+            <textarea name="details" rows="3" placeholder="When it started, how often it happens, and anything else we should know&hellip;" required></textarea>
+          </label>
+          <label class="dash-field dash-field--full">
+            <span>Access notes <em>(optional)</em></span>
+            <input type="text" name="access" placeholder="Best time, pets, parking, or key details">
+          </label>
+        </div>
+        <div class="dash-modal__actions">
+          <button class="dash-btn dash-btn--soft" type="button" data-close-modal>Cancel</button>
+          <button class="dash-btn dash-btn--primary" type="submit">Send request</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

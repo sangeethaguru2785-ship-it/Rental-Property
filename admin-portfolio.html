@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en" class="auth-checking">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="description" content="Manage the Stackly rent roll, active leases, tenants and payment status.">
+  <meta name="theme-color" content="#173F35">
+  <link rel="icon" href="assets/images/logo.webp" type="image/webp">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <title>Portfolio - Stackly Admin</title>
+  <script src="js/auth.js" data-auth-guard="admin"></script>
+</head>
+<body class="dash-body" data-dashboard="admin">
+  <a class="skip-link" href="#dash-main">Skip to dashboard</a>
+
+  <svg class="svg-sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <symbol id="icon-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/></symbol>
+    <symbol id="icon-chart" viewBox="0 0 24 24"><path d="M4 20V4M4 20h16M7 16l4-4 3 3 5-7"/></symbol>
+    <symbol id="icon-building" viewBox="0 0 24 24"><path d="M4 21V6a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v15M15 10h3a2 2 0 0 1 2 2v9M2 21h20M8 8h3M8 12h3M8 16h3"/></symbol>
+    <symbol id="icon-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0M16 5.2a3.5 3.5 0 0 1 0 6.6M17.5 14.2A5.5 5.5 0 0 1 22 19.5"/></symbol>
+    <symbol id="icon-wallet" viewBox="0 0 24 24"><path d="M4 6.5A2.5 2.5 0 0 1 6.5 4H18a2 2 0 0 1 2 2v2H6.5A2.5 2.5 0 0 0 4 10.5v7A2.5 2.5 0 0 0 6.5 20H20V8M16 14h.01"/></symbol>
+    <symbol id="icon-wrench" viewBox="0 0 24 24"><path d="M14.7 6.3a4.5 4.5 0 0 0-6 6L3 18l3 3 5.7-5.7a4.5 4.5 0 0 0 6-6l-3 3-3-3 3-3Z"/></symbol>
+    <symbol id="icon-message" viewBox="0 0 24 24"><path d="M21 11.5a8 8 0 0 1-8.5 8A9 9 0 0 1 8 18l-4 2 1.4-4A8 8 0 1 1 21 11.5Z"/><path d="M8 10h8M8 14h5"/></symbol>
+    <symbol id="icon-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></symbol>
+    <symbol id="icon-activity" viewBox="0 0 24 24"><path d="M3 12h4l2-7 4 14 2-7h6"/></symbol>
+    <symbol id="icon-settings" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/><circle cx="9" cy="6" r="2"/><circle cx="15" cy="12" r="2"/><circle cx="7" cy="18" r="2"/></symbol>
+    <symbol id="icon-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 1 1 4 2c-1.5.9-1.5 1.7-1.5 3M12 17h.01"/></symbol>
+    <symbol id="icon-bell" viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"/></symbol>
+    <symbol id="icon-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4.35-4.35"/></symbol>
+    <symbol id="icon-arrow-up-right" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></symbol>
+    <symbol id="icon-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="icon-arrow-down" viewBox="0 0 24 24"><path d="M12 5v14M6 13l6 6 6-6"/></symbol>
+    <symbol id="icon-chevron-down" viewBox="0 0 24 24"><path d="m7 10 5 5 5-5"/></symbol>
+    <symbol id="icon-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="icon-check" viewBox="0 0 24 24"><path d="m5 12 4.5 4.5L19 7"/></symbol>
+    <symbol id="icon-calendar" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18"/></symbol>
+    <symbol id="icon-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+    <symbol id="icon-credit-card" viewBox="0 0 24 24"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="M2.5 10h19M6 15h4"/></symbol>
+    <symbol id="icon-download" viewBox="0 0 24 24"><path d="M12 3v12M7 10l5 5 5-5M4 20h16"/></symbol>
+    <symbol id="icon-file" viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6V3Z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></symbol>
+    <symbol id="icon-home" viewBox="0 0 24 24"><path d="m3 11 9-8 9 8M5 10v10h14V10M9 20v-6h6v6"/></symbol>
+    <symbol id="icon-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="3"/></symbol>
+    <symbol id="icon-send" viewBox="0 0 24 24"><path d="m21 3-7 18-4-7-7-4 18-7ZM10 14 21 3"/></symbol>
+    <symbol id="icon-x" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
+    <symbol id="icon-more" viewBox="0 0 24 24"><circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/></symbol>
+    <symbol id="icon-logout" viewBox="0 0 24 24"><path d="M10 4H5v16h5M14 8l4 4-4 4M18 12H9"/></symbol>
+    <symbol id="icon-shield" viewBox="0 0 24 24"><path d="M12 3 4.5 6v5.5c0 4.7 3.2 8.1 7.5 9.5 4.3-1.4 7.5-4.8 7.5-9.5V6L12 3Z"/><path d="m8.8 12 2.1 2.1 4.5-4.5"/></symbol>
+    <symbol id="icon-spark" viewBox="0 0 24 24"><path d="M12 2c.5 5.6 2.4 7.5 8 8-5.6.5-7.5 2.4-8 8-.5-5.6-2.4-7.5-8-8 5.6-.5 7.5-2.4 8-8Z"/></symbol>
+    <symbol id="icon-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+    <symbol id="icon-key" viewBox="0 0 24 24"><circle cx="8" cy="15" r="4"/><path d="m11 12 8-8M16 4l4 4M14 9l3 3"/></symbol>
+  </svg>
+
+  <div class="dash-app">
+    <div class="dash-overlay" data-sidebar-close></div>
+
+    <aside class="dash-sidebar" id="dashSidebar" aria-label="Admin navigation">
+      <div class="dash-brand">
+        <a class="dash-brand__logo" href="index.html" aria-label="Stackly home">
+          <img src="assets/images/logo-light.webp" alt="Stackly" width="1200" height="493">
+        </a>
+        <span class="dash-brand__tag">Admin</span>
+      </div>
+
+      <div class="dash-workspace">
+        <span class="dash-workspace__mark">HQ</span>
+        <div class="dash-workspace__copy">
+          <strong>Stackly HQ</strong>
+          <span>Los Angeles &middot; 24 cities</span>
+        </div>
+        <svg class="icon" aria-hidden="true"><use href="#icon-building"/></svg>
+      </div>
+
+      <nav class="dash-nav" aria-label="Admin dashboard sections">
+        <span class="dash-nav__label">Workspace</span>
+        <a class="dash-nav__item" href="admin-dashboard.html">
+          <svg class="icon" aria-hidden="true"><use href="#icon-grid"/></svg>
+          <span>Overview</span>
+        </a>
+        <a class="dash-nav__item" href="admin-revenue.html">
+          <svg class="icon" aria-hidden="true"><use href="#icon-chart"/></svg>
+          <span>Revenue</span>
+        </a>
+        <a class="dash-nav__item is-active" href="admin-portfolio.html" aria-current="page">
+          <svg class="icon" aria-hidden="true"><use href="#icon-building"/></svg>
+          <span>Portfolio</span>
+        </a>
+        <a class="dash-nav__item" href="admin-maintenance.html">
+          <svg class="icon" aria-hidden="true"><use href="#icon-wrench"/></svg>
+          <span>Maintenance</span>
+          <span class="dash-nav__count">7</span>
+        </a>
+        <a class="dash-nav__item" href="admin-activity.html">
+          <svg class="icon" aria-hidden="true"><use href="#icon-activity"/></svg>
+          <span>Activity</span>
+        </a>
+        <span class="dash-nav__label">Account</span>
+        <a class="dash-nav__item" href="admin-settings.html">
+          <svg class="icon" aria-hidden="true"><use href="#icon-settings"/></svg>
+          <span>Settings</span>
+        </a>
+        <a class="dash-nav__item" href="admin-help.html">
+          <svg class="icon" aria-hidden="true"><use href="#icon-help"/></svg>
+          <span>Help centre</span>
+        </a>
+      </nav>
+
+      <div class="dash-sidebar__foot">
+        <a class="dash-support" href="admin-maintenance.html">
+          <span class="dash-support__icon"><svg class="icon" aria-hidden="true"><use href="#icon-spark"/></svg></span>
+          <span>
+            <strong>7 requests need attention</strong>
+            <span>2 are high priority</span>
+          </span>
+          <svg class="icon" aria-hidden="true"><use href="#icon-arrow-up-right"/></svg>
+        </a>
+
+        <div class="dash-sidebar-user">
+          <span class="avatar avatar--gold" data-auth-user-initials>AM</span>
+          <div>
+            <strong data-auth-user-name>Alex Morgan</strong>
+            <span>Workspace admin</span>
+          </div>
+          <a href="login.html?role=tenant&amp;switch=1" aria-label="Switch to a tenant account">
+            <svg class="icon" aria-hidden="true"><use href="#icon-arrow-up-right"/></svg>
+          </a>
+        </div>
+      </div>
+    </aside>
+
+    <div class="dash-shell">
+      <header class="dash-topbar">
+        <div class="dash-topbar__lead">
+          <button class="dash-menu-btn" type="button" aria-label="Open navigation" aria-controls="dashSidebar" aria-expanded="false" data-sidebar-toggle>
+            <svg class="icon" aria-hidden="true"><use href="#icon-menu"/></svg>
+          </button>
+          <div class="dash-crumb">
+            <span>Admin</span>
+            <span class="dash-crumb__sep">/</span>
+            <strong>Portfolio</strong>
+          </div>
+        </div>
+
+        <div class="dash-topbar__actions">
+          <form class="dash-search" role="search" data-dashboard-search>
+            <svg class="icon" aria-hidden="true"><use href="#icon-search"/></svg>
+            <input id="dashSearch" name="q" type="search" placeholder="Search properties, tenants&hellip;" aria-label="Search portfolio" autocomplete="off">
+            <kbd>/</kbd>
+          </form>
+
+          <a class="dash-switch" href="login.html?role=tenant&amp;switch=1">
+            <svg class="icon" aria-hidden="true"><use href="#icon-users"/></svg>
+            <span>Tenant view</span>
+          </a>
+
+          <a class="dash-icon-btn" href="index.html" aria-label="Open public website" title="Open public website">
+            <svg class="icon" aria-hidden="true"><use href="#icon-arrow-up-right"/></svg>
+          </a>
+
+          <div class="dash-dropdown">
+            <button class="dash-icon-btn" type="button" data-popover="notificationsPopover" aria-expanded="false" aria-controls="notificationsPopover" aria-label="Notifications">
+              <svg class="icon" aria-hidden="true"><use href="#icon-bell"/></svg>
+              <span class="dash-dot"></span>
+            </button>
+            <div class="dash-popover dash-notifications" id="notificationsPopover">
+              <div class="dash-popover__head">
+                <strong>Notifications</strong>
+                <span>3 new</span>
+              </div>
+              <a class="dash-notification" href="admin-maintenance.html">
+                <span class="dash-notification__icon"><svg class="icon" aria-hidden="true"><use href="#icon-wrench"/></svg></span>
+                <span><strong>AC not cooling</strong><span>Skyline Penthouse &middot; 12 min ago</span></span>
+              </a>
+              <a class="dash-notification" href="admin-portfolio.html">
+                <span class="dash-notification__icon"><svg class="icon" aria-hidden="true"><use href="#icon-file"/></svg></span>
+                <span><strong>Lease signed at The Grove</strong><span>Daniel Kim &middot; 1 hour ago</span></span>
+              </a>
+              <a class="dash-notification" href="admin-portfolio.html">
+                <span class="dash-notification__icon"><svg class="icon" aria-hidden="true"><use href="#icon-wallet"/></svg></span>
+                <span><strong>Rent overdue</strong><span>Skyline Penthouse &middot; 3 hours ago</span></span>
+              </a>
+              <a class="dash-popover__foot" href="admin-activity.html">View all activity <svg class="icon" aria-hidden="true"><use href="#icon-arrow-right"/></svg></a>
+            </div>
+          </div>
+
+          <div class="dash-dropdown">
+            <button class="dash-profile" type="button" data-popover="profilePopover" aria-expanded="false" aria-controls="profilePopover">
+              <span class="avatar avatar--gold" data-auth-user-initials>AM</span>
+              <span class="dash-profile__copy">
+                <strong data-auth-user-name>Alex Morgan</strong>
+                <span>Admin</span>
+              </span>
+              <svg class="icon" aria-hidden="true"><use href="#icon-chevron-down"/></svg>
+            </button>
+            <div class="dash-popover dash-profile-menu" id="profilePopover">
+              <div class="dash-profile-menu__head">
+                <span class="avatar avatar--gold" data-auth-user-initials>AM</span>
+                <span><strong data-auth-user-name>Alex Morgan</strong><span data-auth-user-email>alex@stackly.com</span></span>
+              </div>
+              <a href="login.html?role=tenant&amp;switch=1"><svg class="icon" aria-hidden="true"><use href="#icon-users"/></svg>Switch to tenant account</a>
+              <a href="index.html"><svg class="icon" aria-hidden="true"><use href="#icon-arrow-up-right"/></svg>Public website</a>
+              <button type="button" data-auth-logout><svg class="icon" aria-hidden="true"><use href="#icon-logout"/></svg>Sign out</button>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="dash-main" id="dash-main">
+        <div class="dash-page-head">
+          <div>
+            <div class="dash-eyebrow"><span></span>Portfolio</div>
+            <h1>Your <em>portfolio.</em></h1>
+            <p>Every active lease, tenant and payment status in one rent roll.</p>
+          </div>
+          <div class="dash-page-actions">
+            <span class="dash-date"><svg class="icon" aria-hidden="true"><use href="#icon-calendar"/></svg><span data-today>Monday, October 26</span></span>
+            <button class="dash-btn dash-btn--primary" type="button" data-open-modal="addPropertyModal"><svg class="icon" aria-hidden="true"><use href="#icon-plus"/></svg>Add property</button>
+          </div>
+        </div>
+
+        <section class="dash-grid dash-grid--single" id="portfolio" aria-label="Rent roll">
+                  <article class="dash-card dash-card--table">
+                    <div class="dash-card__head">
+                      <div>
+                        <span class="dash-card__eyebrow">Rent roll</span>
+                        <h2>Active properties <span class="dash-count" data-table-count>6 leases</span></h2>
+                      </div>
+                      <div class="dash-card__tools">
+                        <label class="dash-sr" for="rentStatusFilter">Filter by payment status</label>
+                        <select class="dash-select" id="rentStatusFilter" data-table-filter>
+                          <option value="all">All statuses</option>
+                          <option value="paid">Paid</option>
+                          <option value="due">Due</option>
+                          <option value="overdue">Overdue</option>
+                        </select>
+                        <a class="dash-btn dash-btn--soft dash-btn--sm" href="properties.html">View all</a>
+                      </div>
+                    </div>
+
+                    <div class="dash-table-wrap">
+                      <table class="dash-table">
+                        <caption class="dash-sr">Current rent roll across active properties</caption>
+                        <thead>
+                          <tr>
+                            <th scope="col">Property</th>
+                            <th scope="col">Tenant</th>
+                            <th scope="col">Rent</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Due</th>
+                            <th scope="col"><span class="dash-sr">Actions</span></th>
+                          </tr>
+                        </thead>
+                        <tbody data-rent-rows>
+                          <tr data-rent-row data-status="paid">
+                            <td><div class="dash-property"><img src="assets/images/property-01-sm.webp" alt="" width="720" height="540" loading="lazy"><div><strong>Ocean House</strong><span>Malibu, CA</span></div></div></td>
+                            <td><div class="dash-tenant"><span class="avatar avatar--sm"><img src="assets/images/avatar-01.jpg" alt="" width="120" height="120" loading="lazy"></span>Olivia Grant</div></td>
+                            <td class="dash-table__strong">$12,400</td>
+                            <td><span class="dash-status dash-status--paid">Paid</span></td>
+                            <td>Oct 1</td>
+                            <td><button class="dash-more" type="button" aria-label="Actions for Ocean House" data-toast-title="Ocean House" data-toast="Open the full property workspace to manage this lease."><svg class="icon" aria-hidden="true"><use href="#icon-more"/></svg></button></td>
+                          </tr>
+                          <tr data-rent-row data-status="due">
+                            <td><div class="dash-property"><img src="assets/images/property-03-sm.webp" alt="" width="720" height="540" loading="lazy"><div><strong>The Atelier</strong><span>SoHo, NY</span></div></div></td>
+                            <td><div class="dash-tenant"><span class="avatar avatar--sm"><img src="assets/images/avatar-02.jpg" alt="" width="120" height="120" loading="lazy"></span>Maya Chen</div></td>
+                            <td class="dash-table__strong">$8,900</td>
+                            <td><span class="dash-status dash-status--due">Due</span></td>
+                            <td>Oct 28</td>
+                            <td><button class="dash-more" type="button" aria-label="Actions for The Atelier" data-toast-title="The Atelier" data-toast="Open the full property workspace to manage this lease."><svg class="icon" aria-hidden="true"><use href="#icon-more"/></svg></button></td>
+                          </tr>
+                          <tr data-rent-row data-status="paid">
+                            <td><div class="dash-property"><img src="assets/images/property-04-sm.webp" alt="" width="720" height="540" loading="lazy"><div><strong>Casa Marea</strong><span>Palm Springs, CA</span></div></div></td>
+                            <td><div class="dash-tenant"><span class="avatar avatar--sm"><img src="assets/images/avatar-03.jpg" alt="" width="120" height="120" loading="lazy"></span>Lucas Meyer</div></td>
+                            <td class="dash-table__strong">$9,600</td>
+                            <td><span class="dash-status dash-status--paid">Paid</span></td>
+                            <td>Oct 1</td>
+                            <td><button class="dash-more" type="button" aria-label="Actions for Casa Marea" data-toast-title="Casa Marea" data-toast="Open the full property workspace to manage this lease."><svg class="icon" aria-hidden="true"><use href="#icon-more"/></svg></button></td>
+                          </tr>
+                          <tr data-rent-row data-status="overdue">
+                            <td><div class="dash-property"><img src="assets/images/property-02-sm.webp" alt="" width="720" height="540" loading="lazy"><div><strong>Skyline Penthouse</strong><span>Miami, FL</span></div></div></td>
+                            <td><div class="dash-tenant"><span class="avatar avatar--sm"><img src="assets/images/avatar-01.jpg" alt="" width="120" height="120" loading="lazy"></span>Priya Shah</div></td>
+                            <td class="dash-table__strong">$15,200</td>
+                            <td><span class="dash-status dash-status--overdue">Overdue</span></td>
+                            <td>Oct 15</td>
+                            <td><button class="dash-more" type="button" aria-label="Actions for Skyline Penthouse" data-toast-title="Skyline Penthouse" data-toast="Open the full property workspace to manage this lease."><svg class="icon" aria-hidden="true"><use href="#icon-more"/></svg></button></td>
+                          </tr>
+                          <tr data-rent-row data-status="paid">
+                            <td><div class="dash-property"><img src="assets/images/property-05-sm.webp" alt="" width="720" height="540" loading="lazy"><div><strong>The Grove</strong><span>Austin, TX</span></div></div></td>
+                            <td><div class="dash-tenant"><span class="avatar avatar--sm"><img src="assets/images/avatar-02.jpg" alt="" width="120" height="120" loading="lazy"></span>Daniel Kim</div></td>
+                            <td class="dash-table__strong">$6,400</td>
+                            <td><span class="dash-status dash-status--paid">Paid</span></td>
+                            <td>Oct 1</td>
+                            <td><button class="dash-more" type="button" aria-label="Actions for The Grove" data-toast-title="The Grove" data-toast="Open the full property workspace to manage this lease."><svg class="icon" aria-hidden="true"><use href="#icon-more"/></svg></button></td>
+                          </tr>
+                          <tr data-rent-row data-status="due">
+                            <td><div class="dash-property"><img src="assets/images/property-06-sm.webp" alt="" width="720" height="540" loading="lazy"><div><strong>Cedar Haus</strong><span>Big Sur, CA</span></div></div></td>
+                            <td><div class="dash-tenant"><span class="avatar avatar--sm"><img src="assets/images/avatar-03.jpg" alt="" width="120" height="120" loading="lazy"></span>Sophie Turner</div></td>
+                            <td class="dash-table__strong">$7,800</td>
+                            <td><span class="dash-status dash-status--due">Due</span></td>
+                            <td>Nov 1</td>
+                            <td><button class="dash-more" type="button" aria-label="Actions for Cedar Haus" data-toast-title="Cedar Haus" data-toast="Open the full property workspace to manage this lease."><svg class="icon" aria-hidden="true"><use href="#icon-more"/></svg></button></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </article>
+
+                  
+                </section>
+      </main>
+    </div>
+  </div>
+
+  <div class="dash-toast" id="dashToast" role="status" aria-live="polite">
+    <span class="dash-toast__icon"><svg class="icon" aria-hidden="true"><use href="#icon-check"/></svg></span>
+    <span><strong data-toast-title>Saved</strong><span data-toast-message>Your changes are up to date.</span></span>
+  </div>
+
+  <div class="dash-modal" id="addPropertyModal" hidden>
+    <div class="dash-modal__backdrop" data-close-modal></div>
+    <div class="dash-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="addPropertyTitle">
+      <button class="dash-modal__close" type="button" data-close-modal aria-label="Close dialog">
+        <svg class="icon" aria-hidden="true"><use href="#icon-x"/></svg>
+      </button>
+      <span class="dash-card__eyebrow">New listing</span>
+      <h2 id="addPropertyTitle">Add a property</h2>
+      <p>Start a draft listing and invite the right tenants when it&rsquo;s ready.</p>
+      <form class="dash-form" data-demo-form data-toast-title="Property draft created" data-toast="Ocean House is ready for photography and publishing.">
+        <div class="dash-form__grid">
+          <label class="dash-field">
+            <span>Property name</span>
+            <input type="text" name="property" placeholder="e.g. Harbor House" required>
+          </label>
+          <label class="dash-field">
+            <span>Monthly rent</span>
+            <input type="text" name="rent" placeholder="$8,500" required>
+          </label>
+          <label class="dash-field dash-field--full">
+            <span>Address</span>
+            <input type="text" name="address" placeholder="Street, city, state" required>
+          </label>
+          <label class="dash-field">
+            <span>Property type</span>
+            <select name="type" required>
+              <option value="">Select type</option>
+              <option>Apartment</option>
+              <option>Villa</option>
+              <option>Penthouse</option>
+              <option>Cabin</option>
+            </select>
+          </label>
+          <label class="dash-field">
+            <span>Bedrooms</span>
+            <input type="number" name="bedrooms" min="1" max="12" placeholder="2" required>
+          </label>
+          <label class="dash-field dash-field--full">
+            <span>Internal notes</span>
+            <textarea name="notes" rows="3" placeholder="Access details, styling notes, or target tenant profile&hellip;"></textarea>
+          </label>
+        </div>
+        <div class="dash-modal__actions">
+          <button class="dash-btn dash-btn--soft" type="button" data-close-modal>Cancel</button>
+          <button class="dash-btn dash-btn--primary" type="submit">Create draft</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

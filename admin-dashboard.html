@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+<html lang="en" class="auth-checking">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="description" content="Stackly admin dashboard for portfolio performance, rent roll, maintenance, and leasing activity.">
+  <meta name="theme-color" content="#173F35">
+  <link rel="icon" href="assets/images/logo.webp" type="image/webp">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="css/dashboard-extras.css">
+  <title>Admin Overview - Stackly</title>
+  <script src="js/auth.js" data-auth-guard="admin"></script>
+</head>
+<body class="dash-body" data-dashboard="admin">
+  <a class="skip-link" href="#dash-main">Skip to dashboard</a>
+
+  <svg class="svg-sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <symbol id="icon-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/></symbol>
+    <symbol id="icon-chart" viewBox="0 0 24 24"><path d="M4 20V4M4 20h16M7 16l4-4 3 3 5-7"/></symbol>
+    <symbol id="icon-building" viewBox="0 0 24 24"><path d="M4 21V6a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v15M15 10h3a2 2 0 0 1 2 2v9M2 21h20M8 8h3M8 12h3M8 16h3"/></symbol>
+    <symbol id="icon-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0M16 5.2a3.5 3.5 0 0 1 0 6.6M17.5 14.2A5.5 5.5 0 0 1 22 19.5"/></symbol>
+    <symbol id="icon-wallet" viewBox="0 0 24 24"><path d="M4 6.5A2.5 2.5 0 0 1 6.5 4H18a2 2 0 0 1 2 2v2H6.5A2.5 2.5 0 0 0 4 10.5v7A2.5 2.5 0 0 0 6.5 20H20V8M16 14h.01"/></symbol>
+    <symbol id="icon-wrench" viewBox="0 0 24 24"><path d="M14.7 6.3a4.5 4.5 0 0 0-6 6L3 18l3 3 5.7-5.7a4.5 4.5 0 0 0 6-6l-3 3-3-3 3-3Z"/></symbol>
+    <symbol id="icon-message" viewBox="0 0 24 24"><path d="M21 11.5a8 8 0 0 1-8.5 8A9 9 0 0 1 8 18l-4 2 1.4-4A8 8 0 1 1 21 11.5Z"/><path d="M8 10h8M8 14h5"/></symbol>
+    <symbol id="icon-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></symbol>
+    <symbol id="icon-activity" viewBox="0 0 24 24"><path d="M3 12h4l2-7 4 14 2-7h6"/></symbol>
+    <symbol id="icon-settings" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/><circle cx="9" cy="6" r="2"/><circle cx="15" cy="12" r="2"/><circle cx="7" cy="18" r="2"/></symbol>
+    <symbol id="icon-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 1 1 4 2c-1.5.9-1.5 1.7-1.5 3M12 17h.01"/></symbol>
+    <symbol id="icon-bell" viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"/></symbol>
+    <symbol id="icon-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4.35-4.35"/></symbol>
+    <symbol id="icon-arrow-up-right" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></symbol>
+    <symbol id="icon-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="icon-arrow-down" viewBox="0 0 24 24"><path d="M12 5v14M6 13l6 6 6-6"/></symbol>
+    <symbol id="icon-chevron-down" viewBox="0 0 24 24"><path d="m7 10 5 5 5-5"/></symbol>
+    <symbol id="icon-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="icon-check" viewBox="0 0 24 24"><path d="m5 12 4.5 4.5L19 7"/></symbol>
+    <symbol id="icon-calendar" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18"/></symbol>
+    <symbol id="icon-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+    <symbol id="icon-credit-card" viewBox="0 0 24 24"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="M2.5 10h19M6 15h4"/></symbol>
+    <symbol id="icon-download" viewBox="0 0 24 24"><path d="M12 3v12M7 10l5 5 5-5M4 20h16"/></symbol>
+    <symbol id="icon-file" viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6V3Z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></symbol>
+    <symbol id="icon-home" viewBox="0 0 24 24"><path d="m3 11 9-8 9 8M5 10v10h14V10M9 20v-6h6v6"/></symbol>
+    <symbol id="icon-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="3"/></symbol>
+    <symbol id="icon-send" viewBox="0 0 24 24"><path d="m21 3-7 18-4-7-7-4 18-7ZM10 14 21 3"/></symbol>
+    <symbol id="icon-x" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
+    <symbol id="icon-more" viewBox="0 0 24 24"><circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/></symbol>
+    <symbol id="icon-logout" viewBox="0 0 24 24"><path d="M10 4H5v16h5M14 8l4 4-4 4M18 12H9"/></symbol>
+    <symbol id="icon-shield" viewBox="0 0 24 24"><path d="M12 3 4.5 6v5.5c0 4.7 3.2 8.1 7.5 9.5 4.3-1.4 7.5-4.8 7.5-9.5V6L12 3Z"/><path d="m8.8 12 2.1 2.1 4.5-4.5"/></symbol>
+    <symbol id="icon-spark" viewBox="0 0 24 24"><path d="M12 2c.5 5.6 2.4 7.5 8 8-5.6.5-7.5 2.4-8 8-.5-5.6-2.4-7.5-8-8 5.6-.5 7.5-2.4 8-8Z"/></symbol>
+    <symbol id="icon-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+    <symbol id="icon-key" viewBox="0 0 24 24"><circle cx="8" cy="15" r="4"/><path d="m11 12 8-8M16 4l4 4M14 9l3 3"/></symbol>
+    <symbol id="icon-star" viewBox="0 0 24 24"><path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2L12 17.3l-5.6 2.9 1.1-6.2L3 9.6l6.2-.9L12 3Z"/></symbol>
+    <symbol id="icon-heart" viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1.1L12 21l7.8-7.5 1.1-1.1a5.5 5.5 0 0 0-.1-7.8Z"/></symbol>
+  </svg>
+
+  <div class="dash-app">
+    <div class="dash-overlay" data-sidebar-close></div>
+
+    <aside class="dash-sidebar dash-sidebar--pinned" id="dashSidebar" aria-label="Admin navigation">
+      <div class="dash-brand">
+        <a class="dash-brand__logo" href="index.html" aria-label="Stackly home">
+          <img src="assets/images/logo.webp" alt="Stackly" width="1200" height="493">
+        </a>
+        <span class="dash-brand__tag">Admin</span>
+      </div>
+
+      <div class="dash-workspace">
+        <span class="dash-workspace__mark">HQ</span>
+        <div class="dash-workspace__copy">
+          <strong>Stackly HQ</strong>
+          <span>Los Angeles &middot; 24 cities</span>
+        </div>
+        <svg class="icon" aria-hidden="true"><use href="#icon-building"/></svg>
+      </div>
+
+      <nav class="dash-nav" aria-label="Admin dashboard sections">
+        <span class="dash-nav__label">Workspace</span>
+        <a class="dash-nav__item is-active" href="#overview" aria-current="page">
+          <svg class="icon" aria-hidden="true"><use href="#icon-grid"/></svg>
+          <span>Overview</span>
+        </a>
+        <span class="dash-nav__label">Portfolio</span>
+        <a class="dash-nav__item" href="#properties">
+          <svg class="icon" aria-hidden="true"><use href="#icon-building"/></svg>
+          <span>Properties</span>
+          <span class="dash-nav__count">92</span>
+        </a>
+        <a class="dash-nav__item" href="#tenants">
+          <svg class="icon" aria-hidden="true"><use href="#icon-users"/></svg>
+          <span>Tenants</span>
+          <span class="dash-nav__count">86</span>
+        </a>
+        <a class="dash-nav__item" href="#owners">
+          <svg class="icon" aria-hidden="true"><use href="#icon-key"/></svg>
+          <span>Owners</span>
+        </a>
+        <a class="dash-nav__item" href="#listings">
+          <svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg>
+          <span>Rental Listings</span>
+          <span class="dash-nav__count">14</span>
+        </a>
+        <span class="dash-nav__label">Operations</span>
+        <a class="dash-nav__item" href="#bookings">
+          <svg class="icon" aria-hidden="true"><use href="#icon-calendar"/></svg>
+          <span>Bookings</span>
+          <span class="dash-nav__count">24</span>
+        </a>
+        <a class="dash-nav__item" href="#payments">
+          <svg class="icon" aria-hidden="true"><use href="#icon-credit-card"/></svg>
+          <span>Payments</span>
+          <span class="dash-nav__count dash-nav__count--gold">3</span>
+        </a>
+        <a class="dash-nav__item" href="#reports">
+          <svg class="icon" aria-hidden="true"><use href="#icon-chart"/></svg>
+          <span>Reports</span>
+        </a>
+        <a class="dash-nav__item" href="#messages">
+          <svg class="icon" aria-hidden="true"><use href="#icon-message"/></svg>
+          <span>Messages</span>
+          <span class="dash-nav__count">3</span>
+        </a>
+        <a class="dash-nav__item" href="#reviews">
+          <svg class="icon" aria-hidden="true"><use href="#icon-star"/></svg>
+          <span>Reviews</span>
+        </a>
+        <span class="dash-nav__label">Account</span>
+        <a class="dash-nav__item" href="#settings">
+          <svg class="icon" aria-hidden="true"><use href="#icon-settings"/></svg>
+          <span>Settings</span>
+        </a>
+      </nav>
+
+      <div class="dash-sidebar__foot">
+        <div class="dash-sidebar-user">
+          <span class="avatar avatar--gold" data-auth-user-initials>AM</span>
+          <div>
+            <strong data-auth-user-name>Alex Morgan</strong>
+            <span data-auth-user-email>alex@stackly.com</span>
+          </div>
+          <a href="login.html?role=tenant&amp;switch=1" aria-label="Switch to a tenant account">
+            <svg class="icon" aria-hidden="true"><use href="#icon-arrow-up-right"/></svg>
+          </a>
+        </div>
+        <a class="dash-sidebar-home" href="index.html">
+          <svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg>
+          <span>Go to Home</span>
+        </a>
+      </div>
+    </aside>
+
+    <div class="dash-shell">
+      <header class="dash-topbar">
+        <div class="dash-topbar__lead">
+          <button class="dash-menu-btn" type="button" aria-label="Open navigation" aria-controls="dashSidebar" aria-expanded="false" data-sidebar-toggle>
+            <svg class="icon" aria-hidden="true"><use href="#icon-menu"/></svg>
+          </button>
+          <div class="dash-crumb">
+            <span>Admin</span>
+            <span class="dash-crumb__sep">/</span>
+            <strong>Overview</strong>
+          </div>
+        </div>
+      </header>
+
+      <main class="dash-main" id="dash-main">
+        <section class="dash-view" id="overview" data-page-label="Admin Overview">
+          <div class="dash-page-head">
+            <div>
+              <div class="dash-eyebrow"><span></span>Portfolio overview</div>
+              <h1><span data-greeting>Good morning</span>, <em data-auth-user-first-name>Alex</em>.</h1>
+              <p>Here&rsquo;s what&rsquo;s happening across your homes this week.</p>
+            </div>
+            <div class="dash-page-actions">
+              <span class="dash-date">
+                <svg class="icon" aria-hidden="true"><use href="#icon-calendar"/></svg>
+                <span data-today>Monday, October 26</span>
+              </span>
+              <button class="dash-btn dash-btn--primary" type="button" data-open-modal="addPropertyModal">
+                <svg class="icon" aria-hidden="true"><use href="#icon-plus"/></svg>
+                Add property
+              </button>
+            </div>
+          </div>
+
+          <section class="dash-kpis" aria-label="Portfolio performance">
+            <article class="dash-kpi dash-kpi--dark">
+              <div class="dash-kpi__top">
+                <span>Monthly revenue</span>
+                <span class="dash-icon-tile"><svg class="icon" aria-hidden="true"><use href="#icon-wallet"/></svg></span>
+              </div>
+              <strong>$142,800</strong>
+              <div class="dash-kpi__foot">
+                <span class="dash-trend dash-trend--up"><svg class="icon" aria-hidden="true"><use href="#icon-arrow-up-right"/></svg>8.4%</span>
+                <span>vs last month</span>
+              </div>
+            </article>
+            <article class="dash-kpi">
+              <div class="dash-kpi__top">
+                <span>Occupancy</span>
+                <span class="dash-icon-tile"><svg class="icon" aria-hidden="true"><use href="#icon-building"/></svg></span>
+              </div>
+              <strong>94.5%</strong>
+              <div class="dash-kpi__foot">
+                <span class="dash-trend dash-trend--up"><svg class="icon" aria-hidden="true"><use href="#icon-arrow-up-right"/></svg>2.1%</span>
+                <span>vs last month</span>
+              </div>
+            </article>
+            <article class="dash-kpi">
+              <div class="dash-kpi__top">
+                <span>Active leases</span>
+                <span class="dash-icon-tile"><svg class="icon" aria-hidden="true"><use href="#icon-file"/></svg></span>
+              </div>
+              <strong>86</strong>
+              <div class="dash-kpi__foot">
+                <span class="dash-trend dash-trend--up"><svg class="icon" aria-hidden="true"><use href="#icon-arrow-up-right"/></svg>4</span>
+                <span>new this month</span>
+              </div>
+            </article>
+            <article class="dash-kpi">
+              <div class="dash-kpi__top">
+                <span>Open requests</span>
+                <span class="dash-icon-tile"><svg class="icon" aria-hidden="true"><use href="#icon-wrench"/></svg></span>
+              </div>
+              <strong>7</strong>
+              <div class="dash-kpi__foot">
+                <span class="dash-trend dash-trend--good"><svg class="icon" aria-hidden="true"><use href="#icon-arrow-down"/></svg>3</span>
+                <span>fewer this week</span>
+              </div>
+            </article>
+          </section>
+
+          <section class="dash-quick-grid" aria-label="Workspace shortcuts">
+            <a class="dash-quick" href="#properties">
+              <span class="dash-quick__icon"><svg class="icon" aria-hidden="true"><use href="#icon-building"/></svg></span>
+              <span class="dash-quick__copy"><strong>Properties</strong><span>92 homes across 24 cities.</span></span>
+              <svg class="icon dash-quick__arrow" aria-hidden="true"><use href="#icon-arrow-right"/></svg>
+            </a>
+            <a class="dash-quick" href="#bookings">
+              <span class="dash-quick__icon"><svg class="icon" aria-hidden="true"><use href="#icon-calendar"/></svg></span>
+              <span class="dash-quick__copy"><strong>Bookings</strong><span>24 viewings on the calendar.</span></span>
+              <svg class="icon dash-quick__arrow" aria-hidden="true"><use href="#icon-arrow-right"/></svg>
+            </a>
+            <a class="dash-quick" href="#payments">
+              <span class="dash-quick__icon"><svg class="icon" aria-hidden="true"><use href="#icon-credit-card"/></svg></span>
+              <span class="dash-quick__copy"><strong>Payments</strong><span>3 items need a closer look.</span></span>
+              <svg class="icon dash-quick__arrow" aria-hidden="true"><use href="#icon-arrow-right"/></svg>
+            </a>
+            <a class="dash-quick" href="#reports">
+              <span class="dash-quick__icon"><svg class="icon" aria-hidden="true"><use href="#icon-chart"/></svg></span>
+              <span class="dash-quick__copy"><strong>Reports</strong><span>NOI, expenses and owner statements.</span></span>
+              <svg class="icon dash-quick__arrow" aria-hidden="true"><use href="#icon-arrow-right"/></svg>
+            </a>
+          </section>
+
+          <div class="dash-grid dash-grid--chart-side">
+            <article class="dash-card">
+              <div class="dash-card__head">
+                <div>
+                  <span class="dash-card__eyebrow">Cash flow</span>
+                  <h2>Income performance</h2>
+                </div>
+                <div class="dash-card__tools">
+                  <div class="dash-segmented" aria-label="Income range">
+                    <button type="button" data-chart-preset="adminIncomeChart" data-range="6m" class="is-active">6M</button>
+                    <button type="button" data-chart-preset="adminIncomeChart" data-range="12m">12M</button>
+                  </div>
+                </div>
+              </div>
+              <div class="dash-chartbox">
+                <canvas id="adminIncomeChart" data-chart role="img" aria-label="Monthly collected income compared with last year"></canvas>
+              </div>
+              <div class="dash-legend-row">
+                <span><i class="is-ink"></i>Collected</span>
+                <span><i></i>Last year</span>
+                <span><i class="is-sage"></i>Target</span>
+              </div>
+            </article>
+
+            <article class="dash-card">
+              <div class="dash-card__head">
+                <div>
+                  <span class="dash-card__eyebrow">Availability</span>
+                  <h2>Occupancy</h2>
+                </div>
+                <span class="dash-chip dash-chip--green"><span></span>Healthy</span>
+              </div>
+              <div class="dash-chartbox dash-chartbox--sm">
+                <canvas id="adminOccupancyChart" data-chart role="img" aria-label="Occupancy breakdown"></canvas>
+              </div>
+              <div class="dash-summary-list">
+                <div><span>Occupied homes</span><strong>86 of 91</strong></div>
+                <div><span>Vacant</span><strong>3 homes</strong></div>
+                <div><span>In turnover</span><strong>2 homes</strong></div>
+              </div>
+            </article>
+          </div>
+
+          <div class="dash-grid dash-grid--bottom">
+            <article class="dash-card">
+              <div class="dash-card__head">
+                <div>
+                  <span class="dash-card__eyebrow">Next up</span>
+                  <h2>Upcoming bookings</h2>
+                </div>
+                <a class="dash-text-btn" href="#bookings">View calendar <svg class="icon" aria-hidden="true"><use href="#icon-arrow-right"/></svg></a>
+              </div>
+              <div class="dash-table-wrap">
+                <table class="dash-table">
+                  <thead><tr><th>Prospect</th><th>Property</th><th>When</th><th>Status</th></tr></thead>
+                  <tbody>
+                    <tr><td><span class="dash-table__strong">Jordan Ellis</span></td><td>The Atelier</td><td>Today, 2:00 PM</td><td><span class="dash-status dash-status--paid">Confirmed</span></td></tr>
+                    <tr><td><span class="dash-table__strong">Priya Shah</span></td><td>Ocean House</td><td>Tomorrow, 10:30 AM</td><td><span class="dash-status dash-status--scheduled">Pending</span></td></tr>
+                    <tr><td><span class="dash-table__strong">Marcus Lee</span></td><td>Cedar Haus</td><td>Oct 28, 4:15 PM</td><td><span class="dash-status dash-status--paid">Confirmed</span></td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </article>
+
+            <article class="dash-card">
+              <div class="dash-card__head">
+                <div>
+                  <span class="dash-card__eyebrow">Live feed</span>
+                  <h2>Recent activity</h2>
+                </div>
+                <span class="dash-live"><span></span>Live</span>
+              </div>
+              <div class="dash-activity">
+                <div class="dash-activity__item"><span class="dash-activity__dot"></span><div><strong>Lease signed at The Grove</strong><span>Daniel Kim &middot; 12-month term</span><time>1 hour ago</time></div></div>
+                <div class="dash-activity__item"><span class="dash-activity__dot dash-activity__dot--gold"></span><div><strong>Rent received from Ocean House</strong><span>$8,500 &middot; autopay</span><time>3 hours ago</time></div></div>
+                <div class="dash-activity__item"><span class="dash-activity__dot"></span><div><strong>New 5-star review</strong><span>The Atelier &middot; Olivia Bennett</span><time>5 hours ago</time></div></div>
+                <div class="dash-activity__item"><span class="dash-activity__dot dash-activity__dot--gold"></span><div><strong>Listing published in Austin</strong><span>Harbor House &middot; 2 enquiries</span><time>Yesterday</time></div></div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="dash-view" id="properties" data-page-label="Properties" hidden>
+          <div class="dash-page-head">
+            <div>
+              <div class="dash-eyebrow"><span></span>Portfolio</div>
+              <h1>Properties</h1>
+              <p>Every home, its rent roll and the people looking after it.</p>
+            </div>
+            <div class="dash-page-actions">
+              <button class="dash-btn dash-btn--soft" type="button" data-action-toast data-toast-title="Export queued" data-toast-message="Your property register will download shortly.">
+                <svg class="icon" aria-hidden="true"><use href="#icon-download"/></svg>
+                Export
+              </button>
+              <button class="dash-btn dash-btn--primary" type="button" data-open-modal="addPropertyModal">
+                <svg class="icon" aria-hidden="true"><use href="#icon-plus"/></svg>
+                Add property
+              </button>
+            </div>
+          </div>
+
+          <section class="dash-kpis dash-kpis--three" aria-label="Property metrics">
+            <article class="dash-kpi dash-kpi--gold">
+              <div class="dash-kpi__top"><span>Portfolio value</span><span class="dash-icon-tile"><svg class="icon" aria-hidden="true"><use href="#icon-building"/></svg></span></div>
+              <strong>$48.6M</strong>
+              <div class="dash-kpi__foot"><span class="dash-trend dash-trend--up"><svg class="icon" aria-hidden="true"><use href="#icon-arrow-up-right"/></svg>4.2%</span><span>year to date</span></div>
+            </article>
+            <article class="dash-kpi">
+              <div class="dash-kpi__top"><span>Average rent</span><span class="dash-icon-tile"><svg class="icon" aria-hidden="true"><use href="#icon-wallet"/></svg></span></div>
+              <strong>$4,860</strong>
+              <div class="dash-kpi__foot"><span class="dash-trend dash-trend--up"><svg class="icon" aria-hidden="true"><use href="#icon-arrow-up-right"/></svg>6.1%</span><span>vs last year</span></div>
+            </article>
+            <article class="dash-kpi">
+              <div class="dash-kpi__top"><span>Average occupancy</span><span class="dash-icon-tile"><svg class="icon" aria-hidden="true"><use href="#icon-chart"/></svg></span></div>
+              <strong>94.5%</strong>
+              <div class="dash-kpi__foot"><span class="dash-trend dash-trend--good"><svg class="icon" aria-hidden="true"><use href="#icon-arrow-up-right"/></svg>2.1%</span><span>above target</span></div>
+            </article>
+          </section>
+
+          <div class="dash-grid dash-grid--chart-side">
+            <article class="dash-card">
+              <div class="dash-card__head">
+                <div><span class="dash-card__eyebrow">Locations</span><h2>Occupancy by city</h2></div>
+                <span class="dash-chip"><span></span>24 markets</span>
+              </div>
+              <div class="dash-chartbox">
+                <canvas id="adminCityChart" data-chart role="img" aria-label="Occupancy by city"></canvas>
+              </div>
+              <div class="dash-chart-note"><svg class="icon" aria-hidden="true"><use href="#icon-pin"/></svg>Los Angeles and Austin are leading the portfolio.</div>
+            </article>
+            <article class="dash-card">
+              <div class="dash-card__head">
+                <div><span class="dash-card__eyebrow">Composition</span><h2>Property mix</h2></div>
+              </div>
+              <div class="dash-chartbox dash-chartbox--sm">
+                <canvas id="adminPropertyMixChart" data-chart role="img" aria-label="Property mix by type"></canvas>
+              </div>
+            </article>
+          </div>
+
+          <article class="dash-card" data-filterable>
+            <div class="dash-card__head">
+              <div><span class="dash-card__eyebrow">Rent roll</span><h2>Property register <span class="dash-count" data-filter-count>6 results</span></h2></div>
+              <div class="dash-card__tools">
+                <select class="dash-select" data-row-filter aria-label="Filter properties by status">
+                  <option value="all">All statuses</option>
+                  <option value="occupied">Occupied</option>
+                  <option value="vacant">Vacant</option>
+                  <option value="turnover">In turnover</option>
+                </select>
+              </div>
+            </div>
+            <div class="dash-table-wrap">
+              <table class="dash-table">
+                <thead><tr><th>Property</th><th>Type</th><th>Monthly rent</th><th>Owner</th><th>Occupancy</th><th>Status</th></tr></thead>
+                <tbody>
+                  <tr data-filter-row data-status="occupied">
+                    <td><div class="dash-property"><img src="assets/images/property-01-sm.webp" alt="" width="76" height="76"><div><strong>Ocean House</strong><span>Malibu, CA</span></div></div></td>
+                    <td>Villa</td><td><span class="dash-table__strong">$9,800</span></td><td>Coastal Group</td><td>96%</td><td><span class="dash-status dash-status--paid">Occupied</span></td>
+                  </tr>
+                  <tr data-filter-row data-status="occupied">
+                    <td><div class="dash-property"><img src="assets/images/property-02-sm.webp" alt="" width="76" height="76"><div><strong>The Atelier</strong><span>SoHo, New York</span></div></div></td>
+                    <td>Apartment</td><td><span class="dash-table__strong">$8,900</span></td><td>Harbor Holdings</td><td>100%</td><td><span class="dash-status dash-status--paid">Occupied</span></td>
+                  </tr>
+                  <tr data-filter-row data-status="occupied">
+                    <td><div class="dash-property"><img src="assets/images/property-03-sm.webp" alt="" width="76" height="76"><div><strong>The Grove</strong><span>Austin, TX</span></div></div></td>
+                    <td>Townhome</td><td><span class="dash-table__strong">$6,200</span></td><td>M. Bennett</td><td>94%</td><td><span class="dash-status dash-status--paid">Occupied</span></td>
+                  </tr>
+                  <tr data-filter-row data-status="turnover">
+                    <td><div class="dash-property"><img src="assets/images/property-04-sm.webp" alt="" width="76" height="76"><div><strong>Cedar Haus</strong><span>Big Sur, CA</span></div></div></td>
+                    <td>Cabin</td><td><span class="dash-table__strong">$5,400</span></td><td>Vista Partners</td><td>88%</td><td><span class="dash-status dash-status--scheduled">Turnover</span></td>
+                  </tr>
+                  <tr data-filter-row data-status="occupied">
+                    <td><div class="dash-property"><img src="assets/images/property-05-sm.webp" alt="" width="76" height="76"><div><strong>Skyline Penthouse</strong><span>Miami, FL</span></div></div></td>
+                    <td>Penthouse</td><td><span class="dash-table__strong">$12,400</span></td><td>K. Osei</td><td>97%</td><td><span class="dash-status dash-status--paid">Occupied</span></td>
+                  </tr>
+                  <tr data-filter-row data-status="vacant">
+                    <td><div class="dash-property"><img src="assets/images/property-06-sm.webp" alt="" width="76" height="76"><div><strong>Harbor House</strong><span>Palm Springs, CA</span></div></div></td>
+                    <td>Villa</td><td><span class="dash-table__strong">$7,600</span></td><td>R. Tanaka</td><td>72%</td><td><span class="dash-status dash-status--overdue">Vacant</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="dash-card__foot"><span><svg class="icon" aria-hidden="true"><use href="#icon-shield"/></svg>Rent roll synced 4 minutes ago</span><button class="dash-text-btn" type="button" data-action-toast data-toast-title="Register refreshed" data-toast-message="The latest property data is now live.">Refresh data <svg class="icon" aria-hidden="true"><use href="#icon-arrow-right"/></svg></button></div>
+          </article>
+        </section>
+
+        <section class="dash-view" id="tenants" data-page-label="Tenants" hidden>
+          <div class="dash-page-head">
+            <div>
+              <div class="dash-eyebrow"><span></span>Residents</div>
+              <h1>Tenants</h1>
+              <p>Lease health, payment standing and renewals in one view.</p>
+            </div>
+            <div class="dash-page-actions">
+              <button class="dash-btn dash-btn--primary" type="button" data-action-toast data-toast-title="Invite started" data-toast-message="A resident invitation is ready to send.">
+                <svg class="icon" aria-hidden="true"><use href="#icon-plus"/></svg>
+                Invite tenant
+              </button>
+            </div>
+          </div>
+
+          <section class="dash-kpis dash-kpis--three" aria-label="Tenant metrics">
+            <article class="dash-kpi dash-kpi--dark">
+              <div class="dash-kpi__top"><span>Active tenants</span><span class="dash-icon-tile"><svg class="icon" aria-hidden="true"><use href="#icon-users"/></svg></span></div>
+              <strong>86</strong>
+              <div class="dash-kpi__foot"><span class="dash-trend dash-trend--up"><svg class="icon" aria-hidden="true"><use href="#icon-arrow-up-right"/></svg>4</span><span>new this month</span></div>
+            </article>
+            <article class="dash-kpi">
+              <div class="dash-kpi__top"><span>On-time payments</span><span class="dash-icon-tile"><svg class="icon" aria-hidden="true"><use href="#icon-credit-card"/></svg></span></div>
+              <strong>92%</strong>
+              <div class="dash-kpi__foot"><span class="dash-trend dash-trend--up"><svg class="icon" aria-hidden="true"><use href="#icon-arrow-up-right"/></svg>1.8%</span><span>vs last month</span></div>
+            </article>
+            <article class="dash-kpi">
+              <div class="dash-kpi__top"><span>Renewals due</span><span class="dash-icon-tile"><svg class="icon" aria-hidden="true"><use href="#icon-file"/></svg></span></div>
+              <strong>7</strong>
+              <div class="dash-kpi__foot"><span class="dash-trend dash-trend--good"><svg class="icon" aria-hidden="true"><use href="#icon-clock"/></svg>Next 60 days</span></div>
+            </article>
+          </section>
+
+          <div class="dash-grid dash-grid--bottom">
+            <article class="dash-card">
+              <div class="dash-card__head"><div><span class="dash-card__eyebrow">Growth</span><h2>Tenant community</h2></div><span class="dash-chip dash-chip--green"><span></span>+8.4%</span></div>
+              <div class="dash-chartbox dash-chartbox--sm"><canvas id="adminTenantGrowthChart" data-chart role="img" aria-label="Tenant growth over six months"></canvas></div>
+            </article>
+            <article class="dash-card">
+              <div class="dash-card__head"><div><span class="dash-card__eyebrow">Payment standing</span><h2>Rent health</h2></div></div>
+              <div class="dash-chartbox dash-chartbox--sm"><canvas id="adminTenantStandingChart" data-chart role="img" aria-label="Tenant payment standing"></canvas></div>
+            </article>
+          </div>
+
+          <article class="dash-card" data-filterable>
+            <div class="dash-card__head">
+              <div><span class="dash-card__eyebrow">Directory</span><h2>Resident directory <span class="dash-count" data-filter-count>6 results</span></h2></div>
+              <div class="dash-card__tools">
+                <select class="dash-select" data-row-filter aria-label="Filter tenants by status">
+                  <option value="all">All residents</option>
+                  <option value="active">Current</option>
+                  <option value="renewal">Renewal</option>
+                  <option value="late">Late payment</option>
+                </select>
+              </div>
+            </div>
+            <div class="dash-table-wrap">
+              <table class="dash-table">
+                <thead><tr><th>Resident</th><th>Property</th><th>Lease ends</th><th>Monthly rent</th><th>Status</th></tr></thead>
+                <tbody>
+                  <tr data-filter-row data-status="active"><td><div class="dash-tenant"><span class="avatar avatar--gold">OB</span><span class="dash-table__strong">Olivia Bennett</span></div></td><td>Ocean House</td><td>Aug 31, 2027</td><td>$9,800</td><td><span class="dash-status dash-status--paid">Current</span></td></tr>
+                  <tr data-filter-row data-status="active"><td><div class="dash-tenant"><span class="avatar avatar--rose">MC</span><span class="dash-table__strong">Maya Chen</span></div></td><td>The Atelier</td><td>May 31, 2027</td><td>$8,900</td><td><span class="dash-status dash-status--paid">Current</span></td></tr>
+                  <tr data-filter-row data-status="renewal"><td><div class="dash-tenant"><span class="avatar">DK</span><span class="dash-table__strong">Daniel Kim</span></div></td><td>The Grove</td><td>Dec 31, 2026</td><td>$6,200</td><td><span class="dash-status dash-status--due">Renewal</span></td></tr>
+                  <tr data-filter-row data-status="late"><td><div class="dash-tenant"><span class="avatar avatar--gold">JR</span><span class="dash-table__strong">Jasmine Ruiz</span></div></td><td>Skyline Penthouse</td><td>Mar 31, 2027</td><td>$12,400</td><td><span class="dash-status dash-status--overdue">Late</span></td></tr>
+                  <tr data-filter-row data-status="active"><td><div class="dash-tenant"><span class="avatar avatar--rose">AP</span><span class="dash-table__strong">Amelia Park</span></div></td><td>Cedar Haus</td><td>Jul 31, 2027</td><td>$5,400</td><td><span class="dash-status dash-status--paid">Current</span></td></tr>
+                  <tr data-filter-row data-status="renewal"><td><div class="dash-tenant"><span class="avatar">NL</span><span class="dash-table__strong">Noah Lawson</span></div></td><td>Harbor House</td><td>Jan 31, 2027</td><td>$7,600</td><td><span class="dash-status dash-status--due">Renewal</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </article>
+        </section>
+
+        <section class="dash-view" id="owners" data-page-label="Owners" hidden>
+          <div class="dash-page-head">
+            <div>
+              <div class="dash-eyebrow"><span></span>Partners</div>
+              <h1>Owners</h1>
+              <p>Statements, payouts and the people behind every property.</p>
+            </div>
+            <div class="dash-page-actions">
+              <button class="dash-btn dash-btn--soft" type="button" data-action-toast data-toast-title="Statements prepared" data-toast-message="October owner statements are ready for review.">
+                <svg class="icon" aria-hidden="true"><use href="#icon-file"/></svg>
+                Run statements
+              </button>
+            </div>
+          </div>
+
+          <section class="dash-kpis dash-kpis--three" aria-label="Owner metrics">
+            <article class="dash-kpi"><div class="dash-kpi__top"><span>Total owners</span><span class="dash-icon-tile"><svg class="icon" aria-hidden="true"><use href="#icon-key"/></svg></span></div><strong>24</strong><div class="dash-kpi__foot"><span class="dash-trend dash-trend--up"><svg class="icon" aria-hidden="true"><use href="#icon-arrow-up-right"/></svg>2</span><span>joined this year</span></div></article>
+            <article class="dash-kpi dash-kpi--gold"><div class="dash-kpi__top"><span>October payouts</span><span class="dash-icon-tile"><svg class="icon" aria-hidden="true"><use href="#icon-wallet"/></svg></span></div><strong>$118,240</strong><div class="dash-kpi__foot"><span class="dash-trend dash-trend--up"><svg class="icon" aria-hidden="true"><use href="#icon-arrow-up-right"/></svg>6.3%</span><span>vs September</span></div></article>
+            <article class="dash-kpi"><div class="dash-kpi__top"><span>Average yield</span><span class="dash-icon-tile"><svg class="icon" aria-hidden="true"><use href="#icon-chart"/></svg></span></div><strong>6.8%</strong><div class="dash-kpi__foot"><span class="dash-trend dash-trend--up"><svg class="icon" aria-hidden="true"><use href="#icon-arrow-up-right"/></svg>0.4%</span><span>above market</span></div></article>
+          </section>
+
+          <div class="dash-grid dash-grid--chart-side">
+            <article class="dash-card">
+              <div class="dash-card__head"><div><span class="dash-card__eyebrow">Payouts</span><h2>Revenue by owner</h2></div><span class="dash-chip"><span></span>October</span></div>
+              <div class="dash-chartbox"><canvas id="adminOwnerRevenueChart" data-chart role="img" aria-label="Revenue by owner in thousands"></canvas></div>
+            </article>
+            <article class="dash-card">
+              <div class="dash-card__head"><div><span class="dash-card__eyebrow">Account mix</span><h2>Owner types</h2></div></div>
+              <div class="dash-chartbox dash-chartbox--sm"><canvas id="adminOwnerMixChart" data-chart role="img" aria-label="Owner account mix"></canvas></div>
+            </article>
+          </div>
+
+          <article class="dash-card" data-filterable>
+            <div class="dash-card__head">
+              <div><span class="dash-card__eyebrow">Ownership</span><h2>Owner accounts <span class="dash-count" data-filter-count>6 results</span></h2></div>
+              <div class="dash-card__tools">
+                <select class="dash-select" data-row-filter aria-label="Filter owners by statement status">
+                  <option value="all">All statements</option>
+                  <option value="paid">Paid</option>
+                  <option value="pending">Pending</option>
+                </select>
+              </div>
+            </div>
+            <div class="dash-table-wrap">
+              <table class="dash-table">
+                <thead><tr><th>Owner</th><th>Homes</th><th>Portfolio value</th><th>October payout</th><th>Statement</th></tr></thead>
+                <tbody>
+                  <tr data-filter-row data-status="paid"><td><div class="dash-owner"><span class="dash-owner__avatar">CG</span><div><strong>Coastal Group</strong><span>Institutional</span></div></div></td><td>18</td><td>$12.8M</td><td>$28,400</td><td><span class="dash-status dash-status--paid">Paid</span></td></tr>
+                  <tr data-filter-row data-status="paid"><td><div class="dash-owner"><span class="dash-owner__avatar">HH</span><div><strong>Harbor Holdings</strong><span>Family office</span></div></div></td><td>14</td><td>$9.4M</td><td>$24,800</td><td><span class="dash-status dash-status--paid">Paid</span></td></tr>
+                  <tr data-filter-row data-status="pending"><td><div class="dash-owner"><span class="dash-owner__avatar">MB</span><div><strong>M. Bennett</strong><span>Private</span></div></div></td><td>9</td><td>$7.2M</td><td>$19,600</td><td><span class="dash-status dash-status--due">Pending</span></td></tr>
+                  <tr data-filter-row data-status="paid"><td><div class="dash-owner"><span class="dash-owner__avatar">VP</span><div><strong>Vista Partners</strong><span>Institutional</span></div></div></td><td>8</td><td>$6.1M</td><td>$15,200</td><td><span class="dash-status dash-status--paid">Paid</span></td></tr>
+                  <tr data-filter-row data-status="pending"><td><div class="dash-owner"><span class="dash-owner__avatar">KO</span><div><strong>K. Osei</strong><span>Private</span></div></div></td><td>6</td><td>$4.8M</td><td>$12,400</td><td><span class="dash-status dash-status--due">Pending</span></td></tr>
+                  <tr data-filter-row data-status="paid"><td><div class="dash-owner"><span class="dash-owner__avatar">RT</span><div><strong>R. Tanaka</strong><span>Private</span></div></div></td><td>5</td><td>$3.9M</td><td>$10,800</td><td><span class="dash-status dash-status--paid">Paid</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </article>
+        </section>
+
+        <section class="dash-view" id="listings" data-page-label="Rental Listings" hidden>
+          <div class="dash-page-head">
+            <div>
+              <div class="dash-eyebrow"><span></span>Leasing</div>
+              <h1>Rental listings</h1>
+              <p>Publish homes, track demand and keep every channel in sync.</p>
+            </div>
+            <div class="dash-page-actions">
+              <button class="dash-btn dash-btn--primary" type="button" data-open-modal="addPropertyModal">
+                <svg class="icon" aria-hidden="true"><use href="#icon-plus"/></svg>
+                New listing
+              </button>
+            </div>
+          </div>
+
+          <section class="dash-kpis dash-kpis--three" aria-label="Listing metrics">
+            <article class="dash-kpi dash-kpi--gold"><div class="dash-kpi__top"><span>Live listings</span><span class="dash-icon-tile"><svg class="icon" aria-hidden="true"><use href="#icon-home"/></svg></span></div><strong>8</strong><div class="dash-kpi__foot"><span class="dash-trend dash-trend--up"><svg class="icon" aria-hidden="true"><use href="#icon-arrow-up-right"/></svg>2</span><span>published this week</span></div></article>
+            <article class="dash-kpi"><div class="dash-kpi__top"><span>Listing views</span><span class="dash-icon-tile"><svg class="icon" aria-hidden="true"><use href="#icon-chart"/></svg></span></div><strong>34.2k</strong><div class="dash-kpi__foot"><span class="dash-trend dash-trend--up"><svg class="icon" aria-hidden="true"><use href="#icon-arrow-up-right"/></svg>12.6%</span><span>vs last month</span></div></article>
+            <article class="dash-kpi"><div class="dash-kpi__top"><span>Enquiries</span><span class="dash-icon-tile"><svg class="icon" aria-hidden="true"><use href="#icon-message"/></svg></span></div><strong>146</strong><div class="dash-kpi__foot"><span class="dash-trend dash-trend--up"><svg class="icon" aria-hidden="true"><use href="#icon-arrow-up-right"/></svg>18</span><span>new this week</span></div></article>
+          </section>
+
+          <div class="dash-grid dash-grid--chart-side">
+            <article class="dash-card">
+              <div class="dash-card__head"><div><span class="dash-card__eyebrow">Demand</span><h2>Listing views</h2></div><span class="dash-chip dash-chip--green"><span></span>Trending up</span></div>
+              <div class="dash-chartbox"><canvas id="adminListingViewsChart" data-chart role="img" aria-label="Listing views over six months"></canvas></div>
+            </article>
+            <article class="dash-card">
+              <div class="dash-card__head"><div><span class="dash-card__eyebrow">Pipeline</span><h2>Listing status</h2></div></div>
+              <div class="dash-chartbox dash-chartbox--sm"><canvas id="adminListingStatusChart" data-chart role="img" aria-label="Listing status breakdown"></canvas></div>
+            </article>
+          </div>
+
+          <article class="dash-card" data-filterable>
+            <div class="dash-card__head">
+              <div><span class="dash-card__eyebrow">Inventory</span><h2>Listing performance <span class="dash-count" data-filter-count>6 results</span></h2></div>
+              <div class="dash-card__tools">
+                <select class="dash-select" data-row-filter aria-label="Filter listings by status">
+                  <option value="all">All listings</option>
+                  <option value="live">Live</option>
+                  <option value="coming">Coming soon</option>
+                  <option value="draft">Draft</option>
+                </select>
+              </div>
+            </div>
+            <div class="dash-table-wrap">
+              <table class="dash-table">
+                <thead><tr><th>Property</th><th>Channels</th><th>Views</th><th>Enquiries</th><th>Status</th></tr></thead>
+                <tbody>
+                  <tr data-filter-row data-status="live"><td><div class="dash-property"><img src="assets/images/property-01-sm.webp" alt="" width="76" height="76"><div><strong>Ocean House</strong><span>Malibu, CA</span></div></div></td><td>Stackly + 3</td><td>8,420</td><td>38</td><td><span class="dash-status dash-status--paid">Live</span></td></tr>
+                  <tr data-filter-row data-status="live"><td><div class="dash-property"><img src="assets/images/property-02-sm.webp" alt="" width="76" height="76"><div><strong>The Atelier</strong><span>SoHo, New York</span></div></div></td><td>Stackly + 2</td><td>7,180</td><td>31</td><td><span class="dash-status dash-status--paid">Live</span></td></tr>
+                  <tr data-filter-row data-status="coming"><td><div class="dash-property"><img src="assets/images/property-03-sm.webp" alt="" width="76" height="76"><div><strong>The Grove</strong><span>Austin, TX</span></div></div></td><td>Stackly</td><td>4,960</td><td>24</td><td><span class="dash-status dash-status--scheduled">Coming soon</span></td></tr>
+                  <tr data-filter-row data-status="live"><td><div class="dash-property"><img src="assets/images/property-04-sm.webp" alt="" width="76" height="76"><div><strong>Cedar Haus</strong><span>Big Sur, CA</span></div></div></td><td>Stackly + 4</td><td>6,240</td><td>22</td><td><span class="dash-status dash-status--paid">Live</span></td></tr>
+                  <tr data-filter-row data-status="coming"><td><div class="dash-property"><img src="assets/images/property-05-sm.webp" alt="" width="76" height="76"><div><strong>Skyline Penthouse</strong><span>Miami, FL</span></div></div></td><td>Stackly + 1</td><td>3,880</td><td>17</td><td><span class="dash-status dash-status--scheduled">Coming soon</span></td></tr>
+                  <tr data-filter-row data-status="draft"><td><div class="dash-property"><img src="assets/images/property-06-sm.webp" alt="" width="76" height="76"><div><strong>Harbor House</strong><span>Palm Springs, CA</span></div></div></td><td>Unpublished</td><td>3,520</td><td>14</td><td><span class="dash-status dash-status--low">Draft</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </article>
+        </section>
+
+        <section class="dash-view" id="bookings" data-page-label="Bookings" hidden>
+          <div class="dash-page-head">
+            <div>
+              <div class="dash-eyebrow"><span></span>Calendar</div>
+              <h1>Bookings</h1>
+              <p>Viewings, move-ins and the moments that turn interest into home.</p>
+            </div>
+            <div class="dash-page-actions">
+              <button class="dash-btn dash-btn--soft" type="button" data-action-toast data-toast-title="Calendar synced" data-toast-message="Every viewing is up to date across your team.">
+                <svg class="icon" aria-hidden="true"><use href="#icon-calendar"/></svg>
+                Sync calendar
+              </button>
+              <button class="dash-btn dash-btn--primary" type="button" data-action-toast data-toast-title="Booking draft opened" data-toast-message="Add a prospect and choose a property to schedule a viewing.">
+                <svg class="icon" aria-hidden="true"><use href="#icon-plus"/></svg>
+                New booking
+              </button>
+            </div>
+          </div>
+
+          <section class="dash-kpis dash-kpis--three" aria-label="Booking metrics">
+            <article class="dash-kpi dash-kpi--gold"><div class="dash-kpi__top"><span>Upcoming viewings</span><span class="dash-icon-tile"><svg class="icon" aria-hidden="true"><use href="#icon-calendar"/></svg></span></div><strong>24</strong><div class="dash-kpi__foot"><span class="dash-trend dash-trend--up"><svg class="icon" aria-hidden="true"><use href="#icon-arrow-up-right"/></svg>6</span><span>next 7 days</span></div></article>
+            <article class="dash-kpi"><div class="dash-kpi__top"><span>Confirmation rate</span><span class="dash-icon-tile"><svg class="icon" aria-hidden="true"><use href="#icon-check"/></svg></span></div><strong>75%</strong><div class="dash-kpi__foot"><span class="dash-trend dash-trend--up"><svg class="icon" aria-hidden="true"><use href="#icon-arrow-up-right"/></svg>4.2%</span><span>vs last month</span></div></article>
+            <article class="dash-kpi"><div class="dash-kpi__top"><span>Cancellations</span><span class="dash-icon-tile"><svg class="icon" aria-hidden="true"><use href="#icon-x"/></svg></span></div><strong>2</strong><div class="dash-kpi__foot"><span class="dash-trend dash-trend--good"><svg class="icon" aria-hidden="true"><use href="#icon-arrow-down"/></svg>3</span><span>fewer than last week</span></div></article>
+          </section>
+
+          <div class="dash-grid dash-grid--bottom">
+            <article class="dash-card">
+              <div class="dash-card__head"><div><span class="dash-card__eyebrow">Momentum</span><h2>Viewings by week</h2></div><span class="dash-chip"><span></span>October</span></div>
+              <div class="dash-chartbox dash-chartbox--sm"><canvas id="adminBookingsTrendChart" data-chart role="img" aria-label="Viewings and confirmations by week"></canvas></div>
+            </article>
+            <article class="dash-card">
+              <div class="dash-card__head"><div><span class="dash-card__eyebrow">Outcomes</span><h2>Booking status</h2></div></div>
+              <div class="dash-chartbox dash-chartbox--sm"><canvas id="adminBookingStatusChart" data-chart role="img" aria-label="Booking status breakdown"></canvas></div>
+            </article>
+          </div>
+
+          <article class="dash-card" data-filterable>
+            <div class="dash-card__head">
+              <div><span class="dash-card__eyebrow">Schedule</span><h2>Viewing calendar <span class="dash-count" data-filter-count>6 results</span></h2></div>
+              <div class="dash-card__tools">
+                <select class="dash-select" data-row-filter aria-label="Filter bookings by status">
+                  <option value="all">All bookings</option>
+                  <option value="confirmed">Confirmed</option>
+                  <option value="pending">Pending</option>
+                  <option value="cancelled">Cancelled</option>
+                </select>
+              </div>
+            </div>
+            <div class="dash-table-wrap">
+              <table class="dash-table">
+                <thead><tr><th>Prospect</th><th>Property</th><th>Date &amp; time</th><th>Agent</th><th>Status</th></tr></thead>
+                <tbody>
+                  <tr data-filter-row data-status="confirmed"><td><span class="dash-table__strong">Jordan Ellis</span></td><td>The Atelier</td><td>Today &middot; 2:00 PM</td><td>Nina Patel</td><td><span class="dash-status dash-status--paid">Confirmed</span></td></tr>
+                  <tr data-filter-row data-status="pending"><td><span class="dash-table__strong">Priya Shah</span></td><td>Ocean House</td><td>Oct 26 &middot; 10:30 AM</td><td>Nina Patel</td><td><span class="dash-status dash-status--due">Pending</span></td></tr>
+                  <tr data-filter-row data-status="confirmed"><td><span class="dash-table__strong">Marcus Lee</span></td><td>Cedar Haus</td><td>Oct 28 &middot; 4:15 PM</td><td>Theo Grant</td><td><span class="dash-status dash-status--paid">Confirmed</span></td></tr>
+                  <tr data-filter-row data-status="confirmed"><td><span class="dash-table__strong">Elena Rossi</span></td><td>Skyline Penthouse</td><td>Oct 29 &middot; 11:00 AM</td><td>Theo Grant</td><td><span class="dash-status dash-status--paid">Confirmed</span></td></tr>
+                  <tr data-filter-row data-status="pending"><td><span class="dash-table__strong">Samir Khan</span></td><td>The Grove</td><td>Oct 30 &middot; 3:30 PM</td><td>Nina Patel</td><td><span class="dash-status dash-status--due">Pending</span></td></tr>
+                  <tr data-filter-row data-status="cancelled"><td><span class="dash-table__strong">Grace Wong</span></td><td>Harbor House</td><td>Oct 24 &middot; 9:45 AM</td><td>Theo Grant</td><td><span class="dash-status dash-status--overdue">Cancelled</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </article>
+        </section>
+
+        <section class="dash-view" id="payments" data-page-label="Payments" hidden>
+          <div class="dash-page-head">
+            <div>
+              <div class="dash-eyebrow"><span></span>Collections</div>
+              <h1>Payments</h1>
+              <p>Rent, deposits and payouts with the exceptions surfaced first.</p>
+            </div>
+            <div class="dash-page-actions">
+              <button class="dash-btn dash-btn--soft" type="button" data-action-toast data-toast-title="Reminders sent" data-toast-message="Payment reminders went to three residents.">
+                <svg class="icon" aria-hidden="true"><use href="#icon-bell"/></svg>
+                Send reminders
+              </button>
+              <button class="dash-btn dash-btn--primary" type="button" data-action-toast data-toast-title="Payout scheduled" data-toast-message="The next owner payout is set for November 1.">
+                <svg class="icon" aria-hidden="true"><use href="#icon-wallet"/></svg>
+                Schedule payout
+              </button>
+            </div>
+          </div>
+
+          <section class="dash-kpis" aria-label="Payment metrics">
+            <article class="dash-kpi dash-kpi--dark"><div class="dash-kpi__top"><span>Collected this month</span><span class="dash-icon-tile"><svg class="icon" aria-hidden="true"><use href="#icon-wallet"/></svg></span></div><strong>$142,800</strong><div class="dash-kpi__foot"><span class="dash-trend dash-trend--up"><svg class="icon" aria-hidden="true"><use href="#icon-arrow-up-right"/></svg>96.2%</span><span>of expected rent</span></div></article>
+            <article class="dash-kpi"><div class="dash-kpi__top"><span>Outstanding</span><span class="dash-icon-tile"><svg class="icon" aria-hidden="true"><use href="#icon-clock"/></svg></span></div><strong>$5,600</strong><div class="dash-kpi__foot"><span class="dash-trend dash-trend--good"><svg class="icon" aria-hidden="true"><use href="#icon-arrow-down"/></svg>1.4%</span><span>of monthly rent</span></div></article>
+            <article class="dash-kpi"><div class="dash-kpi__top"><span>Overdue</span><span class="dash-icon-tile"><svg class="icon" aria-hidden="true"><use href="#icon-credit-card"/></svg></span></div><strong>$2,400</strong><div class="dash-kpi__foot"><span class="dash-trend dash-trend--up"><svg class="icon" aria-hidden="true"><use href="#icon-bell"/></svg>1 resident</span></div></article>
+            <article class="dash-kpi"><div class="dash-kpi__top"><span>Next owner payout</span><span class="dash-icon-tile"><svg class="icon" aria-hidden="true"><use href="#icon-calendar"/></svg></span></div><strong>Nov 1</strong><div class="dash-kpi__foot"><span class="dash-trend dash-trend--good"><svg class="icon" aria-hidden="true"><use href="#icon-check"/></svg>Funded</span></div></article>
+          </section>
+
+          <div class="dash-grid dash-grid--chart-side">
+            <article class="dash-card">
+              <div class="dash-card__head"><div><span class="dash-card__eyebrow">Cash flow</span><h2>Collected vs expected</h2></div><span class="dash-chip dash-chip--green"><span></span>On track</span></div>
+              <div class="dash-chartbox"><canvas id="adminPaymentFlowChart" data-chart role="img" aria-label="Collected and expected rent by month"></canvas></div>
+            </article>
+            <article class="dash-card">
+              <div class="dash-card__head"><div><span class="dash-card__eyebrow">October</span><h2>Payment status</h2></div></div>
+              <div class="dash-chartbox dash-chartbox--sm"><canvas id="adminPaymentStatusChart" data-chart role="img" aria-label="Payment status breakdown"></canvas></div>
+            </article>
+          </div>
+
+          <article class="dash-card" data-filterable>
+            <div class="dash-card__head">
+              <div><span class="dash-card__eyebrow">Ledger</span><h2>Rent ledger <span class="dash-count" data-filter-count>6 results</span></h2></div>
+              <div class="dash-card__tools">
+                <select class="dash-select" data-row-filter aria-label="Filter payments by status">
+                  <option value="all">All payments</option>
+                  <option value="paid">Paid</option>
+                  <option value="due">Due</option>
+                  <option value="overdue">Overdue</option>
+                </select>
+              </div>
+            </div>
+            <div class="dash-table-wrap">
+              <table class="dash-table">
+                <thead><tr><th>Resident</th><th>Property</th><th>Amount</th><th>Due</th><th>Status</th></tr></thead>
+                <tbody>
+                  <tr data-filter-row data-status="paid"><td><div class="dash-tenant"><span class="avatar avatar--gold">OB</span><span class="dash-table__strong">Olivia Bennett</span></div></td><td>Ocean House</td><td>$9,800</td><td>Oct 1</td><td><span class="dash-status dash-status--paid">Paid</span></td></tr>
+                  <tr data-filter-row data-status="paid"><td><div class="dash-tenant"><span class="avatar avatar--rose">MC</span><span class="dash-table__strong">Maya Chen</span></div></td><td>The Atelier</td><td>$8,900</td><td>Oct 1</td><td><span class="dash-status dash-status--paid">Paid</span></td></tr>
+                  <tr data-filter-row data-status="due"><td><div class="dash-tenant"><span class="avatar">DK</span><span class="dash-table__strong">Daniel Kim</span></div></td><td>The Grove</td><td>$6,200</td><td>Nov 1</td><td><span class="dash-status dash-status--due">Due</span></td></tr>
+                  <tr data-filter-row data-status="overdue"><td><div class="dash-tenant"><span class="avatar avatar--gold">JR</span><span class="dash-table__strong">Jasmine Ruiz</span></div></td><td>Skyline Penthouse</td><td>$12,400</td><td>Oct 1</td><td><span class="dash-status dash-status--overdue">Overdue</span></td></tr>
+                  <tr data-filter-row data-status="paid"><td><div class="dash-tenant"><span class="avatar avatar--rose">AP</span><span class="dash-table__strong">Amelia Park</span></div></td><td>Cedar Haus</td><td>$5,400</td><td>Oct 1</td><td><span class="dash-status dash-status--paid">Paid</span></td></tr>
+                  <tr data-filter-row data-status="due"><td><div class="dash-tenant"><span class="avatar">NL</span><span class="dash-table__strong">Noah Lawson</span></div></td><td>Harbor House</td><td>$7,600</td><td>Nov 1</td><td><span class="dash-status dash-status--due">Due</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </article>
+        </section>
+
+        <section class="dash-view" id="reports" data-page-label="Reports" hidden>
+          <div class="dash-page-head">
+            <div>
+              <div class="dash-eyebrow"><span></span>Analytics</div>
+              <h1>Reports</h1>
+              <p>Operating performance, owner statements and the numbers behind them.</p>
+            </div>
+            <div class="dash-page-actions">
+              <button class="dash-btn dash-btn--soft" type="button" data-action-toast data-toast-title="Report queued" data-toast-message="Your October performance pack will download shortly.">
+                <svg class="icon" aria-hidden="true"><use href="#icon-download"/></svg>
+                Export pack
+              </button>
+            </div>
+          </div>
+
+          <section class="dash-kpis dash-kpis--three" aria-label="Report metrics">
+            <article class="dash-kpi dash-kpi--gold"><div class="dash-kpi__top"><span>Net operating income</span><span class="dash-icon-tile"><svg class="icon" aria-hidden="true"><use href="#icon-chart"/></svg></span></div><strong>$96.4k</strong><div class="dash-kpi__foot"><span class="dash-trend dash-trend--up"><svg class="icon" aria-hidden="true"><use href="#icon-arrow-up-right"/></svg>5.7%</span><span>vs September</span></div></article>
+            <article class="dash-kpi"><div class="dash-kpi__top"><span>Expense ratio</span><span class="dash-icon-tile"><svg class="icon" aria-hidden="true"><use href="#icon-wallet"/></svg></span></div><strong>20.1%</strong><div class="dash-kpi__foot"><span class="dash-trend dash-trend--good"><svg class="icon" aria-hidden="true"><use href="#icon-arrow-down"/></svg>1.2%</span><span>below budget</span></div></article>
+            <article class="dash-kpi"><div class="dash-kpi__top"><span>Cash yield</span><span class="dash-icon-tile"><svg class="icon" aria-hidden="true"><use href="#icon-building"/></svg></span></div><strong>6.8%</strong><div class="dash-kpi__foot"><span class="dash-trend dash-trend--up"><svg class="icon" aria-hidden="true"><use href="#icon-arrow-up-right"/></svg>0.4%</span><span>above market</span></div></article>
+          </section>
+
+          <div class="dash-grid dash-grid--bottom">
+            <article class="dash-card">
+              <div class="dash-card__head"><div><span class="dash-card__eyebrow">P&amp;L</span><h2>Income, expenses &amp; NOI</h2></div><span class="dash-chip"><span></span>6 months</span></div>
+              <div class="dash-chartbox dash-chartbox--lg"><canvas id="adminReportChart" data-chart role="img" aria-label="Income, expenses and net operating income"></canvas></div>
+            </article>
+            <article class="dash-card">
+              <div class="dash-card__head"><div><span class="dash-card__eyebrow">Operations</span><h2>Occupancy trend</h2></div></div>
+              <div class="dash-chartbox dash-chartbox--lg"><canvas id="adminReportOccupancyChart" data-chart role="img" aria-label="Occupancy trend"></canvas></div>
+            </article>
+          </div>
+
+          <div class="dash-grid dash-grid--bottom">
+            <article class="dash-card">
+              <div class="dash-card__head"><div><span class="dash-card__eyebrow">Library</span><h2>Recent reports</h2></div></div>
+              <div class="dash-files">
+                <div class="dash-file"><span class="dash-file__icon"><svg class="icon" aria-hidden="true"><use href="#icon-file"/></svg></span><span class="dash-file__copy"><strong>October performance pack</strong><span>Portfolio &middot; generated today</span></span><button class="dash-download" type="button" data-action-toast data-toast-title="Download started" data-toast-message="October performance pack is downloading."><svg class="icon" aria-hidden="true"><use href="#icon-download"/></svg></button></div>
+                <div class="dash-file"><span class="dash-file__icon"><svg class="icon" aria-hidden="true"><use href="#icon-file"/></svg></span><span class="dash-file__copy"><strong>Owner statements</strong><span>24 owners &middot; October</span></span><button class="dash-download" type="button" data-action-toast data-toast-title="Download started" data-toast-message="Owner statements are downloading."><svg class="icon" aria-hidden="true"><use href="#icon-download"/></svg></button></div>
+                <div class="dash-file"><span class="dash-file__icon"><svg class="icon" aria-hidden="true"><use href="#icon-file"/></svg></span><span class="dash-file__copy"><strong>Rent roll</strong><span>92 properties &middot; October</span></span><button class="dash-download" type="button" data-action-toast data-toast-title="Download started" data-toast-message="The latest rent roll is downloading."><svg class="icon" aria-hidden="true"><use href="#icon-download"/></svg></button></div>
+              </div>
+            </article>
+            <article class="dash-card">
+              <div class="dash-card__head"><div><span class="dash-card__eyebrow">Operating notes</span><h2>Highlights</h2></div></div>
+              <div class="dash-summary-list">
+                <div><span>Revenue vs budget</span><strong>+4.8%</strong></div>
+                <div><span>Maintenance spend</span><strong>$18,240</strong></div>
+                <div><span>Average days vacant</span><strong>11 days</strong></div>
+                <div><span>Renewal rate</span><strong>88.4%</strong></div>
+                <div><span>Collection rate</span><strong>96.2%</strong></div>
+              </div>
+              <div class="dash-chart-note"><svg class="icon" aria-hidden="true"><use href="#icon-spark"/></svg>NOI is tracking 5.7% ahead of September.</div>
+            </article>
+          </div>
+        </section>
+
+        <section class="dash-view" id="messages" data-page-label="Messages" hidden>
+          <div class="dash-page-head">
+            <div>
+              <div class="dash-eyebrow"><span></span>Inbox</div>
+              <h1>Messages</h1>
+              <p>Resident conversations, leasing questions and owner notes.</p>
+            </div>
+            <div class="dash-page-actions">
+              <button class="dash-btn dash-btn--primary" type="button" data-action-toast data-toast-title="New message" data-toast-message="Choose a resident or owner to start a conversation.">
+                <svg class="icon" aria-hidden="true"><use href="#icon-plus"/></svg>
+                New message
+              </button>
+            </div>
+          </div>
+
+          <div class="dash-grid dash-grid--narrow-side">
+            <article class="dash-card">
+              <div class="dash-card__head"><div><span class="dash-card__eyebrow">Conversations</span><h2>Inbox <span class="dash-count">3</span></h2></div></div>
+              <div class="dash-tabs" aria-label="Message filters">
+                <button type="button" class="is-active">All</button>
+                <button type="button">Unread</button>
+                <button type="button">Owners</button>
+              </div>
+              <div class="dash-inbox">
+                <button class="dash-inbox__item is-active" type="button" data-thread="admin-olivia" data-thread-name="Olivia Bennett" data-thread-role="Tenant &middot; Ocean House" data-thread-initials="OB">
+                  <span class="avatar avatar--gold">OB</span>
+                  <span class="dash-inbox__copy"><strong>Olivia Bennett</strong><span>Dishwasher is making a noise again</span><time>10:04 AM</time></span>
+                </button>
+                <button class="dash-inbox__item" type="button" data-thread="admin-maya" data-thread-name="Maya Chen" data-thread-role="Tenant &middot; The Atelier" data-thread-initials="MC">
+                  <span class="avatar avatar--rose">MC</span>
+                  <span class="dash-inbox__copy"><strong>Maya Chen</strong><span>Quick question about November rent</span><time>9:02 AM</time></span>
+                </button>
+                <button class="dash-inbox__item" type="button" data-thread="admin-daniel" data-thread-name="Daniel Kim" data-thread-role="Tenant &middot; The Grove" data-thread-initials="DK">
+                  <span class="avatar">DK</span>
+                  <span class="dash-inbox__copy"><strong>Daniel Kim</strong><span>All settled into The Grove</span><time>Yesterday</time></span>
+                </button>
+              </div>
+              <div class="dash-card__note"><svg class="icon" aria-hidden="true"><use href="#icon-clock"/></svg>Median response time this week is 38 minutes.</div>
+            </article>
+
+            <article class="dash-card dash-conversation">
+              <div class="dash-conversation__head">
+                <span class="avatar avatar--gold" data-chat-avatar>OB</span>
+                <div><strong data-chat-name>Olivia Bennett</strong><span data-chat-role>Tenant &middot; Ocean House</span></div>
+              </div>
+              <div class="dash-chat" data-chat aria-live="polite"></div>
+              <form class="dash-reply" data-chat-form>
+                <input type="text" name="message" placeholder="Write a reply&hellip;" aria-label="Write a reply" autocomplete="off" required>
+                <button class="dash-send" type="submit" aria-label="Send message"><svg class="icon" aria-hidden="true"><use href="#icon-send"/></svg></button>
+              </form>
+            </article>
+          </div>
+        </section>
+
+        <section class="dash-view" id="reviews" data-page-label="Reviews" hidden>
+          <div class="dash-page-head">
+            <div>
+              <div class="dash-eyebrow"><span></span>Reputation</div>
+              <h1>Reviews</h1>
+              <p>What residents say about their homes and the Stackly experience.</p>
+            </div>
+            <div class="dash-page-actions">
+              <button class="dash-btn dash-btn--soft" type="button" data-action-toast data-toast-title="Review invitations sent" data-toast-message="Residents who moved in this month received an invitation.">
+                <svg class="icon" aria-hidden="true"><use href="#icon-send"/></svg>
+                Request reviews
+              </button>
+            </div>
+          </div>
+
+          <section class="dash-kpis dash-kpis--three" aria-label="Review metrics">
+            <article class="dash-kpi dash-kpi--gold"><div class="dash-kpi__top"><span>Average rating</span><span class="dash-icon-tile"><svg class="icon" aria-hidden="true"><use href="#icon-star"/></svg></span></div><strong>4.8</strong><div class="dash-kpi__foot"><span class="dash-trend dash-trend--up"><svg class="icon" aria-hidden="true"><use href="#icon-arrow-up-right"/></svg>0.2</span><span>vs last quarter</span></div></article>
+            <article class="dash-kpi"><div class="dash-kpi__top"><span>New this month</span><span class="dash-icon-tile"><svg class="icon" aria-hidden="true"><use href="#icon-message"/></svg></span></div><strong>54</strong><div class="dash-kpi__foot"><span class="dash-trend dash-trend--up"><svg class="icon" aria-hidden="true"><use href="#icon-arrow-up-right"/></svg>12</span><span>more than September</span></div></article>
+            <article class="dash-kpi"><div class="dash-kpi__top"><span>Response rate</span><span class="dash-icon-tile"><svg class="icon" aria-hidden="true"><use href="#icon-check"/></svg></span></div><strong>97%</strong><div class="dash-kpi__foot"><span class="dash-trend dash-trend--good"><svg class="icon" aria-hidden="true"><use href="#icon-check"/></svg>Within 24h</span></div></article>
+          </section>
+
+          <div class="dash-grid dash-grid--bottom">
+            <article class="dash-card">
+              <div class="dash-card__head"><div><span class="dash-card__eyebrow">Distribution</span><h2>Rating breakdown</h2></div></div>
+              <div class="dash-chartbox dash-chartbox--sm"><canvas id="adminReviewRatingChart" data-chart role="img" aria-label="Review rating breakdown"></canvas></div>
+            </article>
+            <article class="dash-card">
+              <div class="dash-card__head"><div><span class="dash-card__eyebrow">Volume</span><h2>Review momentum</h2></div></div>
+              <div class="dash-chartbox dash-chartbox--sm"><canvas id="adminReviewVolumeChart" data-chart role="img" aria-label="New reviews over six months"></canvas></div>
+            </article>
+          </div>
+
+          <article class="dash-card">
+            <div class="dash-card__head"><div><span class="dash-card__eyebrow">Recent feedback</span><h2>Latest reviews</h2></div><span class="dash-chip"><span></span>214 total</span></div>
+            <div class="dash-review-list">
+              <div class="dash-review">
+                <div class="dash-review__head"><span class="avatar avatar--gold">OB</span><div><strong>Olivia Bennett</strong><span>Ocean House &middot; 2 days ago</span></div><span class="dash-review__score"><span class="dash-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>5.0</span></div>
+                <p>The home was exactly as pictured and the team made every handover detail feel effortless. Nina checked in after move-in, which made a big difference.</p>
+                <div class="dash-review__foot"><span>Verified resident</span><span>Helpful &middot; Reply</span></div>
+              </div>
+              <div class="dash-review">
+                <div class="dash-review__head"><span class="avatar avatar--rose">MC</span><div><strong>Maya Chen</strong><span>The Atelier &middot; 5 days ago</span></div><span class="dash-review__score"><span class="dash-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>4.9</span></div>
+                <p>Quiet building, thoughtful details and a maintenance team that actually replies. The app makes rent and documents simple.</p>
+                <div class="dash-review__foot"><span>Verified resident</span><span>Helpful &middot; Reply</span></div>
+              </div>
+              <div class="dash-review">
+                <div class="dash-review__head"><span class="avatar">DK</span><div><strong>Daniel Kim</strong><span>The Grove &middot; 1 week ago</span></div><span class="dash-review__score"><span class="dash-stars">&#9733;&#9733;&#9733;&#9733;&#9734;</span>4.2</span></div>
+                <p>Move-in was smooth overall. A little more parking guidance would help, but the home and neighbourhood are excellent.</p>
+                <div class="dash-review__foot"><span>Verified resident</span><span>Helpful &middot; Reply</span></div>
+              </div>
+            </div>
+          </article>
+        </section>
+
+        <section class="dash-view" id="settings" data-page-label="Settings" hidden>
+          <div class="dash-page-head">
+            <div>
+              <div class="dash-eyebrow"><span></span>Workspace</div>
+              <h1>Settings</h1>
+              <p>Your admin profile, team defaults and notification preferences.</p>
+            </div>
+          </div>
+
+          <div class="dash-grid dash-grid--wide-side">
+            <div>
+              <article class="dash-card">
+                <div class="dash-card__head"><div><span class="dash-card__eyebrow">Profile</span><h2>Workspace details</h2></div></div>
+                <form class="dash-form" data-demo-form data-toast-title="Workspace updated" data-toast="Your admin profile and workspace details are saved.">
+                  <div class="dash-form__grid">
+                    <label class="dash-field"><span>Full name</span><input type="text" name="name" value="Alex Morgan" required></label>
+                    <label class="dash-field"><span>Email address</span><input type="email" name="email" value="alex@stackly.com" required></label>
+                    <label class="dash-field"><span>Job title</span><input type="text" name="role" value="Workspace admin"></label>
+                    <label class="dash-field"><span>Phone</span><input type="tel" name="phone" value="+1 (310) 555-0182"></label>
+                    <label class="dash-field dash-field--full"><span>Workspace name</span><input type="text" name="workspace" value="Stackly HQ"></label>
+                  </div>
+                  <div class="dash-form__actions"><button class="dash-btn dash-btn--primary" type="submit">Save details</button></div>
+                </form>
+              </article>
+
+              <article class="dash-card">
+                <div class="dash-card__head"><div><span class="dash-card__eyebrow">Preferences</span><h2>Notifications</h2></div></div>
+                <form class="dash-form" data-demo-form data-toast-title="Preferences saved" data-toast="Your notification preferences have been updated.">
+                  <div class="dash-check-stack">
+                    <label class="dash-check"><input type="checkbox" name="payment-alerts" checked><span>Payment received and overdue alerts</span></label>
+                    <label class="dash-check"><input type="checkbox" name="leasing-alerts" checked><span>New enquiries and booking confirmations</span></label>
+                    <label class="dash-check"><input type="checkbox" name="owner-alerts" checked><span>Owner statement and payout updates</span></label>
+                    <label class="dash-check"><input type="checkbox" name="weekly-digest"><span>Weekly portfolio digest</span></label>
+                  </div>
+                  <div class="dash-form__actions"><button class="dash-btn dash-btn--primary" type="submit">Save preferences</button></div>
+                </form>
+              </article>
+            </div>
+
+            <div>
+              <article class="dash-profile-card">
+                <div class="dash-profile-card__avatar" data-auth-user-initials>AM</div>
+                <h2 data-auth-user-name>Alex Morgan</h2>
+                <p data-auth-user-email>alex@stackly.com</p>
+                <div class="dash-profile-card__meta">
+                  <span><svg class="icon" aria-hidden="true"><use href="#icon-building"/></svg>Stackly HQ &middot; 24 cities</span>
+                  <span><svg class="icon" aria-hidden="true"><use href="#icon-shield"/></svg>Workspace admin</span>
+                  <span><svg class="icon" aria-hidden="true"><use href="#icon-clock"/></svg>Last active just now</span>
+                </div>
+              </article>
+
+              <article class="dash-card">
+                <div class="dash-card__head"><div><span class="dash-card__eyebrow">Security</span><h2>Access</h2></div></div>
+                <div class="dash-summary-list">
+                  <div><span>Two-factor authentication</span><strong>Enabled</strong></div>
+                  <div><span>Active sessions</span><strong>2 devices</strong></div>
+                  <div><span>Last password change</span><strong>42 days ago</strong></div>
+                </div>
+                <button class="dash-btn dash-btn--soft dash-btn--block" type="button" data-action-toast data-toast-title="Security centre" data-toast-message="Password and session controls are ready to review.">
+                  <svg class="icon" aria-hidden="true"><use href="#icon-shield"/></svg>
+                  Manage security
+                </button>
+              </article>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <div class="dash-toast" id="dashToast" role="status" aria-live="polite">
+    <span class="dash-toast__icon"><svg class="icon" aria-hidden="true"><use href="#icon-check"/></svg></span>
+    <span><strong data-toast-title>Saved</strong><span data-toast-message>Your changes are up to date.</span></span>
+  </div>
+
+  <div class="dash-modal" id="addPropertyModal" hidden>
+    <div class="dash-modal__backdrop" data-close-modal></div>
+    <div class="dash-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="addPropertyTitle">
+      <button class="dash-modal__close" type="button" data-close-modal aria-label="Close dialog">
+        <svg class="icon" aria-hidden="true"><use href="#icon-x"/></svg>
+      </button>
+      <span class="dash-card__eyebrow">New listing</span>
+      <h2 id="addPropertyTitle">Add a property</h2>
+      <p>Start a draft listing and invite the right tenants when it&rsquo;s ready.</p>
+      <form class="dash-form" data-demo-form data-toast-title="Property draft created" data-toast="Ocean House is ready for photography and publishing.">
+        <div class="dash-form__grid">
+          <label class="dash-field">
+            <span>Property name</span>
+            <input type="text" name="property" placeholder="e.g. Harbor House" required>
+          </label>
+          <label class="dash-field">
+            <span>Monthly rent</span>
+            <input type="text" name="rent" placeholder="$8,500" required>
+          </label>
+          <label class="dash-field dash-field--full">
+            <span>Address</span>
+            <input type="text" name="address" placeholder="Street, city, state" required>
+          </label>
+          <label class="dash-field">
+            <span>Property type</span>
+            <select name="type" required>
+              <option value="">Select type</option>
+              <option>Apartment</option>
+              <option>Villa</option>
+              <option>Penthouse</option>
+              <option>Cabin</option>
+            </select>
+          </label>
+          <label class="dash-field">
+            <span>Bedrooms</span>
+            <input type="number" name="bedrooms" min="1" max="12" placeholder="2" required>
+          </label>
+          <label class="dash-field dash-field--full">
+            <span>Internal notes</span>
+            <textarea name="notes" rows="3" placeholder="Access details, styling notes, or target tenant profile&hellip;"></textarea>
+          </label>
+        </div>
+        <div class="dash-modal__actions">
+          <button class="dash-btn dash-btn--soft" type="button" data-close-modal>Cancel</button>
+          <button class="dash-btn dash-btn--primary" type="submit">Create draft</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="js/dashboard.js"></script>
+  <script src="js/chart.umd.min.js"></script>
+  <script src="js/dashboard-extras.js"></script>
+  <script src="js/dashboard-404.js"></script>
+</body>
+</html>
