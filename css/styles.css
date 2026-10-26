@@ -3368,15 +3368,22 @@ svg {
 /* ---------- Footer ---------- */
 
 .site-footer {
-  --footer-text: var(--ink);
-  --footer-muted: var(--muted);
-  --footer-heading: var(--rust);
-  --footer-line: var(--line);
+  --footer-bg: url("../assets/images/property-04.webp");
+  --footer-text: #0F2E27;
+  --footer-muted: #173F35;
+  --footer-heading: #0F2E27;
+  --footer-line: rgba(15, 46, 39, 0.24);
   position: relative;
   overflow: hidden;
   padding: clamp(3rem, 6vw, 5rem) 0 1.5rem;
   border-top: 1px solid var(--footer-line);
-  background: var(--paper-soft);
+  background-color: var(--paper-soft);
+  background-image:
+    linear-gradient(180deg, rgba(247, 246, 242, 0.76) 0%, rgba(247, 246, 242, 0.82) 100%),
+    var(--footer-bg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
   color: var(--footer-text);
 }
 
@@ -3412,9 +3419,9 @@ svg {
 
 .footer-brand > p {
   max-width: 245px;
-  color: var(--footer-muted);
+  color: var(--footer-text);
   font-size: 0.85rem;
-  font-weight: 600;
+  font-weight: 700;
   line-height: 1.7;
 }
 
@@ -3429,10 +3436,10 @@ svg {
   width: 36px;
   height: 36px;
   place-items: center;
-  border: 1px solid var(--footer-line);
+  border: 1.5px solid rgba(15, 46, 39, 0.32);
   border-radius: 50%;
-  background: rgba(23, 63, 53, 0.04);
-  color: var(--ink);
+  background: rgba(255, 255, 255, 0.65);
+  color: var(--footer-text);
   transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
 }
 
@@ -3475,7 +3482,7 @@ svg {
   background: transparent;
   color: var(--footer-text);
   font-size: 0.9rem;
-  font-weight: 600;
+  font-weight: 700;
   text-align: left;
   transition: color 0.25s ease;
 }
@@ -3490,7 +3497,7 @@ svg {
   margin: 0 0 10px;
   color: var(--footer-text);
   font-size: 0.9rem;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .footer-links a:hover,
@@ -3512,7 +3519,7 @@ svg {
   margin-bottom: 1.2rem;
   color: var(--footer-text);
   font-size: 0.85rem;
-  font-weight: 600;
+  font-weight: 700;
   line-height: 1.65;
 }
 
@@ -3563,9 +3570,9 @@ svg {
 .newsletter-note {
   display: block;
   margin-top: 8px;
-  color: var(--footer-muted);
+  color: var(--footer-text);
   font-size: 0.78rem;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .footer-bottom {
@@ -3575,9 +3582,9 @@ svg {
   gap: 1.5rem;
   padding-top: 1.5rem;
   border-top: 1px solid var(--footer-line);
-  color: var(--footer-muted);
+  color: var(--footer-text);
   font-size: 0.78rem;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .footer-legal {
@@ -3586,11 +3593,18 @@ svg {
 }
 
 .footer-legal a {
+  font-weight: 700;
   transition: color 0.25s ease;
 }
 
 .footer-legal a:hover {
   color: var(--rust);
+}
+
+@media (max-width: 767.98px) {
+  .site-footer {
+    --footer-bg: url("../assets/images/property-04-sm.webp");
+  }
 }
 
 /* ---------- Modals ---------- */
