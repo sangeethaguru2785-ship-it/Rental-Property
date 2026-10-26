@@ -3368,28 +3368,20 @@ svg {
 /* ---------- Footer ---------- */
 
 .site-footer {
-  --footer-bg: url("../assets/images/neighborhood-02.webp");
-  --footer-text: rgba(255, 255, 255, 0.82);
-  --footer-muted: rgba(255, 255, 255, 0.68);
-  --footer-heading: var(--accent-soft);
-  --footer-line: rgba(255, 255, 255, 0.17);
+  --footer-text: var(--ink);
+  --footer-muted: var(--muted);
+  --footer-heading: var(--rust);
+  --footer-line: var(--line);
   position: relative;
   overflow: hidden;
   padding: clamp(3rem, 6vw, 5rem) 0 1.5rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.12);
-  background-color: var(--ink-soft);
-  background-image:
-    radial-gradient(circle at 78% 18%, rgba(217, 183, 122, 0.16) 0%, rgba(217, 183, 122, 0) 46%),
-    linear-gradient(180deg, rgba(10, 34, 29, 0.88) 0%, rgba(8, 28, 24, 0.9) 100%),
-    var(--footer-bg);
-  background-repeat: no-repeat;
-  background-position: center, center, center;
-  background-size: auto, auto, cover;
+  border-top: 1px solid var(--footer-line);
+  background: var(--paper-soft);
   color: var(--footer-text);
 }
 
 .site-footer :focus-visible {
-  outline-color: var(--accent);
+  outline-color: var(--rust);
 }
 
 .footer-top {
@@ -3407,7 +3399,6 @@ svg {
 .navbar-brand--footer .brand-logo {
   height: 48px;
   max-width: 190px;
-  filter: brightness(0) invert(1);
 }
 
 .footer-brand h3 {
@@ -3421,7 +3412,7 @@ svg {
 
 .footer-brand > p {
   max-width: 245px;
-  color: var(--footer-text);
+  color: var(--footer-muted);
   font-size: 0.85rem;
   font-weight: 600;
   line-height: 1.7;
@@ -3440,15 +3431,15 @@ svg {
   place-items: center;
   border: 1px solid var(--footer-line);
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.04);
-  color: var(--footer-heading);
+  background: rgba(23, 63, 53, 0.04);
+  color: var(--ink);
   transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
 }
 
 .socials a:hover {
-  border-color: var(--accent);
-  background: var(--accent);
-  color: var(--ink);
+  border-color: var(--ink);
+  background: var(--ink);
+  color: var(--accent);
 }
 
 .socials .icon {
@@ -3504,7 +3495,7 @@ svg {
 
 .footer-links a:hover,
 .footer-links button:hover {
-  color: var(--accent-bright);
+  color: var(--rust);
 }
 
 .footer-newsletter h3 {
@@ -3537,13 +3528,13 @@ svg {
   border: 0;
   outline: none;
   background: transparent;
-  color: var(--white);
-  caret-color: var(--accent);
+  color: var(--ink);
+  caret-color: var(--ink);
   font-size: 0.9rem;
 }
 
 .newsletter-form input::placeholder {
-  color: rgba(255, 255, 255, 0.54);
+  color: var(--footer-muted);
 }
 
 .newsletter-form button {
@@ -3599,13 +3590,7 @@ svg {
 }
 
 .footer-legal a:hover {
-  color: var(--accent-bright);
-}
-
-@media (max-width: 767.98px) {
-  .site-footer {
-    --footer-bg: url("../assets/images/neighborhood-02-sm.webp");
-  }
+  color: var(--rust);
 }
 
 /* ---------- Modals ---------- */
